@@ -19,6 +19,9 @@
     "react-sortablejs": "^6.1.4",
     "react_ujs": "^1.0.0"
   },
+  "exports": {
+    ".": "./components/*"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
