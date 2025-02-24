@@ -1,0 +1,31 @@
+import * as React from 'react';
+import { HTMLInputTypeAttribute, ReactElement } from 'react';
+export interface TextFieldProps {
+    className?: string;
+    style?: React.CSSProperties;
+    wrapperStyle?: React.CSSProperties;
+    icon?: ReactElement | string;
+    value?: string;
+    disabled?: boolean;
+    placeholder?: string;
+    size?: 'default' | 'mini';
+    onChange?: (value: string) => void;
+    onClick?: (e: any) => void;
+    readonly?: boolean;
+    wrapperRef?: any;
+    inputRef?: any;
+    type?: HTMLInputTypeAttribute;
+    bottomLabel?: string;
+    min?: number;
+    max?: number;
+    onBlur?: () => void;
+    key?: any;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    mask?: string | string[];
+    error?: string | boolean;
+    wrapperClassName?: string;
+    hideSpinButtons?: boolean;
+    required?: boolean;
+    uncontrolled?: boolean;
+}
+export declare const TextField: React.FC<TextFieldProps>;

@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
-    "declaration": false,
-    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
     "module": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5",
-    "jsx": "react",
-    "noEmit": true,
+    "target": "es6",
+    "jsx": "react-jsx",
+    "noEmit": false,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@yandex/ymaps3-types"],
-    "paths": {
-      "ymaps3": ["./node_modules/@yandex/ymaps3-types"]
-    }
+    "typeRoots": ["./node_modules/@types"],
+    "allowImportingTsExtensions": false,
+    "outDir": "dist"
   },
   "exclude": [
     "**/*.spec.ts",
     "node_modules",
-    "vendor",
-    "public"
   ],
   "compileOnSave": false
 }
