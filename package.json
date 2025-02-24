@@ -2,7 +2,8 @@
   "name": "mtui-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
+  "types": "index.d.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MirTurbaz/mtui-react.git"
