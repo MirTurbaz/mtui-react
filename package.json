@@ -2,7 +2,7 @@
   "name": "mtui-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tss",
+  "main": "index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MirTurbaz/mtui-react.git"
@@ -18,9 +18,6 @@
     "react-router-dom": "^6.26.0",
     "react-sortablejs": "^6.1.4",
     "react_ujs": "^1.0.0"
-  },
-  "exports": {
-    ".": "./index.js"
   },
   "author": "",
   "license": "ISC",
