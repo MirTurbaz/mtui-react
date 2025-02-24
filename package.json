@@ -38,6 +38,9 @@
     "@types/react-dates": "^21.8.6",
     "@types/react-draft-wysiwyg": "^1.13.8"
   },
+  "exports": {
+    ".": "./dist"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
