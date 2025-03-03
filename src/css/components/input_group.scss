@@ -1,0 +1,33 @@
+.input_group {
+  display: flex;
+  &-wrapped {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .input_group__item {
+    &:not(:last-child) {
+      .text_field__wrapper,
+      .select__wrapper,
+      .button {
+        border-radius: 8px 0 0 8px;
+        border-right: none;
+      }
+    }
+    &:not(:first-child) {
+      .text_field__wrapper,
+      .select__wrapper,
+      .button {
+        border-radius: 0 8px 8px 0;
+      }
+    }
+    &:not(:first-child):not(:last-child) {
+      .text_field__wrapper,
+      .select__wrapper,
+      .button {
+        border-radius: 0;
+        border-right: none;
+      }
+    }
+  }
+}

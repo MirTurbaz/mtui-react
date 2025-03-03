@@ -1,0 +1,105 @@
+@import 'extranet/_var';
+
+.checkbox {
+  &__wrapper {
+    padding: 13px;
+    display: inline-flex;
+    column-gap: 13px;
+    align-items: center;
+    cursor: pointer;
+    &-disabled {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    &:hover {
+      .checkbox__input {
+        border: 2px solid #000000cc;
+        &-checked {
+          border: 2px solid transparent;
+          background: $brand;
+        }
+      }
+    }
+    &:focus,
+    &:active,
+    &.clicked {
+      .checkbox__input {
+        border: 2px solid #0000007a;
+        &:before {
+          top: -15px;
+          left: -15px;
+          width: 44px;
+          height: 44px;
+        }
+        &-checked {
+          border: 2px solid transparent;
+          background: $brand;
+        }
+      }
+    }
+  }
+  &__label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    user-select: none;
+  }
+  &__input {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 2px solid #000000a3;
+    transition: 0.1s;
+    position: relative;
+    flex-shrink: 0;
+    .checkbox__checkmark-first {
+      width: 7px;
+      height: 2px;
+      border-radius: 2px;
+      border-right: 0 solid white;
+      position: absolute;
+      top: 8px;
+      left: 0;
+      transform: rotate(45deg);
+      transition: 0.4s;
+    }
+    .checkbox__checkmark-second {
+      width: 12px;
+      height: 2px;
+      border-radius: 2px;
+      border-right: 0 solid white;
+      position: absolute;
+      top: 6.5px;
+      left: 3px;
+      transform: rotate(135deg);
+      transition: 0.4s;
+    }
+    &-with_background {
+      background: white;
+    }
+    &-checked {
+      border: 2px solid transparent;
+      background: $brand;
+      .checkbox__checkmark-first {
+        border-right: 7px solid white;
+      }
+      .checkbox__checkmark-second {
+        border-right: 12px solid white;
+      }
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 7px;
+      left: 6px;
+      transition: 0.2s;
+      background: #0000000a;
+      border-radius: 22px;
+    }
+  }
+}

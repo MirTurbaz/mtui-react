@@ -1,0 +1,17 @@
+.divider_with_text {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }
+  &__text {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0.4px;
+  }
+  &__line {
+    border-bottom: 1px solid #00000014;
+    flex: 1;
+  }
+}

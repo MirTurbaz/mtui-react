@@ -1,0 +1,67 @@
+.switch {
+  &__wrapper {
+    padding: 10px;
+    display: inline-flex;
+    column-gap: 18px;
+    align-items: center;
+    cursor: pointer;
+    &-disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+    &:hover {
+      .switch__input {
+        background: #00000052;
+        &-checked {
+          &-green {
+            background: #00c853cc;
+          }
+          &-blue {
+            background: $brand;
+          }
+        }
+      }
+    }
+    &:focus,
+    &:active,
+    &.clicked,
+    &:hover {
+      .switch__input {
+        box-shadow: 0 0 0 10px #0000000a;
+      }
+    }
+  }
+  &__input {
+    border-radius: 16px;
+    width: 42px;
+    height: 24px;
+    position: relative;
+    padding: 3px;
+    background: #00000033;
+    transition: 0.2s;
+    &-clicked {
+      box-shadow: 0 0 0 10px #0000000a;
+    }
+    &-checked {
+      &-green {
+        background: #00c853cc;
+      }
+      &-blue {
+        background: $brand;
+      }
+      .switch__circle {
+        left: 21px;
+      }
+    }
+  }
+  &__circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background: white;
+    transition: 0.2s;
+    left: 3px;
+    position: absolute;
+    box-shadow: 0 4px 4px 0 #00000029;
+  }
+}

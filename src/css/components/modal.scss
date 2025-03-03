@@ -1,0 +1,94 @@
+.modal {
+  &__overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: #0000007a;
+    z-index: 1000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__wrapper {
+    z-index: 1000001;
+    width: 600px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #0000001f;
+    box-shadow:
+      0px 4px 32px 0px #00000026,
+      0px 0px 0px 1px #0000001a;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 32px);
+    &-size {
+      &_xs {
+        width: 344px;
+      }
+      &_sm {
+        width: 600px;
+      }
+      &_md {
+        width: 768px;
+      }
+      &_lg {
+        width: 992px;
+      }
+      &_xl {
+        width: 1200px;
+      }
+      &_xxl {
+        width: 1600px;
+      }
+    }
+  }
+  &-no_padding.modal__wrapper {
+    .modal__body {
+      padding: 0;
+    }
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.2px;
+    text-align: left;
+    padding: 10px 10px 10px 24px;
+    border-bottom: 1px solid #0000001f;
+  }
+  &__body {
+    padding: 24px;
+    overflow-y: auto;
+    position: relative;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: right;
+    column-gap: 8px;
+    padding: 24px 16px 24px 16px;
+    border-top: 1px solid #0000001f;
+    width: calc(100% + 48px);
+    margin: 32px -24px -24px;
+  }
+}
+
+@media all and (max-width: $screen-sm) {
+  .modal__overlay {
+    flex-direction: column;
+  }
+  .modal__wrapper:not(.modal_mobile-height_auto) {
+    width: 100vw;
+    flex-grow: 1;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .flex_horizontal-16 {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+}

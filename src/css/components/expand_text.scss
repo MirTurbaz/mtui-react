@@ -1,0 +1,26 @@
+.expand-text {
+  &__wrapper {
+    position: relative;
+  }
+  &__content {
+    margin: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 65%);
+  }
+  .expand-btn {
+    cursor: pointer;
+    color: $blue;
+    margin-top: 10px;
+    position: relative;
+    width: fit-content;
+  }
+}

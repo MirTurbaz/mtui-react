@@ -1,0 +1,63 @@
+.month-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.07);
+  padding: 16px;
+}
+
+.year-selection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 36px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.year-selection button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.year-selection span {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.month {
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 24px;
+  height: 44px;
+  width: 77px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-today {
+    border: 1px solid #0000007a;
+  }
+}
+
+.month.selected {
+  background-color: rgba(51, 51, 51, 1);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.48);
+}
+
+@media (max-width: $screen-sm) {
+  .month-picker {
+    box-shadow: none;
+  }
+}

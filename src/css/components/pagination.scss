@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 16px 0;
+  &__dots {
+    width: 12px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+  }
+  &__numbers {
+    display: flex;
+    gap: 16px;
+    margin: 0 20px;
+  }
+  &__total-size {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .pagination__numbers {
+    max-width: 410px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: unset;
+  }
+}

@@ -1,0 +1,27 @@
+.chips {
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.chip {
+  &__wrapper {
+    display: flex;
+    background: #417ee10a;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    letter-spacing: 0.25px;
+    padding: 6px 6px 6px 12px;
+    border-radius: 38px;
+    align-items: center;
+    column-gap: 4px;
+    cursor: pointer;
+  }
+}

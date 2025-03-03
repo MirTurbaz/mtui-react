@@ -1,0 +1,43 @@
+.status_label {
+  padding: 7px 12px;
+  border-radius: 24px;
+  border: 1px solid;
+
+  font-family: Roboto, 'sans-serif';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  text-align: center;
+
+  &__blue,
+  &__pending-arrival {
+    background-color: $brand-4;
+    border-color: $brand-20;
+    color: rgba(30, 91, 190, 1);
+  }
+  &__new {
+    background-color: $brand;
+    border: none;
+    color: white;
+  }
+  &__orange {
+    background-color: rgba(245, 155, 21, 0.04);
+    border-color: rgba(245, 155, 21, 0.2);
+    color: rgba(204, 122, 0, 1);
+  }
+  &__arrived,
+  &__done,
+  &__green {
+    background-color: rgba(0, 200, 83, 0.04);
+    border-color: rgba(0, 200, 83, 0.2);
+    color: rgba(3, 161, 76, 1);
+  }
+  &__canceled,
+  &__not-arrived,
+  &__red {
+    background-color: rgba(224, 27, 0, 0.04);
+    border-color: rgba(224, 27, 0, 0.2);
+    color: rgba(224, 27, 0, 1);
+  }
+}
