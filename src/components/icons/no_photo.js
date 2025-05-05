@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function NoPhoto({ color = DEFAULT_ICON_COLOR }) {
+export function NoPhoto({ className = null, color = DEFAULT_ICON_COLOR }) {
   return _jsxs('svg', {
     width: '32',
     height: '32',

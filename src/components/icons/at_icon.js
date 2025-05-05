@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function AtIcon({ color = DEFAULT_ICON_COLOR, size = 16 }) {
+export function AtIcon({ className = null, color = DEFAULT_ICON_COLOR, size = 16 }) {
   return _jsx('svg', {
     width: size,
     height: size,

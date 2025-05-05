@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function ChevronRight({ color = DEFAULT_ICON_COLOR, size = 18 }) {
+export function ChevronRight({ className = null, color = DEFAULT_ICON_COLOR, size = 18 }) {
   return _jsx('svg', {
     width: size,
     height: size,

@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR, IRectangleIconProps } from './common';
 
-export function Add({ className = null, color = DEFAULT_ICON_COLOR, width = 21, height = 20 }: IRectangleIconProps) {
+export function Add({ className = null, color = DEFAULT_ICON_COLOR, height = 20, width = 21 }: IRectangleIconProps) {
   return (
     <svg
       width={width}

@@ -1,8 +1,15 @@
-import { DEFAULT_ICON_COLOR } from './common';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export function Telegram({ color = DEFAULT_ICON_COLOR }) {
+export function Telegram({ className = null, color = DEFAULT_ICON_COLOR, size = 20 }: ISquareIconProps) {
   return (
-    <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 20 20'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         fillRule='evenodd'
         clipRule='evenodd'

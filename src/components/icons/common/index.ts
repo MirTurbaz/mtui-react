@@ -1,10 +1,10 @@
 export const DEFAULT_ICON_COLOR = 'rgba(0, 0, 0, 0.64)';
 
 interface IIconProps {
-  /** Цвет иконки */
-  color?: string;
   /** Класс svg вектора */
   className?: string;
+  /** Цвет иконки */
+  color?: string;
 }
 
 export interface ISquareIconProps extends IIconProps {

@@ -1,8 +1,15 @@
-import { DEFAULT_ICON_COLOR } from './common';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export function Logout({ color = DEFAULT_ICON_COLOR, size = 24 }) {
+export function Logout({ className = null, color = DEFAULT_ICON_COLOR, size = 24 }: ISquareIconProps) {
   return (
-    <svg width={size} height={size} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         d='M5 19H12C12.55 19 13 19.45 13 20C13 20.55 12.55 21 12 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H12C12.55 3 13 3.45 13 4C13 4.55 12.55 5 12 5H5V19Z'
         fill={color}

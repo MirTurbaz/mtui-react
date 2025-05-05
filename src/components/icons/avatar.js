@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function Avatar({ color = DEFAULT_ICON_COLOR, size = 28 }) {
+export function Avatar({ className = null, color = DEFAULT_ICON_COLOR, size = 28 }) {
   return _jsxs('svg', {
     width: size,
     height: size,

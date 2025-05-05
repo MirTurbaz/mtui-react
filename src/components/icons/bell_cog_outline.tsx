@@ -1,8 +1,15 @@
-import { DEFAULT_ICON_COLOR } from './common';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export function BellCogOutline({ color = DEFAULT_ICON_COLOR }) {
+export function BellCogOutline({ className = null, color = DEFAULT_ICON_COLOR, size = 24 }: ISquareIconProps) {
   return (
-    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 24 24'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         d='M3.54127 20H10.72C11.2484 20 11.6442 19.5284 11.6442 19C11.6442 18.4716 11.2484 18 10.72 18H7V11C7 8.2 9.2 6 12 6C14.4587 6 16.4548 7.69642 16.9049 10.0059C17.0105 10.548 17.4477 11 18 11C18.5523 11 19.0075 10.5498 18.9301 10.003C18.5524 7.33313 16.6732 5.10196 14 4.3V4C14 2.9 13.1 2 12 2C10.9 2 10 2.9 10 4V4.3C7 5.2 5 7.9 5 11V17L3.20711 18.7929C3.0745 18.9255 3 19.1054 3 19.2929V19.4587C3 19.7577 3.24233 20 3.54127 20Z'
         fill={color}

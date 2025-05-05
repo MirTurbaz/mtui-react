@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function ListAltCheck({ color = DEFAULT_ICON_COLOR, size = 20 }) {
+export function ListAltCheck({ className = null, color = DEFAULT_ICON_COLOR, size = 20 }: ISquareIconProps) {
   return _jsx('svg', {
     width: size,
     height: size,

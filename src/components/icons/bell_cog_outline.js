@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function BellCogOutline({ color = DEFAULT_ICON_COLOR }) {
+export function BellCogOutline({ className = null, color = DEFAULT_ICON_COLOR }) {
   return _jsxs('svg', {
     width: '24',
     height: '24',

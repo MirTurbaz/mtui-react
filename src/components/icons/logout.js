@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function Logout({ color = DEFAULT_ICON_COLOR, size = 24 }) {
+export function Logout({ className = null, color = DEFAULT_ICON_COLOR, size = 24 }) {
   return _jsxs('svg', {
     width: size,
     height: size,

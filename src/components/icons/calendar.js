@@ -1,5 +1,5 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
-export function Calendar({ color, size = 20 }) {
+export function Calendar({ color, size = 20 }: ISquareIconProps) {
   return _jsx('svg', {
     width: size,
     height: size,

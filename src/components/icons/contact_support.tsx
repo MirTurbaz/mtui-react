@@ -1,9 +1,15 @@
-import * as React from 'react';
-import { DEFAULT_ICON_COLOR } from './common';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export function ContactSupport({ color = DEFAULT_ICON_COLOR, size = 20 }) {
+export function ContactSupport({ className = null, color = DEFAULT_ICON_COLOR, size = 20 }: ISquareIconProps) {
   return (
-    <svg width={size} height={size} viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 20 20'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         d='M10.6039 13.2399C10.4277 13.416 10.2148 13.5041 9.96526 13.5041C9.71569 13.5041 9.50281 13.416 9.32664 13.2399C9.15047 13.0637 9.06239 12.8508 9.06239 12.6012C9.06239 12.3517 9.15047 12.1388 9.32664 11.9626C9.50281 11.7865 9.71569 11.6984 9.96526 11.6984C10.2148 11.6984 10.4277 11.7865 10.6039 11.9626C10.7801 12.1388 10.8681 12.3517 10.8681 12.6012C10.8681 12.8508 10.7801 13.0637 10.6039 13.2399Z'
         fill={color}

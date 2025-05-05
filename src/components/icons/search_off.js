@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function SearchOff({ color = DEFAULT_ICON_COLOR, size = 32 }) {
+export function SearchOff({ className = null, color = DEFAULT_ICON_COLOR, size = 32 }) {
   return _jsx('svg', {
     width: size,
     height: size,

@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export function Delete({ color = DEFAULT_ICON_COLOR, size = 20, className = '' }) {
+export function Delete({ className = null, color = DEFAULT_ICON_COLOR, size = 20, className = '' }) {
   return _jsx('svg', {
     width: size,
     height: size,
