@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export default function CalendarDates({ color = DEFAULT_ICON_COLOR, size = 20 }) {
+export function CalendarDates({ color = DEFAULT_ICON_COLOR, size = 20 }) {
   return _jsxs('svg', {
     width: size,
     height: size,

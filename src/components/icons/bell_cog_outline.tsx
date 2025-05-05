@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR } from './common';
 
-export default function BellCogOutline({ color = DEFAULT_ICON_COLOR }) {
+export function BellCogOutline({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

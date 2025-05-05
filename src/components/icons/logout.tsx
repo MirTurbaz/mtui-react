@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR } from './common';
 
-export default function Logout({ color = DEFAULT_ICON_COLOR, size = 24 }) {
+export function Logout({ color = DEFAULT_ICON_COLOR, size = 24 }) {
   return (
     <svg width={size} height={size} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

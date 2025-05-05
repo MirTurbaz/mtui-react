@@ -1,8 +1,15 @@
-import { DEFAULT_ICON_COLOR } from './common';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export default function Avatar({ color = DEFAULT_ICON_COLOR, size = 28 }) {
+export function Avatar({ className = null, color = DEFAULT_ICON_COLOR, size = 28 }: ISquareIconProps) {
   return (
-    <svg width={size} height={size} viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 28 28'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         d='M14 15.75C16.9879 15.75 19.4101 13.3995 19.4101 10.5C19.4101 7.60051 16.9879 5.25 14 5.25C11.012 5.25 8.58982 7.60051 8.58982 10.5C8.58982 13.3995 11.012 15.75 14 15.75Z'
         fill={color}

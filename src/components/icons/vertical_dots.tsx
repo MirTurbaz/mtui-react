@@ -1,4 +1,4 @@
-export default function VerticalDots({ color = 'rgba(0, 0, 0, 0.8)' }) {
+export function VerticalDots({ color = 'rgba(0, 0, 0, 0.8)' }) {
   return (
     <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

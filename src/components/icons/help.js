@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export default function Help({ color = DEFAULT_ICON_COLOR, size = 20 }) {
+export function Help({ color = DEFAULT_ICON_COLOR, size = 20 }) {
   return _jsx('svg', {
     width: size,
     height: size,

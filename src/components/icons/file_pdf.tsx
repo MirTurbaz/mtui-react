@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR } from './common';
 
-export default function FilePdf({ color = DEFAULT_ICON_COLOR }) {
+export function FilePdf({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

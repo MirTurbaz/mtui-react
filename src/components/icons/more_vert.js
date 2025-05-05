@@ -1,6 +1,6 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { DEFAULT_ICON_COLOR } from './common';
-export default function MoreVert({ color = DEFAULT_ICON_COLOR }) {
+export function MoreVert({ color = DEFAULT_ICON_COLOR }) {
   return _jsx('svg', {
     width: '20',
     height: '20',

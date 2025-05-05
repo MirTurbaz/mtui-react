@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR } from './common';
 
-export default function Celebration({ color = DEFAULT_ICON_COLOR, size = 32 }) {
+export function Celebration({ color = DEFAULT_ICON_COLOR, size = 32 }) {
   return (
     <svg width={size} height={size} viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

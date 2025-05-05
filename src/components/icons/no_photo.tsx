@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR } from './common';
 
-export default function NoPhoto({ color = DEFAULT_ICON_COLOR }) {
+export function NoPhoto({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <g clipPath='url(#clip0_3316_11325)'>
