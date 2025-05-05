@@ -4,6 +4,9 @@ import VerticalDots from './vertical_dots';
 
 export { Close, Done, VerticalDots };
 
+export * from './account';
+export * from './add';
+export * from './alert';
 export * from './at_icon';
 export * from './call';
 export * from './delete';

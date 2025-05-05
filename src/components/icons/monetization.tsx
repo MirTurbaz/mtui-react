@@ -1,6 +1,6 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export default function Monetization({ color = ICON_COLOR }) {
+export default function Monetization({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

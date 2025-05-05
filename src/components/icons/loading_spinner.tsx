@@ -1,9 +1,9 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
 const RADIUS = 18;
 const CIRCLE_LENGTH = Math.PI * RADIUS * 2;
 
-export default function LoadingSpinner({ color = ICON_COLOR, progress = 0 }) {
+export default function LoadingSpinner({ color = DEFAULT_ICON_COLOR, progress = 0 }) {
   let length = Math.max(4, (progress / 100) * CIRCLE_LENGTH);
 
   return (

@@ -1,6 +1,6 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-function Remove({ color = ICON_COLOR }) {
+function Remove({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

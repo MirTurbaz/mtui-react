@@ -1,6 +1,6 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export default function Expand({ color = ICON_COLOR, className = null, rotated = false, size = 18 }) {
+export default function Expand({ color = DEFAULT_ICON_COLOR, className = null, rotated = false, size = 18 }) {
   const classNames = `${className} expand-icon ${rotated && 'expand-icon_rotated'}`;
 
   return (

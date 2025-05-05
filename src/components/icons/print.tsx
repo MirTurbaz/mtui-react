@@ -1,6 +1,6 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export default function Print({ color = ICON_COLOR }) {
+export default function Print({ color = DEFAULT_ICON_COLOR }) {
   return (
     <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

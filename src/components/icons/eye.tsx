@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export function Eye({ color = ICON_COLOR, size = 20 }) {
+export function Eye({ color = DEFAULT_ICON_COLOR, size = 20 }) {
   return (
     <svg width={size} height={size} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <g clipPath='url(#clip0_1_4036)'>

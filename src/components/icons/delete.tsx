@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export function Delete({ color = ICON_COLOR, size = 20, className = '' }) {
+export function Delete({ color = DEFAULT_ICON_COLOR, size = 20, className = '' }) {
   return (
     <svg
       width={size}

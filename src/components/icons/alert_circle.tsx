@@ -1,6 +1,6 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR } from './common';
 
-export function AlertCircle({ color = ICON_COLOR, size = 16 }) {
+export function AlertCircle({ color = DEFAULT_ICON_COLOR, size = 16 }) {
   return (
     <svg width={size} height={size} viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path
