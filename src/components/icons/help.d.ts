@@ -1,4 +1,2 @@
-export default function Help({ color, size }: {
-    color?: string;
-    size?: number;
-}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function Help({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

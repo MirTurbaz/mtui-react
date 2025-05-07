@@ -1,4 +1,2 @@
-export default function MenuIcon({ color, size }: {
-    color?: string;
-    size?: number;
-}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function MenuIcon({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

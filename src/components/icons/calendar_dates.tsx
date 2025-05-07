@@ -1,8 +1,15 @@
-import { ICON_COLOR } from '../menu';
+import { DEFAULT_ICON_COLOR, ISquareIconProps } from './common';
 
-export default function CalendarDates({ color = ICON_COLOR, size = 20 }) {
+export function CalendarDates({ className = null, color = DEFAULT_ICON_COLOR, size = 20 }: ISquareIconProps) {
   return (
-    <svg width={size} height={size} viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 20 20'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path d='M5.41667 7.91665H8.75V10.4166H5.41667V7.91665Z' fill={color} />
       <path
         d='M6.25 13.75C6.01988 13.75 5.83333 13.5634 5.83333 13.3333C5.83333 13.1032 6.01988 12.9166 6.25 12.9166H10V13.75H6.25Z'

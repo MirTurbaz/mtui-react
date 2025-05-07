@@ -1,3 +1,2 @@
-export default function OpenInNew({ color }: {
-    color?: string;
-}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function OpenInNew({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;
