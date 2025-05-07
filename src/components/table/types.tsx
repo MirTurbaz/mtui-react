@@ -7,9 +7,6 @@ export interface ITableProps<T> {
   rowLink?: string | ((row: T) => string);
 }
 
-/**
- * Inspired by: [Ant design]{@link https://ant.design/components/table#column}
- */
 export interface IColumnProps<T> {
   className?: string;
   dataIndex?: keyof T;

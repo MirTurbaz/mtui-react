@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import { useResize } from '../../hooks/use_resize';
+import { useResize } from '../hooks/use_resize';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Modal } from './modal';

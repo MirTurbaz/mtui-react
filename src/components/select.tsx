@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import Expand from '../icons/expand';
+import { Expand } from './icons';
 
 export interface SelectProps {
   className?: string;

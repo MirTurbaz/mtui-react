@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {MouseEventHandler, ReactElement} from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
-import { ScreenSize } from '../../hooks/use_resize';
-import Close from '../icons/close';
+import { ScreenSize } from '../hooks/use_resize';
+import { Close } from './icons';
 import { Button } from './button';
 
 export interface ModalProps {
@@ -22,7 +22,10 @@ export const Modal: React.FC<ModalProps> = (props) => {
   if (!props.open) return;
 
   return createPortal(
-    <div className={`modal__overlay ${props.overlayClassName}`} onMouseDown={props.onClose as MouseEventHandler<HTMLDivElement>}>
+    <div
+      className={`modal__overlay ${props.overlayClassName}`}
+      onMouseDown={props.onClose as MouseEventHandler<HTMLDivElement>}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Add from '../icons/add';
-import { Minus } from '../icons/remove';
+import { Add, Minus } from './icons';
 import { Button } from './button';
 import { InputGroup } from './input_group';
 import { TextField } from './text_field';

@@ -1,6 +1,6 @@
 import * as moment from 'moment';
-import { PopupProps } from './popup';
-import { TextFieldProps } from './text_field';
+import { PopupProps } from '../popup';
+import { TextFieldProps } from '../text_field';
 
 export interface IDatesObject {
   startDate?: moment.Moment;

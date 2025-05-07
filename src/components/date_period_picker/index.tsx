@@ -4,13 +4,12 @@ import { useEffect, useState } from 'react';
 import { DayPickerRangeController, FocusedInputShape } from 'react-dates';
 import 'react-dates/initialize';
 import { useResize } from '../../hooks/use_resize';
-import CalendarDates from '../icons/calendar_dates';
-import Today from '../icons/today';
-import { Button } from './button';
-import { DatePeriodPickerProps, IDatesObject } from './date_period_picker.dto';
-import { DateFormatUtils } from './date_period_picker.utils';
-import { Popup } from './popup';
-import { TextField } from './text_field';
+import { CalendarDates, Today } from '../icons';
+import { Button } from '../button';
+import { DatePeriodPickerProps, IDatesObject } from './types';
+import { DateFormatUtils } from './utils';
+import { Popup } from '../popup';
+import { TextField } from '../text_field';
 
 export const DatePeriodPicker: React.FC<DatePeriodPickerProps> = ({ allowSingleDate = false, ...props }) => {
   const [endDate, setEndDate] = useState<moment.Moment>(props.endDate);
@@ -109,7 +108,7 @@ export const DatePeriodPicker: React.FC<DatePeriodPickerProps> = ({ allowSingleD
           style={{ minWidth: 200 }}
           wrapperRef={setAnchor}
           value={value()}
-          onClick={(e) => {
+          onClick={(_) => {
             setOpen(true);
           }}
         />
@@ -132,25 +131,28 @@ export const DatePeriodPicker: React.FC<DatePeriodPickerProps> = ({ allowSingleD
       >
         {/*@ts-ignore*/}
         <DayPickerRangeController
-            /*@ts-ignore*/
-            endDate={endDate}
-            /*@ts-ignore*/
-            startDate={startDate}
-            focusedInput={focusedDate}
-            initialVisibleMonth={null}
-            onDatesChange={handleChange}
-            onFocusChange={handleFocusChange}
-            endDateId={''}
-            numberOfMonths={isMobile ? 1 : 2}
-            renderCalendarInfo={null}
-            startDateId={''}
-            daySize={44}
-            hideKeyboardShortcutsPanel={true}
-            renderDayContents={(date, dayTypes) => (
-                <div className={`DayContent ${date.weekday() >= 5 && 'DayContent-Weekday'}`}>{date.date()}</div>
-            )}
+          /*@ts-ignore*/
+          endDate={endDate}
+          /*@ts-ignore*/
+          startDate={startDate}
+          focusedInput={focusedDate}
+          initialVisibleMonth={null}
+          onDatesChange={handleChange}
+          onFocusChange={handleFocusChange}
+          endDateId={''}
+          numberOfMonths={isMobile ? 1 : 2}
+          renderCalendarInfo={null}
+          startDateId={''}
+          daySize={44}
+          hideKeyboardShortcutsPanel={true}
+          renderDayContents={(date) => (
+            <div className={`DayContent ${date.weekday() >= 5 && 'DayContent-Weekday'}`}>{date.date()}</div>
+          )}
         />
       </Popup>
     </>
   );
 };
+
+export * from './types';
+export * from './utils';

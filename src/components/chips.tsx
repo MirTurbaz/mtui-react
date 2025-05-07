@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Close } from '../icons';
+import { Close } from './icons';
 
 export interface ChipsProps {
   className?: string;

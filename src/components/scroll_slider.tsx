@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import ChevronLeft from '../icons/chevron_left';
-import ChevronRight from '../icons/chevron_right';
+import { ChevronLeft, ChevronRight } from './icons';
 
 export interface ScrollSliderProps {
   className?: string;

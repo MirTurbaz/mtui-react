@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import { HEADER_HEIGHT } from '../header';
-import Expand from '../icons/expand';
+import { HEADER_HEIGHT } from './common';
+import { Expand } from './icons';
 
 export interface AccordionProps {
   className?: string;

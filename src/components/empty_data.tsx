@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { useResize } from '../../hooks/use_resize';
+import { useResize } from '../hooks/use_resize';
 import { Flex } from './flex';
 
 export interface IEmptyDataProps {

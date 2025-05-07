@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useResize } from '../../hooks/use_resize';
-import Close from '../icons/close';
+import { useResize } from '../hooks/use_resize';
+import { Close } from './icons';
 import { Button } from './button';
 import { TypePopupPlacement } from './popup';
 
@@ -46,13 +46,15 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     }
   };
 
-  const calculateTooltipPosition = (anchor: HTMLElement | null,
-                                    placement: TypePopupPlacement = 'bottom',
-                                    ref: HTMLElement | null): [number, number] => {
+  const calculateTooltipPosition = (
+    anchor: HTMLElement | null,
+    placement: TypePopupPlacement = 'bottom',
+    ref: HTMLElement | null
+  ): [number, number] => {
     let left = 0;
     let top = 0;
 
-    if (!anchor || !ref) return [ left, top ];
+    if (!anchor || !ref) return [left, top];
 
     const anchorRect = anchor.getBoundingClientRect();
     const tooltipRect = ref.getBoundingClientRect();
@@ -78,10 +80,10 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 
     if (left < 0) left = 18;
     if (top < 0) top = 10;
-    if (left + tooltipRect.width > window.innerWidth) left = window.innerWidth - tooltipRect.width  - 18;
+    if (left + tooltipRect.width > window.innerWidth) left = window.innerWidth - tooltipRect.width - 18;
 
     return [left, top];
-  }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -105,42 +107,42 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 
   const renderTooltip = () => {
     let left, top;
-    [ left, top ] = calculateTooltipPosition(anchor, props.placement, ref);
+    [left, top] = calculateTooltipPosition(anchor, props.placement, ref);
 
     return createPortal(
-        <div
-            ref={setRef}
-            className={`tooltip__wrapper ${props.className} ${props.animated === false ? 'no-animation' : ''}`}
-            onClick={(e) => e.stopPropagation()}
-            style={{ left, top }}
-        >
-          {isMobile ? (
-              <>
-                <div className={'tooltip__header'}>
-                  <div className={'tooltip__title'}>{props.title}</div>
-                  <Button
-                      onClick={() => {
-                        setClicked(false);
-                        setIsOpen(false);
-                      }}
-                  >
-                    <Close />
-                  </Button>
-                </div>
-                <div className={'tooltip__body'}>{props.content}</div>
-              </>
-          ) : (
-              <div className={'tooltip__body'}>{props.content}</div>
-          )}
-        </div>,
-        document.body
+      <div
+        ref={setRef}
+        className={`tooltip__wrapper ${props.className} ${props.animated === false ? 'no-animation' : ''}`}
+        onClick={(e) => e.stopPropagation()}
+        style={{ left, top }}
+      >
+        {isMobile ? (
+          <>
+            <div className={'tooltip__header'}>
+              <div className={'tooltip__title'}>{props.title}</div>
+              <Button
+                onClick={() => {
+                  setClicked(false);
+                  setIsOpen(false);
+                }}
+              >
+                <Close />
+              </Button>
+            </div>
+            <div className={'tooltip__body'}>{props.content}</div>
+          </>
+        ) : (
+          <div className={'tooltip__body'}>{props.content}</div>
+        )}
+      </div>,
+      document.body
     );
   };
 
   return (
-      <div ref={setAnchor} onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        {props.children}
-        {isOpen && renderTooltip()}
-      </div>
+    <div ref={setAnchor} onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {props.children}
+      {isOpen && renderTooltip()}
+    </div>
   );
 };

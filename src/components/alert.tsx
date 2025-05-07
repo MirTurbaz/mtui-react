@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
-import { AlertCircle } from '../icons/alert_circle';
+import { AlertCircle } from './icons';
 
 interface IAlertProps {
   message: string;

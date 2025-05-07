@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ITableProps } from './table.dto';
+import { ITableProps } from './types';
 
 export function Table<T>(props: ITableProps<T>) {
   const rowLinkExists = useMemo(() => ['string', 'function'].includes(typeof props.rowLink), [props.rowLink]);
@@ -64,4 +64,4 @@ export function Table<T>(props: ITableProps<T>) {
   );
 }
 
-export * from './table.dto';
+export * from './types';

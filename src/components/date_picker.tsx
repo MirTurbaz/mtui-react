@@ -3,11 +3,11 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
-import { useResize } from '../../hooks/use_resize';
-import CalendarDates from '../icons/calendar_dates';
-import { DateFormatUtils } from './date_period_picker.utils';
+import { useResize } from '../hooks/use_resize';
+import { CalendarDates } from './icons';
 import { Popup, PopupProps } from './popup';
 import { TextField, TextFieldProps } from './text_field';
+import { DateFormatUtils } from './date_period_picker/utils';
 
 export interface DatePickerProps extends TextFieldProps {
   id: string;
@@ -24,8 +24,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const [date, setDate] = useState<moment.Moment>(props.date);
   const [open, setOpen] = useState<boolean>(false);
   const [anchor, setAnchor] = useState<HTMLElement>(null);
-
-  const { isMobile } = useResize();
 
   const handleChange = (date: moment.Moment) => {
     setDate(date);
@@ -104,7 +102,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       >
         {/*@ts-ignore*/}
         <DayPickerSingleDateController
-            //@ts-ignore
+          //@ts-ignore
           date={date}
           initialVisibleMonth={null}
           endDateId={''}

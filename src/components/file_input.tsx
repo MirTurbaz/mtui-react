@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Trash } from '../icons';
-import FolderOpen from '../icons/folder_open';
-import Image from '../icons/image';
+import { Trash } from './icons';
+import { FolderOpen, Image } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';
 

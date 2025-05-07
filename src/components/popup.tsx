@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {MouseEventHandler, ReactElement, useEffect, useState} from 'react';
+import { MouseEventHandler, ReactElement, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Close from '../icons/close';
+import { Close } from './icons';
 import { Button } from './button';
 
 export type TypePopupPlacement =

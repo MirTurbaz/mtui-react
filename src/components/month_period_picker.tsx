@@ -1,8 +1,7 @@
 import * as moment from 'moment';
 import * as React from 'react';
 import { useRef, useState } from 'react';
-import ChevronLeft from '../icons/chevron_left';
-import ChevronRight from '../icons/chevron_right';
+import { ChevronLeft, ChevronRight } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Popup } from './popup';

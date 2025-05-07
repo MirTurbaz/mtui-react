@@ -2,10 +2,10 @@ import * as moment from 'moment';
 import * as React from 'react';
 import { useState } from 'react';
 import { DayPickerSingleDateController } from 'react-dates';
-import { DateFormatUtils } from './date_period_picker.utils';
 import { Popup } from './popup';
 import { Select, SelectOption } from './select';
 import { TextField, TextFieldProps } from './text_field';
+import { DateFormatUtils } from './date_period_picker/utils';
 
 export interface SelectDatePickerProps extends TextFieldProps {
   id: string;
@@ -90,7 +90,7 @@ export const SelectDatePicker: React.FC<SelectDatePickerProps> = (props) => {
         </div>
         {/*@ts-ignore*/}
         <DayPickerSingleDateController
-            //@ts-ignore
+          //@ts-ignore
           date={date}
           key={visibleMonth.toString()}
           onDateChange={handleDateChange}
