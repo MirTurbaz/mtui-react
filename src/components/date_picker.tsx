@@ -3,7 +3,6 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
-import { useResize } from '../hooks/use_resize';
 import { CalendarDates } from './icons';
 import { Popup, PopupProps } from './popup';
 import { TextField, TextFieldProps } from './text_field';

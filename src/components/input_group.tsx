@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface ButtonProps {
+interface ButtonProps {
   className?: string;
   children?: any;
   wrap?: boolean;

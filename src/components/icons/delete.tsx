@@ -19,4 +19,3 @@ export function Delete({ className = null, color = DEFAULT_ICON_COLOR, size = 20
 }
 
 export const Trash = Delete;
-export const Remove = Delete;
