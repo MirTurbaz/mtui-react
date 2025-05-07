@@ -1,1 +1,2 @@
-export function QuestionAnswer({ color, size }: { color: any; size?: number }): import('react/jsx-runtime').JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function QuestionAnswer({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

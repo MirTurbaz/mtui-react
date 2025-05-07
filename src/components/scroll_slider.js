@@ -1,7 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
-import ChevronLeft from '../icons/chevron_left';
-import ChevronRight from '../icons/chevron_right';
+import { ChevronLeft, ChevronRight } from './icons';
 export const ScrollSlider = (props) => {
     var _a;
     const [ref, setRef] = useState(null);

@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useResize } from '../../hooks/use_resize';
+import { useResize } from '../hooks/use_resize';
 import { Flex } from './flex';
 export const EmptyData = ({ title, description, icon, actions }) => {
     const { isMobile } = useResize();

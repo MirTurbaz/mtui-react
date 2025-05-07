@@ -10,7 +10,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { AlertCircle } from '../icons/alert_circle';
+import { AlertCircle } from './icons';
 export const Alert = (_a) => {
     var _b;
     var { status = 'default', size = 'middle', type = 'default' } = _a, props = __rest(_a, ["status", "size", "type"]);

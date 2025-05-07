@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Close } from '../icons';
+import { Close } from './icons';
 export const Chips = (props) => {
     if (props.chips.length == 0)
         return null;

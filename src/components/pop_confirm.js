@@ -11,7 +11,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
-import { useResize } from '../../hooks/use_resize';
+import { useResize } from '../hooks/use_resize';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Modal } from './modal';

@@ -11,8 +11,8 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useRef, useState } from 'react';
-import { HEADER_HEIGHT } from '../header';
-import Expand from '../icons/expand';
+import { HEADER_HEIGHT } from './common';
+import { Expand } from './icons';
 export const Accordion = (_a) => {
     var _b;
     var { showExpand = true, scrollOnOpen = false } = _a, props = __rest(_a, ["showExpand", "scrollOnOpen"]);

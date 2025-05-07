@@ -1,1 +1,2 @@
-export function CheckCircle({}: {}): import('react/jsx-runtime').JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function CheckCircle({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

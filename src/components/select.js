@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
-import Expand from '../icons/expand';
+import { Expand } from './icons';
 export const Select = (props) => {
     var _a, _b;
     const [value, setValue] = useState(props.value);
