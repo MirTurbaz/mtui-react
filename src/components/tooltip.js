@@ -1,8 +1,8 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useResize } from '../../hooks/use_resize';
-import Close from '../icons/close';
+import { useResize } from '../hooks/use_resize';
+import { Close } from './icons';
 import { Button } from './button';
 export const Tooltip = (props) => {
     const [anchor, setAnchor] = useState(null);
@@ -11,7 +11,7 @@ export const Tooltip = (props) => {
     const { isMobile } = useResize();
     const [clicked, setClicked] = useState(false);
     const handleClick = () => {
-        let newClicked = !clicked;
+        let newClicked = !clicked && !props.isLeaveOnClick;
         setClicked(newClicked);
         setIsOpen(newClicked);
         props.onChange(newClicked);
@@ -27,6 +27,41 @@ export const Tooltip = (props) => {
             setIsOpen(false);
             props.onChange(false);
         }
+    };
+    const calculateTooltipPosition = (anchor, placement = 'bottom', ref) => {
+        let left = 0;
+        let top = 0;
+        if (!anchor || !ref)
+            return [left, top];
+        const anchorRect = anchor.getBoundingClientRect();
+        const tooltipRect = ref.getBoundingClientRect();
+        const scrollY = window.scrollY;
+        const vertical = ['top', 'bottom'].includes(placement);
+        if (vertical) {
+            left = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
+        }
+        else {
+            top = anchorRect.top + (anchorRect.height / 2 - tooltipRect.height / 2) + scrollY;
+        }
+        if (placement.includes('right')) {
+            left = anchorRect.left + anchorRect.width;
+        }
+        else if (placement.includes('left')) {
+            left = anchorRect.left - tooltipRect.width;
+        }
+        else if (placement.includes('top')) {
+            top = anchorRect.top - tooltipRect.height + scrollY;
+        }
+        else {
+            top = anchorRect.top + anchorRect.height + scrollY;
+        }
+        if (left < 0)
+            left = 18;
+        if (top < 0)
+            top = 10;
+        if (left + tooltipRect.width > window.innerWidth)
+            left = window.innerWidth - tooltipRect.width - 18;
+        return [left, top];
     };
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -46,20 +81,8 @@ export const Tooltip = (props) => {
         };
     }, [anchor, ref, isMobile]);
     const renderTooltip = () => {
-        var _a;
         let left, top;
-        if (anchor) {
-            const bbox = anchor.getBoundingClientRect();
-            const tooltipWidth = (_a = ref === null || ref === void 0 ? void 0 : ref.getBoundingClientRect().width) !== null && _a !== void 0 ? _a : 0;
-            left = bbox.left + bbox.width / 2 - tooltipWidth / 2;
-            if (left + tooltipWidth > window.innerWidth)
-                left = window.innerWidth - tooltipWidth - 18;
-            if (left < 0)
-                left = 18;
-            top = bbox.top + bbox.height + window.scrollY;
-            if (top < 0)
-                top = 10;
-        }
+        [left, top] = calculateTooltipPosition(anchor, props.placement, ref);
         return createPortal(_jsx("div", { ref: setRef, className: `tooltip__wrapper ${props.className} ${props.animated === false ? 'no-animation' : ''}`, onClick: (e) => e.stopPropagation(), style: { left, top }, children: isMobile ? (_jsxs(_Fragment, { children: [_jsxs("div", { className: 'tooltip__header', children: [_jsx("div", { className: 'tooltip__title', children: props.title }), _jsx(Button, { onClick: () => {
                                     setClicked(false);
                                     setIsOpen(false);

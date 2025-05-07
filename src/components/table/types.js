@@ -1,2 +1,2 @@
 export {};
-//# sourceMappingURL=table.dto.js.map
+//# sourceMappingURL=types.js.map

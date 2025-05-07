@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { createPortal } from 'react-dom';
-import Close from '../icons/close';
+import { Close } from './icons';
 import { Button } from './button';
 export const Modal = (props) => {
     var _a, _b;

@@ -12,7 +12,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Close from '../icons/close';
+import { Close } from './icons';
 import { Button } from './button';
 export const Popup = (_a) => {
     var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;

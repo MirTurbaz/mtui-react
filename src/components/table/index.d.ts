@@ -1,3 +1,5 @@
-import { ITableProps } from './table.dto';
-export declare function Table<T>(props: ITableProps<T>): import("react/jsx-runtime").JSX.Element;
-export * from './table.dto';
+import * as types from './types';
+export * from './table';
+export declare const table: {
+    types: typeof types;
+};

@@ -1,7 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Trash } from '../icons';
-import FolderOpen from '../icons/folder_open';
-import Image from '../icons/image';
+import { Trash } from './icons';
+import { FolderOpen, Image } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';
 export const FileInput = (props) => {

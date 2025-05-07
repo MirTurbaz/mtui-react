@@ -1,8 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useResize } from '../../hooks/use_resize';
-import ChevronLeft from '../icons/chevron_left';
-import ChevronRight from '../icons/chevron_right';
+import { useResize } from '../hooks/use_resize';
 import { Button } from './button';
+import { ChevronLeft, ChevronRight } from './icons';
 export const Pagination = ({ totalCount, pageSize, currentPage, pagesCount, onChangePage, categoryGenitiveName, }) => {
     const { isMobile } = useResize();
     function pages() {

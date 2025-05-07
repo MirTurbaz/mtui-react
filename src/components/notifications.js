@@ -1,10 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { createPortal } from 'react-dom';
-import { Close } from '../icons';
-import CheckCircle from '../icons/check_circle';
-import Error from '../icons/error';
-import Info from '../icons/info';
-import Warning from '../icons/warning';
+import { CheckCircle, Close, Error, Info, Warning } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';
 export const Notifications = (props) => {

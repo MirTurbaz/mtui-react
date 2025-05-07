@@ -1,8 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import * as moment from 'moment';
 import { useState } from 'react';
-import ChevronLeft from '../icons/chevron_left';
-import ChevronRight from '../icons/chevron_right';
+import { ChevronLeft, ChevronRight } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Popup } from './popup';

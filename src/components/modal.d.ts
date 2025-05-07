@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
-import { ScreenSize } from '../../hooks/use_resize';
+import { ScreenSize } from '../hooks/use_resize';
 export interface ModalProps {
     className?: string;
     children?: ReactElement | ReactElement[];

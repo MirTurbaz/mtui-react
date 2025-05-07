@@ -1,7 +1,2 @@
-export function Celebration({
-  color,
-  size,
-}: {
-  color?: string;
-  size?: number;
-}): import('react/jsx-runtime').JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function Celebration({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

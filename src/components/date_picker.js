@@ -3,17 +3,15 @@ import * as moment from 'moment';
 import { useEffect, useState } from 'react';
 import { DayPickerSingleDateController } from 'react-dates';
 import 'react-dates/initialize';
-import { useResize } from '../../hooks/use_resize';
-import CalendarDates from '../icons/calendar_dates';
-import { DateFormatUtils } from './date_period_picker.utils';
+import { CalendarDates } from './icons';
 import { Popup } from './popup';
 import { TextField } from './text_field';
+import { DateFormatUtils } from './date_period_picker/utils';
 export const DatePicker = (props) => {
     var _a;
     const [date, setDate] = useState(props.date);
     const [open, setOpen] = useState(false);
     const [anchor, setAnchor] = useState(null);
-    const { isMobile } = useResize();
     const handleChange = (date) => {
         var _a, _b;
         setDate(date);

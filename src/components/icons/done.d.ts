@@ -1,1 +1,2 @@
-export function Done({ color, size: number }: { color: any; size?: number }): import('react/jsx-runtime').JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function Done({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;
