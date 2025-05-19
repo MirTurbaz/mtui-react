@@ -17,6 +17,7 @@ export interface DatePickerProps extends TextFieldProps {
   minDate?: moment.Moment;
   maxDate?: moment.Moment;
   onOpen?: () => void;
+  onClose?: () => void;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
@@ -28,6 +29,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     setDate(date);
     props.onChange?.(value());
     props.onChangeDate?.(date);
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -92,16 +94,17 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       <Popup
         id={`date_picker_${props.id}`}
         className={'date_picker__popup date_picker__popup-single'}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          props.onClose?.();
+          setOpen(false);
+        }}
         open={open}
         title={props.placeholder}
         anchor={anchor}
         initContentHeight={320}
         {...props.popupProps}
       >
-        {/*@ts-ignore*/}
         <DayPickerSingleDateController
-          //@ts-ignore
           date={date}
           initialVisibleMonth={null}
           endDateId={''}

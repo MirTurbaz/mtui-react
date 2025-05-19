@@ -26,7 +26,7 @@ export const MonthPicker = (props) => {
         const months = moment.monthsShort().map((month) => month.charAt(0).toUpperCase() + month.slice(1));
         const currentYear = year;
         const currentMonth = ((_a = props.month) === null || _a === void 0 ? void 0 : _a.month()) || moment().month();
-        return (_jsxs("div", { className: 'month-picker', children: [_jsxs("div", { className: 'year-selection', children: [_jsx(Button, { onClick: handlePreviousYear, children: _jsx(ChevronLeft, { size: 24 }) }), _jsx("span", { children: currentYear }), _jsx(Button, { onClick: handleNextYear, children: _jsx(ChevronRight, { size: 24 }) })] }), _jsx("div", { className: 'months-grid', children: months.map((month, index) => {
+        return (_jsxs("div", { className: 'month-picker', children: [_jsxs("div", { className: 'year-selection', children: [_jsx(Button, { onClick: handlePreviousYear, icon: _jsx(ChevronLeft, { size: 24 }) }), _jsx("span", { children: currentYear }), _jsx(Button, { onClick: handleNextYear, icon: _jsx(ChevronRight, { size: 24 }) })] }), _jsx("div", { className: 'months-grid', children: months.map((month, index) => {
                         let momentMonth = moment().year(currentYear).month(index);
                         return (_jsx("div", { className: `month ${index === currentMonth ? 'selected' : ''} ${momentMonth.isSame(moment(), 'month') && 'month-today'}`, onClick: () => handleChange(momentMonth), children: month }, month));
                     }) })] }));

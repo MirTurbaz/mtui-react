@@ -40,13 +40,9 @@ export const MonthPicker: React.FC<MonthPickerProps> = (props) => {
     return (
       <div className='month-picker'>
         <div className='year-selection'>
-          <Button onClick={handlePreviousYear}>
-            <ChevronLeft size={24} />
-          </Button>
+          <Button onClick={handlePreviousYear} icon={<ChevronLeft size={24} />} />
           <span>{currentYear}</span>
-          <Button onClick={handleNextYear}>
-            <ChevronRight size={24} />
-          </Button>
+          <Button onClick={handleNextYear} icon={<ChevronRight size={24} />} />
         </div>
         <div className='months-grid'>
           {months.map((month, index) => {

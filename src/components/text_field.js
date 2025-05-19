@@ -49,45 +49,52 @@ export const TextField = (props) => {
         classNames += ' text_field-error';
     useEffect(() => {
         var _a, _b, _c, _d;
-        if (props.mask) {
-            if (props.mask === 'Hh:Mm') {
-                new Inputmask(props.mask, {
-                    definitions: {
-                        H: {
-                            validator: '[0-2]',
-                            cardinality: 1,
-                        },
-                        h: {
-                            validator: function (ch, maskset, pos, strict, opts) {
-                                const firstDigit = maskset.buffer[0];
-                                if (firstDigit === '2') {
-                                    return /^[0-3]$/.test(ch);
-                                }
-                                return /^[0-9]$/.test(ch);
-                            },
-                            cardinality: 1,
-                        },
-                        M: {
-                            validator: '[0-5]',
-                            cardinality: 1,
-                        },
-                        m: {
-                            validator: '[0-9]',
-                            cardinality: 1,
-                        },
-                    },
-                }).mask((_a = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) !== null && _a !== void 0 ? _a : (_b = props.inputRef) === null || _b === void 0 ? void 0 : _b.current);
-            }
-            else {
-                new Inputmask(props.mask, { showMaskOnHover: false }).mask((_d = (_c = props.inputRef) === null || _c === void 0 ? void 0 : _c.current) !== null && _d !== void 0 ? _d : inputRef.current);
-            }
+        if (!props.mask)
+            return;
+        if (props.mask != 'Hh:Mm') {
+            new Inputmask(props.mask, { showMaskOnHover: false }).mask((_b = (_a = props.inputRef) === null || _a === void 0 ? void 0 : _a.current) !== null && _b !== void 0 ? _b : inputRef.current);
+            return;
         }
+        new Inputmask(props.mask, {
+            definitions: {
+                H: {
+                    validator: '[0-2]',
+                    cardinality: 1,
+                },
+                h: {
+                    validator: function (ch, maskset, pos, strict, opts) {
+                        const firstDigit = maskset.buffer[0];
+                        if (firstDigit === '2') {
+                            return /^[0-3]$/.test(ch);
+                        }
+                        return /^[0-9]$/.test(ch);
+                    },
+                    cardinality: 1,
+                },
+                M: {
+                    validator: '[0-5]',
+                    cardinality: 1,
+                },
+                m: {
+                    validator: '[0-9]',
+                    cardinality: 1,
+                },
+            },
+        }).mask((_c = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) !== null && _c !== void 0 ? _c : (_d = props.inputRef) === null || _d === void 0 ? void 0 : _d.current);
     }, [props.mask]);
     const controlProps = props.uncontrolled ? {} : { value: value, onChange: handleChange };
-    return (_jsxs("div", { className: `text_field ${props.wrapperClassName}`, style: props.wrapperStyle, ref: props.wrapperRef, children: [_jsxs("div", { className: classNames, children: [props.icon && _jsx("div", { className: 'text_field__icon', children: props.icon }), _jsxs("div", { className: 'text_field__input_wrapper', children: [_jsx("input", Object.assign({ ref: (_c = props.inputRef) !== null && _c !== void 0 ? _c : inputRef, className: `text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`, onFocus: () => setFocus(true), onClick: props.onClick, disabled: props.disabled, onBlur: handleBlur, onWheel: (e) => {
-                                    //@ts-ignore
+    return (_jsxs("div", { className: `text_field ${props.wrapperClassName}`, style: props.wrapperStyle, ref: props.wrapperRef, children: [_jsxs("div", { className: classNames, children: [props.icon && _jsx("div", { className: 'text_field__icon', children: props.icon }), _jsxs("div", { className: 'text_field__input_wrapper', children: [_jsx("input", Object.assign({ ref: (_c = props.inputRef) !== null && _c !== void 0 ? _c : inputRef, className: `text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`, onFocus: () => {
+                                    var _a;
+                                    setFocus(true);
+                                    (_a = props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props);
+                                }, onClick: props.onClick, disabled: props.disabled, onBlur: handleBlur, onWheel: (e) => {
                                     if (props.type == 'number')
                                         e.target.blur();
-                                }, type: props.type, required: props.required, style: props.style, readOnly: props.readonly, min: props.min, max: props.max, onKeyDown: props.onKeyDown }, controlProps)), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] })] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
+                                }, type: props.type, required: props.required, style: props.style, readOnly: props.readonly, min: props.min, max: props.max }, controlProps, { onKeyDown: (e) => {
+                                    var _a, _b;
+                                    if (e.key === 'Enter')
+                                        (_a = props.onEnter) === null || _a === void 0 ? void 0 : _a.call(props);
+                                    (_b = props.onKeyDown) === null || _b === void 0 ? void 0 : _b.call(props, e);
+                                } })), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] })] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
 };
 //# sourceMappingURL=text_field.js.map

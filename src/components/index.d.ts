@@ -1,4 +1,3 @@
-export * as icons from './icons';
 export * from './accordion';
 export * from './alert';
 export * from './badge';

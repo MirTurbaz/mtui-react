@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { useResize } from '../hooks/use_resize';
+import { useResize } from '../hooks';
 import { Button } from './button';
 import { ChevronLeft, ChevronRight } from './icons';
 
@@ -38,14 +37,16 @@ export const Pagination: React.FC<PaginationProps> = ({
   const pagesButtonsLast = pagesButtons[pagesButtons.length - 1];
 
   const prevPage = (
-    <Button onClick={() => onChangePage(currentPage - 1)} disabled={currentPage <= 1}>
-      <ChevronLeft size={24} />
-    </Button>
+    <Button
+      onClick={() => onChangePage(currentPage - 1)}
+      disabled={currentPage <= 1}
+      icon={<ChevronLeft size={24} />}
+    />
   );
 
   const firstPage = (
     <Button onClick={() => onChangePage(1)} variant={'outline'} toggled={currentPage == 1}>
-      <span className='typography-regular'>1</span>
+      1
     </Button>
   );
 
@@ -56,14 +57,16 @@ export const Pagination: React.FC<PaginationProps> = ({
   const lastPage =
     pagesCount > 1 ? (
       <Button onClick={() => onChangePage(pagesCount)} variant={'outline'} toggled={currentPage == pagesCount}>
-        <span className='typography-regular'>{pagesCount}</span>
+        {pagesCount}
       </Button>
     ) : undefined;
 
   const nextPage = (
-    <Button onClick={() => onChangePage(currentPage + 1)} disabled={currentPage >= pagesCount}>
-      <ChevronRight size={24} />
-    </Button>
+    <Button
+      onClick={() => onChangePage(currentPage + 1)}
+      disabled={currentPage >= pagesCount}
+      icon={<ChevronRight size={24} />}
+    />
   );
 
   const startIndex = 1 + pageSize * (currentPage - 1);
@@ -78,7 +81,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {pagesButtons.map((page) => {
           return (
             <Button onClick={() => onChangePage(page)} variant={'outline'} toggled={currentPage === page} key={page}>
-              <span className='typography-regular'>{page}</span>
+              {page}
             </Button>
           );
         })}

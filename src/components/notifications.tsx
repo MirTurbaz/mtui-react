@@ -34,9 +34,7 @@ export const Notifications: React.FC<NotificationsProps> = (props) => {
             </div>
             {notification.message && <div className={'notifications__item_message'}>{notification.message}</div>}
           </Flex>
-          <Button height={'small'} onClick={() => props.deleteNotification(notification.id)}>
-            <Close />
-          </Button>
+          <Button size={'small'} onClick={() => props.deleteNotification(notification.id)} icon={<Close />} />
         </div>
       ))}
     </div>,

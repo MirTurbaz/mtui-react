@@ -1,6 +1,3 @@
-import * as icons_1 from './icons';
-export { icons_1 as icons };
-// other components
 export * from './accordion';
 export * from './alert';
 export * from './badge';

@@ -10,5 +10,6 @@ export interface TooltipProps {
     onChange?: (value: boolean) => void;
     placement?: TypePopupPlacement;
     isLeaveOnClick?: boolean;
+    delay?: number;
 }
 export declare const Tooltip: React.FC<TooltipProps>;

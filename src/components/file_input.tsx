@@ -20,8 +20,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
   return (
     <div className={className}>
       <label className={'file_input__label'} style={props.value && { display: 'none' }}>
-        <Button variant={'outline'} size={'auto'}>
-          <FolderOpen />
+        <Button variant={'outline'} icon={<FolderOpen />}>
           Выбрать файл
         </Button>
         <input
@@ -37,9 +36,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             <Image color={'#1E5BBE'} />
             <div className={'file_input__uploaded_name'}>{file.name}</div>
           </Flex>
-          <Button size={'square'} onClick={() => props.onChange(null)}>
-            <Trash color={'#1E5BBE'} />
-          </Button>
+          <Button onClick={() => props.onChange(null)} icon={<Trash color={'#1E5BBE'} />} />
         </div>
       ))}
     </div>

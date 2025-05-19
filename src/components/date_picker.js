@@ -17,6 +17,7 @@ export const DatePicker = (props) => {
         setDate(date);
         (_a = props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, value());
         (_b = props.onChangeDate) === null || _b === void 0 ? void 0 : _b.call(props, date);
+        setOpen(false);
     };
     useEffect(() => {
         setDate(props.date);
@@ -61,10 +62,10 @@ export const DatePicker = (props) => {
                     var _a;
                     setOpen(true);
                     (_a = props.onOpen) === null || _a === void 0 ? void 0 : _a.call(props);
-                }, onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined })), _jsx(Popup, Object.assign({ id: `date_picker_${props.id}`, className: 'date_picker__popup date_picker__popup-single', onClose: () => setOpen(false), open: open, title: props.placeholder, anchor: anchor, initContentHeight: 320 }, props.popupProps, { children: _jsx(DayPickerSingleDateController
-                //@ts-ignore
-                , { 
-                    //@ts-ignore
-                    date: date, initialVisibleMonth: null, endDateId: '', numberOfMonths: 1, renderCalendarInfo: null, startDateId: '', daySize: 44, onDateChange: handleChange, hideKeyboardShortcutsPanel: true, renderDayContents: (date, dayTypes) => (_jsx("div", { className: `DayContent ${date.weekday() >= 5 && 'DayContent-Weekday'}`, children: date.date() })), focused: true, onFocusChange: () => { }, isOutsideRange: isOutsideRange }) }))] }));
+                }, onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined })), _jsx(Popup, Object.assign({ id: `date_picker_${props.id}`, className: 'date_picker__popup date_picker__popup-single', onClose: () => {
+                    var _a;
+                    (_a = props.onClose) === null || _a === void 0 ? void 0 : _a.call(props);
+                    setOpen(false);
+                }, open: open, title: props.placeholder, anchor: anchor, initContentHeight: 320 }, props.popupProps, { children: _jsx(DayPickerSingleDateController, { date: date, initialVisibleMonth: null, endDateId: '', numberOfMonths: 1, renderCalendarInfo: null, startDateId: '', daySize: 44, onDateChange: handleChange, hideKeyboardShortcutsPanel: true, renderDayContents: (date, dayTypes) => (_jsx("div", { className: `DayContent ${date.weekday() >= 5 && 'DayContent-Weekday'}`, children: date.date() })), focused: true, onFocusChange: () => { }, isOutsideRange: isOutsideRange }) }))] }));
 };
 //# sourceMappingURL=date_picker.js.map

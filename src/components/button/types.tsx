@@ -1,29 +1,48 @@
 import * as React from 'react';
 
-export type TypeBtnVariant = 'link' | 'outline' | 'filled';
-
-export type TypeBtnHeight = 'default' | 'small' | 'big';
-
 export type TypeBtnColor = 'default' | 'primary' | 'success' | 'danger';
+export type TypeBtnSize = 'small' | 'middle' | 'big';
+export type TypeBtnType = 'label-only' | 'label-with-icon' | 'icon-only';
+export type TypeBtnVariant = 'link' | 'outline' | 'filled';
+export type TypeBtnHtmlType = 'submit' | 'reset' | 'button';
 
-export interface ButtonProps {
-  className?: string;
-  children?: React.ReactNode;
+interface IBtnWithLinkProps {
   href?: string;
-  variant?: TypeBtnVariant;
-  size?: 'full_width' | 'inline' | 'auto' | 'square';
-  height?: TypeBtnHeight;
+  /** Только для Button[href!=null] */
+  target?: string;
+  /** Только для Button[href!=null] */
+  native?: boolean;
+}
+
+interface IBtnWithoutLinkProps {
+  /** Только для Button[href=null]
+   * @default button */
+  htmlType?: TypeBtnHtmlType;
+}
+
+interface IBtnDropdownProps {
+  dropdown?: boolean;
+  /** Только для Button[dropdown=true] */
+  opened?: boolean;
+}
+
+export interface IButtonProps extends IBtnWithLinkProps, IBtnWithoutLinkProps, IBtnDropdownProps {
+  /** @default default */
   color?: TypeBtnColor;
+  /** @default middle */
+  size?: TypeBtnSize;
+  /** @default link */
+  variant?: TypeBtnVariant;
+  icon?: React.ReactElement;
+  title?: string;
+  fullWidth?: boolean;
+  disabled?: boolean;
   toggled?: boolean;
+  className?: string;
+  style?: any;
   btnRef?: any;
   onClick?: Function;
-  style?: any;
-  disabled?: boolean;
-  native?: boolean;
-  target?: string;
-  key?: any;
-  padding?: 'small' | 'normal' | 'big';
-  title?: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
+  onMouseEnter?: Function;
+  onMouseLeave?: Function;
+  children?: string | number;
 }

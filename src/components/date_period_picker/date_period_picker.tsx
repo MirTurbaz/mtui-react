@@ -1,15 +1,14 @@
-import * as React from 'react';
-import { DatePeriodPickerProps, IDatesObject } from './types';
-import { useEffect, useState } from 'react';
 import * as moment from 'moment';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { DayPickerRangeController, FocusedInputShape } from 'react-dates';
-import { useResize } from '../../hooks';
+import { DatePeriodPickerProps, IDatesObject } from './types';
 import { DateFormatUtils } from './utils';
-import { TextField } from '../text_field';
-import { CalendarDates } from '../icons/calendar_dates';
-import { Button } from '../button/index';
-import { Today } from '../icons/today';
+import { Button } from '../button';
+import { CalendarDates, Today } from '../icons';
 import { Popup } from '../popup';
+import { TextField } from '../text_field';
+import { useResize } from '../../hooks';
 
 export const DatePeriodPicker: React.FC<DatePeriodPickerProps> = ({ allowSingleDate = false, ...props }) => {
   const [endDate, setEndDate] = useState<moment.Moment>(props.endDate);
@@ -95,9 +94,12 @@ export const DatePeriodPicker: React.FC<DatePeriodPickerProps> = ({ allowSingleD
       );
     } else if (props.variant == 'button') {
       return (
-        <Button variant={'outline'} size={'square'} btnRef={setAnchor} onClick={() => setOpen(true)}>
-          {props.icon ?? <Today />}
-        </Button>
+        <Button
+          variant={'outline'}
+          btnRef={setAnchor}
+          onClick={() => setOpen(true)}
+          icon={(props.icon as React.ReactElement) ?? <Today />}
+        />
       );
     } else {
       return (

@@ -1,3 +1,3 @@
 import * as React from 'react';
-import { ButtonProps } from './types';
-export declare const Button: React.FC<ButtonProps>;
+import { IButtonProps } from './types';
+export declare const Button: React.FC<IButtonProps>;

@@ -97,6 +97,7 @@ export const Popup: React.FC<PopupProps> = ({
     const popupWidth = ref?.getBoundingClientRect().width ?? 0;
     const popupHeight = Math.max(props.initContentHeight ?? 0, ref?.getBoundingClientRect().height ?? 0);
     const sidebarWidth = document.getElementsByClassName('sidebar')[0]?.clientWidth ?? 0;
+    const scrollX = props.container?.scrollLeft ?? window.scrollX;
 
     // Calculating "left" position
     if (ref == null) {
@@ -114,9 +115,12 @@ export const Popup: React.FC<PopupProps> = ({
     }
 
     if (containerBbox) left -= containerBbox.left;
+    left += scrollX;
 
-    if (!containerBbox && left + popupWidth > window.innerWidth - 18) left = window.innerWidth - popupWidth - 18;
-    if (!containerBbox && left < sidebarWidth) left = sidebarWidth + 18;
+    if (!containerBbox && left + popupWidth > window.innerWidth - 18 + scrollX) {
+      left = window.innerWidth - popupWidth - 18;
+    }
+    if (!containerBbox && left < sidebarWidth) left = sidebarWidth + 18 + scrollX;
 
     // Calculating "top" position
     if (placement.includes('top')) {

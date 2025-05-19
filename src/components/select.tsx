@@ -16,6 +16,8 @@ export interface SelectProps {
   error?: string | boolean;
   wrapperStyle?: React.CSSProperties;
   wrapperClassName?: string;
+  icon?: ReactElement | string;
+  withSearch?: boolean;
 }
 
 export interface SelectOption {
@@ -25,6 +27,7 @@ export interface SelectOption {
 
 export const Select: React.FC<SelectProps> = (props) => {
   const [value, setValue] = useState(props.value);
+  const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
   const [ref, setRef] = useState(null);
 
@@ -52,34 +55,47 @@ export const Select: React.FC<SelectProps> = (props) => {
   }
   if (props.error) classNames += ' select-error';
 
+  const valueElement = props.withSearch ? (
+    <input
+      value={open ? search : isSelectFilled ? (value.label as string) : props.placeholder}
+      onChange={(e) => setSearch(e.target.value)}
+      className={'select__search'}
+    />
+  ) : (
+    <div className={'select__value'}>{isSelectFilled ? value.label : props.placeholder}</div>
+  );
+
   return (
     <div style={props.wrapperStyle} className={props.wrapperClassName}>
       <div onClick={() => setOpen(!open)} className={classNames} ref={setRef} style={props.style}>
-        <div className={'select__input'}>
-          {props.size != 'mini' && <div className={'select__label'}>{props.label}</div>}
-          {(props.size == 'mini' || value) && (
-            <div className={'select__value'}>{isSelectFilled ? value.label : props.placeholder}</div>
-          )}
+        <div className={'select__left'}>
+          {props.icon && <div className={'text_field__icon'}>{props.icon}</div>}
+          <div className={'select__input'}>
+            {props.size != 'mini' && <div className={'select__label'}>{props.label}</div>}
+            {(props.size == 'mini' || value) && valueElement}
+          </div>
         </div>
         <Expand rotated={open} />
         <div className={'select__options'}>
-          {props.options?.map((option, index) => (
-            <div
-              className={'select__option'}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (props.onChange) {
-                  props.onChange(option);
-                } else {
-                  setValue(option);
-                }
-                setOpen(false);
-              }}
-              key={index}
-            >
-              {option.label}
-            </div>
-          ))}
+          {props.options
+            ?.filter((option) => option.label.toString().toLowerCase().includes(search.toLowerCase()))
+            ?.map((option, index) => (
+              <div
+                className={'select__option'}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (props.onChange) {
+                    props.onChange(option);
+                  } else {
+                    setValue(option);
+                  }
+                  setOpen(false);
+                }}
+                key={index}
+              >
+                {option.label}
+              </div>
+            ))}
         </div>
       </div>
       {typeof props.error !== 'boolean' && props.error && (

@@ -19,8 +19,10 @@ export interface TextFieldProps {
     min?: number;
     max?: number;
     onBlur?: () => void;
+    onFocus?: () => void;
     key?: any;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onEnter?: () => void;
     mask?: string | string[];
     error?: string | boolean;
     wrapperClassName?: string;

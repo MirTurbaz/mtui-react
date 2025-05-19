@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { useResize } from '../hooks/use_resize';
+import { useResize } from '../hooks';
 import { Flex } from './flex';
 
 export interface IEmptyDataProps {
-  title: string;
+  title: string | ReactNode;
   description?: string | ReactNode;
-  icon: React.ReactNode;
-  actions?: React.ReactNode | React.ReactNode[];
+  icon: ReactNode;
+  actions?: ReactNode | ReactNode[];
+  className?: string;
 }
 
-export const EmptyData: React.FC<IEmptyDataProps> = ({ title, description, icon, actions }) => {
+export const EmptyData: React.FC<IEmptyDataProps> = ({ title, description, icon, actions, className }) => {
   const { isMobile } = useResize();
 
   return (
-    <Flex vertical align={'center'} className={'empty-data'}>
+    <Flex vertical align={'center'} className={`empty-data ${className}`}>
       <Flex justify={'center'} className={`empty-data__bg ${isMobile ? 'empty-data__bg_mobile' : ''}`}>
         <div className={'empty-data__blur-container'}></div>
         <div className={'empty-data__blur-ellipse'}></div>

@@ -12,5 +12,6 @@ export interface DatePickerProps extends TextFieldProps {
     minDate?: moment.Moment;
     maxDate?: moment.Moment;
     onOpen?: () => void;
+    onClose?: () => void;
 }
 export declare const DatePicker: React.FC<DatePickerProps>;

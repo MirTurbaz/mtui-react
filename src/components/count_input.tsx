@@ -15,7 +15,7 @@ export interface CountInputProps {
 export const CountInput: React.FC<CountInputProps> = (props) => {
   const onChange = (value: number) => {
     if ((value <= props.max || props.max == null) && (value >= props.min || props.min == null) && !isNaN(value)) {
-      props.onChange(value);
+      props.onChange?.(value);
     }
   };
 
@@ -24,11 +24,9 @@ export const CountInput: React.FC<CountInputProps> = (props) => {
       <Button
         variant={'outline'}
         disabled={props.min != null && props.value <= props.min}
-        size={'square'}
         onClick={() => onChange(props.value - 1)}
-      >
-        <Minus />
-      </Button>
+        icon={<Minus />}
+      />
       <TextField
         size={'mini'}
         wrapperStyle={{ maxWidth: 44, width: 44 }}
@@ -37,12 +35,10 @@ export const CountInput: React.FC<CountInputProps> = (props) => {
       />
       <Button
         variant={'outline'}
-        size={'square'}
         disabled={props.max != null && props.value >= props.max}
         onClick={() => onChange(props.value + 1)}
-      >
-        <Add />
-      </Button>
+        icon={<Add />}
+      />
     </InputGroup>
   );
 };

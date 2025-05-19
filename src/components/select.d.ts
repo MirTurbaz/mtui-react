@@ -14,6 +14,8 @@ export interface SelectProps {
     error?: string | boolean;
     wrapperStyle?: React.CSSProperties;
     wrapperClassName?: string;
+    icon?: ReactElement | string;
+    withSearch?: boolean;
 }
 export interface SelectOption {
     value: string | number;

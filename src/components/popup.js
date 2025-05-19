@@ -15,7 +15,7 @@ import { createPortal } from 'react-dom';
 import { Close } from './icons';
 import { Button } from './button';
 export const Popup = (_a) => {
-    var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+    var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     var { offset = 6, placement = 'bottom', preventMobileStyle = false } = _a, props = __rest(_a, ["offset", "placement", "preventMobileStyle"]);
     const [ref, setRef] = useState(null);
     const getAncestors = (el) => {
@@ -60,6 +60,7 @@ export const Popup = (_a) => {
         const popupWidth = (_c = ref === null || ref === void 0 ? void 0 : ref.getBoundingClientRect().width) !== null && _c !== void 0 ? _c : 0;
         const popupHeight = Math.max((_d = props.initContentHeight) !== null && _d !== void 0 ? _d : 0, (_e = ref === null || ref === void 0 ? void 0 : ref.getBoundingClientRect().height) !== null && _e !== void 0 ? _e : 0);
         const sidebarWidth = (_g = (_f = document.getElementsByClassName('sidebar')[0]) === null || _f === void 0 ? void 0 : _f.clientWidth) !== null && _g !== void 0 ? _g : 0;
+        const scrollX = (_j = (_h = props.container) === null || _h === void 0 ? void 0 : _h.scrollLeft) !== null && _j !== void 0 ? _j : window.scrollX;
         // Calculating "left" position
         if (ref == null) {
             left = bbox.left + bbox.width;
@@ -81,10 +82,12 @@ export const Popup = (_a) => {
         }
         if (containerBbox)
             left -= containerBbox.left;
-        if (!containerBbox && left + popupWidth > window.innerWidth - 18)
+        left += scrollX;
+        if (!containerBbox && left + popupWidth > window.innerWidth - 18 + scrollX) {
             left = window.innerWidth - popupWidth - 18;
+        }
         if (!containerBbox && left < sidebarWidth)
-            left = sidebarWidth + 18;
+            left = sidebarWidth + 18 + scrollX;
         // Calculating "top" position
         if (placement.includes('top')) {
             top = bbox.top - popupHeight - offset;
@@ -103,12 +106,12 @@ export const Popup = (_a) => {
         }
         if (containerBbox)
             top -= containerBbox.top;
-        const scrollY = (_j = (_h = props.container) === null || _h === void 0 ? void 0 : _h.scrollTop) !== null && _j !== void 0 ? _j : window.scrollY;
+        const scrollY = (_l = (_k = props.container) === null || _k === void 0 ? void 0 : _k.scrollTop) !== null && _l !== void 0 ? _l : window.scrollY;
         top += scrollY;
         if (top < 0)
             top = 10;
         if (top + popupHeight - scrollY > window.innerHeight) {
-            top = bbox.top - popupHeight - offset + scrollY - ((_k = containerBbox === null || containerBbox === void 0 ? void 0 : containerBbox.top) !== null && _k !== void 0 ? _k : 0);
+            top = bbox.top - popupHeight - offset + scrollY - ((_m = containerBbox === null || containerBbox === void 0 ? void 0 : containerBbox.top) !== null && _m !== void 0 ? _m : 0);
         }
     }
     const renderPopup = () => {
@@ -123,7 +126,7 @@ export const Popup = (_a) => {
         return renderPopup();
     }
     else {
-        return createPortal(renderPopup(), (_l = props.container) !== null && _l !== void 0 ? _l : document.body);
+        return createPortal(renderPopup(), (_o = props.container) !== null && _o !== void 0 ? _o : document.body);
     }
 };
 //# sourceMappingURL=popup.js.map

@@ -26,8 +26,7 @@ export const Accordion: React.FC<AccordionProps> = ({ showExpand = true, scrollO
     if (open && scrollOnOpen && contentRef.current) {
       setTimeout(() => {
         if (contentRef.current) {
-          const offset = HEADER_HEIGHT;
-          const elementPosition = contentRef.current.getBoundingClientRect().top + window.scrollY - offset;
+          const elementPosition = contentRef.current.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
           window.scrollTo({ top: elementPosition, behavior: 'smooth' });
         }
       }, 100);

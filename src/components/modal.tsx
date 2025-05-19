@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MouseEventHandler, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
-import { ScreenSize } from '../hooks/use_resize';
+import { ScreenSize } from '../hooks';
 import { Close } from './icons';
 import { Button } from './button';
 
@@ -13,9 +13,11 @@ export interface ModalProps {
   title?: string | ReactElement;
   size?: ScreenSize;
   titleClassName?: string;
+  bodyClassName?: string;
   bodyRef?: any;
   overlayClassName?: string;
   bodyProps?: any;
+  footer?: ReactElement | ReactElement[];
 }
 
 export const Modal: React.FC<ModalProps> = (props) => {
@@ -33,13 +35,12 @@ export const Modal: React.FC<ModalProps> = (props) => {
       >
         <div className={`modal__title ${props.titleClassName ?? ''}`}>
           <div>{props.title}</div>
-          <Button onClick={props.onClose}>
-            <Close />
-          </Button>
+          <Button onClick={props.onClose} icon={<Close />} />
         </div>
-        <div className={'modal__body'} ref={props.bodyRef} {...props.bodyProps}>
+        <div className={`modal__body ${props.bodyClassName ?? ''}`} ref={props.bodyRef} {...props.bodyProps}>
           {props.children}
         </div>
+        {props.footer && <div className={'modal__footer'}>{props.footer}</div>}
       </div>
     </div>,
     document.body

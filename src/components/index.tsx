@@ -1,6 +1,3 @@
-// icons
-export * as icons from './icons';
-// other components
 export * from './accordion';
 export * from './alert';
 export * from './badge';

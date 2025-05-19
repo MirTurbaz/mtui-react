@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import { useResize } from '../hooks/use_resize';
+import { useResize } from '../hooks';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Modal } from './modal';
@@ -49,15 +49,16 @@ export const PopConfirm: React.FC<IPopConfirmProps> = ({ cancelText = 'Отме�
         open={open}
         onClose={handleCancel}
         title={
-          <Flex vertical gap={14} className={'margin-top-14 margin-bottom-14'}>
+          <Flex vertical className={'margin-top-14 margin-bottom-14'}>
             <span className={'typography-h2'}>{props.title}</span>
-            {props.description && <span className={'typography-regular-3'}>{props.description}</span>}
           </Flex>
         }
-        titleClassName={'flex-container flex-container_align_start'}
+        titleClassName={'flex-container flex-container_align_start no-border padding-bottom-0'}
+        bodyClassName={'padding-top-12'}
         size={isMobile ? 'xs' : 'sm'}
       >
-        <Flex gap={8}>
+        <Flex>{props.description && <span className={'typography-regular-3'}>{props.description}</span>}</Flex>
+        <Flex justify={'start'} className={'modal__buttons'} gap={'small'}>
           <Button variant={'filled'} color={'primary'} onClick={handleConfirm}>
             {okText}
           </Button>

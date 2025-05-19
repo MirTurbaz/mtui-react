@@ -11,7 +11,7 @@ export const Badge: React.FC<BadgeProps> = (props) => {
   return (
     <div className={`badge__wrapper ${props.className}`}>
       {props.children}
-      <div className={'badge__value'}>{props.value}</div>
+      {props.value > 0 && <div className={'badge__value'}>{props.value}</div>}
     </div>
   );
 };

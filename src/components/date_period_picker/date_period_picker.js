@@ -12,13 +12,12 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
 import { DayPickerRangeController } from 'react-dates';
-import { useResize } from '../../hooks';
 import { DateFormatUtils } from './utils';
-import { TextField } from '../text_field';
-import { CalendarDates } from '../icons/calendar_dates';
-import { Button } from '../button/index';
-import { Today } from '../icons/today';
+import { Button } from '../button';
+import { CalendarDates, Today } from '../icons';
 import { Popup } from '../popup';
+import { TextField } from '../text_field';
+import { useResize } from '../../hooks';
 export const DatePeriodPicker = (_a) => {
     var { allowSingleDate = false } = _a, props = __rest(_a, ["allowSingleDate"]);
     const [endDate, setEndDate] = useState(props.endDate);
@@ -83,7 +82,7 @@ export const DatePeriodPicker = (_a) => {
                         } }))] }));
         }
         else if (props.variant == 'button') {
-            return (_jsx(Button, { variant: 'outline', size: 'square', btnRef: setAnchor, onClick: () => setOpen(true), children: (_c = props.icon) !== null && _c !== void 0 ? _c : _jsx(Today, {}) }));
+            return (_jsx(Button, { variant: 'outline', btnRef: setAnchor, onClick: () => setOpen(true), icon: (_c = props.icon) !== null && _c !== void 0 ? _c : _jsx(Today, {}) }));
         }
         else {
             return (_jsx(TextField, Object.assign({}, props, { icon: (_d = props.icon) !== null && _d !== void 0 ? _d : _jsx(CalendarDates, {}), readonly: true, style: { minWidth: 200 }, wrapperRef: setAnchor, value: value(), onClick: (_) => {

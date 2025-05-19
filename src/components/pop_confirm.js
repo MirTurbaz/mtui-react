@@ -11,7 +11,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
-import { useResize } from '../hooks/use_resize';
+import { useResize } from '../hooks';
 import { Button } from './button';
 import { Flex } from './flex';
 import { Modal } from './modal';
@@ -34,6 +34,6 @@ export const PopConfirm = (_a) => {
         props.onConfirm(e);
         handleClose();
     }
-    return (_jsxs(_Fragment, { children: [props.children && _jsx("div", { onClick: () => setOpen(true), children: props.children }), _jsx(Modal, { className: 'modal_mobile-height_auto', open: open, onClose: handleCancel, title: _jsxs(Flex, { vertical: true, gap: 14, className: 'margin-top-14 margin-bottom-14', children: [_jsx("span", { className: 'typography-h2', children: props.title }), props.description && _jsx("span", { className: 'typography-regular-3', children: props.description })] }), titleClassName: 'flex-container flex-container_align_start', size: isMobile ? 'xs' : 'sm', children: _jsxs(Flex, { gap: 8, children: [_jsx(Button, { variant: 'filled', color: 'primary', onClick: handleConfirm, children: okText }), !props.withoutCancel && (_jsx(Button, { variant: 'outline', onClick: handleCancel, children: cancelText }))] }) })] }));
+    return (_jsxs(_Fragment, { children: [props.children && _jsx("div", { onClick: () => setOpen(true), children: props.children }), _jsxs(Modal, { className: 'modal_mobile-height_auto', open: open, onClose: handleCancel, title: _jsx(Flex, { vertical: true, className: 'margin-top-14 margin-bottom-14', children: _jsx("span", { className: 'typography-h2', children: props.title }) }), titleClassName: 'flex-container flex-container_align_start no-border padding-bottom-0', bodyClassName: 'padding-top-12', size: isMobile ? 'xs' : 'sm', children: [_jsx(Flex, { children: props.description && _jsx("span", { className: 'typography-regular-3', children: props.description }) }), _jsxs(Flex, { justify: 'start', className: 'modal__buttons', gap: 'small', children: [_jsx(Button, { variant: 'filled', color: 'primary', onClick: handleConfirm, children: okText }), !props.withoutCancel && (_jsx(Button, { variant: 'outline', onClick: handleCancel, children: cancelText }))] })] })] }));
 };
 //# sourceMappingURL=pop_confirm.js.map

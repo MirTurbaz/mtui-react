@@ -21,8 +21,10 @@ export interface TextFieldProps {
   min?: number;
   max?: number;
   onBlur?: () => void;
+  onFocus?: () => void;
   key?: any;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onEnter?: () => void;
   mask?: string | string[];
   error?: string | boolean;
   wrapperClassName?: string;
@@ -73,38 +75,38 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
   if (props.error) classNames += ' text_field-error';
 
   useEffect(() => {
-    if (props.mask) {
-      if (props.mask === 'Hh:Mm') {
-        new Inputmask(props.mask, {
-          definitions: {
-            H: {
-              validator: '[0-2]',
-              cardinality: 1,
-            },
-            h: {
-              validator: function (ch, maskset, pos, strict, opts) {
-                const firstDigit = maskset.buffer[0];
-                if (firstDigit === '2') {
-                  return /^[0-3]$/.test(ch);
-                }
-                return /^[0-9]$/.test(ch);
-              },
-              cardinality: 1,
-            },
-            M: {
-              validator: '[0-5]',
-              cardinality: 1,
-            },
-            m: {
-              validator: '[0-9]',
-              cardinality: 1,
-            },
-          },
-        }).mask(inputRef?.current ?? props.inputRef?.current);
-      } else {
-        new Inputmask(props.mask as string, { showMaskOnHover: false }).mask(props.inputRef?.current ?? inputRef.current);
-      }
+    if (!props.mask) return;
+    if (props.mask != 'Hh:Mm') {
+      new Inputmask(props.mask as string, { showMaskOnHover: false }).mask(props.inputRef?.current ?? inputRef.current);
+      return;
     }
+
+    new Inputmask(props.mask, {
+      definitions: {
+        H: {
+          validator: '[0-2]',
+          cardinality: 1,
+        },
+        h: {
+          validator: function (ch, maskset, pos, strict, opts) {
+            const firstDigit = maskset.buffer[0];
+            if (firstDigit === '2') {
+              return /^[0-3]$/.test(ch);
+            }
+            return /^[0-9]$/.test(ch);
+          },
+          cardinality: 1,
+        },
+        M: {
+          validator: '[0-5]',
+          cardinality: 1,
+        },
+        m: {
+          validator: '[0-9]',
+          cardinality: 1,
+        },
+      },
+    }).mask(inputRef?.current ?? props.inputRef?.current);
   }, [props.mask]);
 
   const controlProps = props.uncontrolled ? {} : { value: value, onChange: handleChange };
@@ -117,12 +119,14 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
           <input
             ref={props.inputRef ?? inputRef}
             className={`text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`}
-            onFocus={() => setFocus(true)}
+            onFocus={() => {
+              setFocus(true);
+              props.onFocus?.();
+            }}
             onClick={props.onClick}
             disabled={props.disabled}
             onBlur={handleBlur}
             onWheel={(e) => {
-              //@ts-ignore
               if (props.type == 'number') e.target.blur();
             }}
             type={props.type}
@@ -131,8 +135,11 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
             readOnly={props.readonly}
             min={props.min}
             max={props.max}
-            onKeyDown={props.onKeyDown}
             {...controlProps}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') props.onEnter?.();
+              props.onKeyDown?.(e);
+            }}
           />
           <div className={'text_field__placeholder'}>{props.placeholder}</div>
         </div>

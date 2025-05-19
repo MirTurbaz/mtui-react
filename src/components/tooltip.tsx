@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useResize } from '../hooks/use_resize';
+import { useResize } from '../hooks';
 import { Close } from './icons';
 import { Button } from './button';
 import { TypePopupPlacement } from './popup';
@@ -16,33 +16,53 @@ export interface TooltipProps {
   onChange?: (value: boolean) => void;
   placement?: TypePopupPlacement;
   isLeaveOnClick?: boolean;
+  delay?: number;
 }
 
 export const Tooltip: React.FC<TooltipProps> = (props) => {
   const [anchor, setAnchor] = useState<HTMLDivElement>(null);
   const [ref, setRef] = useState<HTMLDivElement>(null);
+  const [height, setHeight] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const { isMobile } = useResize();
   const [clicked, setClicked] = useState(false);
+  const timeout = useRef<NodeJS.Timeout>(null);
+
+  useEffect(() => {
+    if (!ref) return;
+    const resizeObserver = new ResizeObserver(() => {
+      setHeight(ref.getBoundingClientRect().height);
+    });
+    resizeObserver.observe(ref);
+    return () => resizeObserver.disconnect(); // clean up
+  }, [ref]);
 
   const handleClick = () => {
     let newClicked = !clicked && !props.isLeaveOnClick;
     setClicked(newClicked);
     setIsOpen(newClicked);
-    props.onChange(newClicked);
+    props.onChange?.(newClicked);
   };
 
   const handleMouseEnter = () => {
     if (!isMobile && !clicked) {
-      setIsOpen(true);
-      props.onChange(true);
+      if (props.delay > 0) {
+        timeout.current = setTimeout(() => {
+          setIsOpen(true);
+          props.onChange?.(true);
+        }, props.delay);
+      } else {
+        setIsOpen(true);
+        props.onChange?.(true);
+      }
     }
   };
 
   const handleMouseLeave = (e) => {
     if (!isMobile && !clicked && (!ref || !ref.contains(e.relatedTarget))) {
+      if (timeout.current) clearTimeout(timeout.current);
       setIsOpen(false);
-      props.onChange(false);
+      props.onChange?.(false);
     }
   };
 
@@ -59,19 +79,22 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     const anchorRect = anchor.getBoundingClientRect();
     const tooltipRect = ref.getBoundingClientRect();
     const scrollY = window.scrollY;
+    const scrollX = window.scrollX;
 
     const vertical = ['top', 'bottom'].includes(placement);
 
+    const popupHeight = height ?? ref?.getBoundingClientRect().height ?? 0;
+
     if (vertical) {
-      left = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
+      left = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2 + scrollX;
     } else {
       top = anchorRect.top + (anchorRect.height / 2 - tooltipRect.height / 2) + scrollY;
     }
 
     if (placement.includes('right')) {
-      left = anchorRect.left + anchorRect.width;
+      left = anchorRect.left + anchorRect.width + scrollX;
     } else if (placement.includes('left')) {
-      left = anchorRect.left - tooltipRect.width;
+      left = anchorRect.left - tooltipRect.width + scrollX;
     } else if (placement.includes('top')) {
       top = anchorRect.top - tooltipRect.height + scrollY;
     } else {
@@ -80,7 +103,12 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 
     if (left < 0) left = 18;
     if (top < 0) top = 10;
-    if (left + tooltipRect.width > window.innerWidth) left = window.innerWidth - tooltipRect.width - 18;
+    if (top + popupHeight - scrollY > window.innerHeight) {
+      top = anchorRect.top - popupHeight + scrollY;
+    }
+
+    if (left + tooltipRect.width - scrollX > window.innerWidth)
+      left = window.innerWidth - tooltipRect.width - 18 + scrollX;
 
     return [left, top];
   };
@@ -89,7 +117,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (isMobile && ref && !ref.contains(event.target as Node) && anchor && !anchor.contains(event.target as Node)) {
         setIsOpen(false);
-        props.onChange(false);
+        props.onChange?.(false);
         setClicked(false);
       }
     };
