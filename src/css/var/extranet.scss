@@ -1,0 +1,70 @@
+// Colors
+$brand: #417ee1;
+$brand-dark: #1e5bbe;
+$brand-80: #417ee1cc;
+$brand-20: #417ee133;
+$brand-10: #417ee11a;
+$brand-8: #417ee114;
+$brand-4: #417ee10a;
+$brand-2: #417ee105;
+$logo-blue: #174EF2;
+$link-blue: #193FC8;
+$blue: #1e5bbe;
+$gray: rgba(0, 0, 0, 0.48);
+$light-gray: rgba(0, 0, 0, 0.04);
+$super-light-gray: rgba(255, 255, 255, 0.8);
+
+$color-alert-default-bg: rgba(0, 0, 0, 0.02);
+$color-alert-default-border: rgba(0, 0, 0, 0.08);
+$color-alert-default-text: rgba(0, 0, 0, 0.8);
+$color-alert-info-bg: rgba(65, 126, 225, 0.04);
+$color-alert-info-border: rgba(65, 126, 225, 0.2);
+$color-alert-info-text: rgba(30, 91, 190, 1);
+$color-alert-success-bg: rgba(2, 187, 87, 0.04);
+$color-alert-success-border: rgba(2, 187, 87, 0.2);
+$color-alert-success-text: rgba(3, 161, 76, 1);
+$color-alert-error-bg: rgba(228, 73, 63, 0.04);
+$color-alert-error-border: rgba(224, 27, 0, 0.2);
+$color-alert-error-text: rgba(193, 24, 0, 1);
+// -- Success --
+$success: #02bb57;
+$success-20: rgba(2, 187, 87, 0.2);
+$success-12: rgba(2, 187, 87, 0.12);
+$success-04: rgba(2, 187, 87, 0.04);
+// -- Green --
+$green: #03a14c;
+$green-light: rgba(0, 200, 83, 1);
+$green-light-80: rgba(0, 200, 83, 0.8);
+// -- Black --
+$black: #000000;
+$black-80: rgba(0, 0, 0, 0.8);
+$black-20: rgba(0, 0, 0, 0.2);
+$black-12: rgba(0, 0, 0, 0.12);
+$black-08: rgba(0, 0, 0, 0.08);
+$black-04: rgba(0, 0, 0, 0.04);
+$black-02: rgba(0, 0, 0, 0.02);
+// -- Danger --
+$danger-dark: #c11800;
+$danger: #e01b00;
+$danger-80: rgba(224, 27, 0, 0.8);
+$danger-20: rgba(224, 27, 0, 0.2);
+$danger-12: rgba(224, 27, 0, 0.12);
+$danger-04: rgba(224, 27, 0, 0.04);
+$danger-light: #e4493f;
+$danger-light-40: rgba(228, 73, 63, 0.4);
+$danger-light-20: rgba(228, 73, 63, 0.2);
+$danger-light-12: rgba(228, 73, 63, 0.12);
+$danger-light-02: rgba(228, 73, 63, 0.02);
+// -- Warning --
+$warning-light: rgba(245, 155, 21, 1);
+$warning-light-04: rgba(245, 155, 21, 0.04);
+$warning-light-32: rgba(245, 155, 21, 0.32);
+$warning: #cc7a00;
+
+$screen-sm: 576px !default;
+$screen-md: 768px !default;
+$screen-lg: 992px !default;
+$screen-xl: 1200px !default;
+$screen-xxl: 1600px !default;
+
+$border-style: 1px solid $black-08;

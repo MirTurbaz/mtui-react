@@ -43,7 +43,9 @@
     ".": "./index.js",
     "./icons": "./icons.js",
     "./hooks": "./hooks.js",
-    "./contextx": "./contexts.js"
+    "./contextx": "./contexts.js",
+    "./styles/extranet": "./src/css/themes/extranet.scss",
+    "./styles/kruizi": "./src/css/themes/kruizi.scss"
   },
   "author": "",
   "license": "ISC",
