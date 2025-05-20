@@ -1,0 +1,38 @@
+$mtui-colors: (
+        'black': $black,
+        'danger': $danger,
+        'danger-light': $danger-light,
+        'green': $green,
+        'green-light': $green-light,
+        'primary': $brand,
+        'success': $success,
+        'warning': $warning,
+        'warning-light': $warning-light,
+);
+
+$mtui-colors-opacity: (
+        98: fa, 96: f5, 94: f0, 92: eb, 9: e6,
+        88: e1, 86: dc, 84: d7, 82: d1, 8: cc,
+        78: c7, 76: c2, 74: bd, 72: b8, 7: b3,
+        68: ae, 66: a8, 64: a3, 62: 9e, 6: 99,
+        58: 94, 56: 8f, 54: 8a, 52: 85, 5: 8,
+        48: 7a, 46: 75, 44: 70, 42: 6b, 4: 66,
+        38: 61, 36: 5c, 34: 57, 32: 51, 3: 4c,
+        28: 47, 26: 42, 24: 3d, 22: 38, 2: 33,
+        18: 2e, 16: 28, 14: 23, 12: 1e, 1: 19
+);
+
+:root {
+  @each $mtui-clr-name, $mtui-clr-value in $mtui-colors {
+    --mtui-clr-#{$mtui-clr-name}: #{$mtui-clr-value};
+
+    @each $mtui-clr-opacity, $mtui-clr-opacity-hex in $mtui-colors-opacity {
+      --mtui-clr-#{$mtui-clr-name}-#{$mtui-clr-opacity}: #{$mtui-clr-value}#{$mtui-clr-opacity-hex};
+    }
+
+    --mtui-clr-#{$mtui-clr-name}-08: #{$mtui-clr-value}2e;
+    --mtui-clr-#{$mtui-clr-name}-06: #{$mtui-clr-value}0f;
+    --mtui-clr-#{$mtui-clr-name}-04: #{$mtui-clr-value}0a;
+    --mtui-clr-#{$mtui-clr-name}-02: #{$mtui-clr-value}05;
+  }
+}

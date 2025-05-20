@@ -94,10 +94,10 @@
         &:focus,
         &.button--clicked {
           background-color: rgba(51, 51, 51, 1);
-          box-shadow: 0 0 0 4px $black-20;
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-20);
         }
         &.button--disabled {
-          background-color: $black-12;
+          background-color: var(--mtui-clr-black-12);
           border-color: rgba(0, 0, 0, 0.08);
         }
       }
@@ -107,14 +107,14 @@
         background-color: $brand;
 
         &:hover {
-          background-color: $brand-80;
+          background-color: var(--mtui-clr-brand-80);
         }
         &:focus,
         &:active,
         &.button--clicked {
           background-color: $brand;
-          border-color: $brand-20;
-          box-shadow: 0 0 0 4px $brand-20;
+          border-color: var(--mtui-clr-brand-20);
+          box-shadow: 0 0 0 4px var(--mtui-clr-brand-20);
         }
         &.button--disabled {
           background-color: $brand;
@@ -131,26 +131,26 @@
         &:active,
         &.button--clicked {
           background-color: $success;
-          border-color: $success-20;
-          box-shadow: 0 0 0 4px $success-20;
+          border-color: var(--mtui-clr-success-20);
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-20);
         }
         &.button--disabled {
-          background-color: $green-light;
+          background-color: var(--mtui-clr-green-light);
         }
       }
       // --- Variant: filled | Color: danger ---
       &.button_color_danger {
         border: none;
-        background-color: $danger-80;
+        background-color: var(--mtui-clr-danger-80);
         &:hover {
           background-color: $danger;
         }
         &:focus,
         &:active,
         &.button--clicked {
-          background-color: $danger-80;
-          border-color: $danger-light-20;
-          box-shadow: 0 0 0 4px $danger-light-12;
+          background-color: var(--mtui-clr-danger-80);
+          border-color: var(--mtui-clr-danger-light-20);
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
         }
         &.button--disabled {
           background-color: $danger;
@@ -165,14 +165,14 @@
 
       // --- Variant: outline | Color: default ---
       &.button_color_default {
-        color: $black-80;
-        border-color: $black-12;
+        color: var(--mtui-clr-black-80);
+        border-color: var(--mtui-clr-black-12);
         svg path {
-          fill: $black-80;
+          fill: var(--mtui-clr-black-80);
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
@@ -181,22 +181,22 @@
         &:focus,
         &:active,
         &.button--clicked {
-          background-color: $black-04;
-          box-shadow: 0 0 0 4px $black-04;
+          background-color: var(--mtui-clr-black-4);
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-4);
         }
         &.button--disabled {
           background: white;
-          color: $black-80;
+          color: var(--mtui-clr-black-80);
           svg path {
-            fill: $black-80;
+            fill: var(--mtui-clr-black-80);
           }
         }
         &.button--pressed {
-          background-color: $brand-4;
+          background-color: var(--mtui-clr-brand-4);
           color: $brand;
-          border-color: $brand-20;
+          border-color: var(--mtui-clr-brand-20);
           &:hover {
-            background-color: $brand-10;
+            background-color: var(--mtui-clr-brand-10);
           }
         }
       }
@@ -210,7 +210,7 @@
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
@@ -220,14 +220,14 @@
         &:active,
         &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $brand-20;
+          box-shadow: 0 0 0 4px var(--mtui-clr-brand-20);
         }
         &.button--pressed {
-          background-color: $brand-4;
+          background-color: var(--mtui-clr-brand-4);
           color: $brand;
-          border-color: $brand-20;
+          border-color: var(--mtui-clr-brand-20);
           &:hover {
-            background-color: $brand-10;
+            background-color: var(--mtui-clr-brand-10);
           }
         }
       }
@@ -235,14 +235,14 @@
       &.button_color_success {
         background: none;
         color: $success;
-        border-color: $success-20;
+        border-color: var(--mtui-clr-success-20);
         svg path {
           fill: $success;
         }
         &:hover {
-          background-color: $success-04;
+          background-color: var(--mtui-clr-success-4);
           color: $success;
-          border-color: $success-20;
+          border-color: var(--mtui-clr-success-20);
           svg path {
             fill: $success;
           }
@@ -253,8 +253,8 @@
         &.button--clicked {
           background-color: white;
           color: $success;
-          border-color: $success-20;
-          box-shadow: 0 0 0 4px $success-12;
+          border-color: var(--mtui-clr-success-20);
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-12);
           svg path {
             fill: $success;
           }
@@ -264,15 +264,15 @@
       &.button_color_danger {
         background: none;
         color: $danger;
-        border-color: $danger-light-20;
+        border-color: var(--mtui-clr-danger-light-20);
         svg path {
           fill: $danger;
         }
 
         &:hover {
-          background-color: $danger-04;
+          background-color: var(--mtui-clr-danger-4);
           color: $danger-dark;
-          border-color: $danger-light-20;
+          border-color: var(--mtui-clr-danger-light-20);
           svg path {
             fill: $danger-dark;
           }
@@ -282,8 +282,8 @@
         &.button--clicked {
           background-color: white;
           color: $danger-dark;
-          border-color: $danger-20;
-          box-shadow: 0 0 0 4px $danger-light-12;
+          border-color: var(--mtui-clr-danger-20);
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
           svg path {
             fill: $danger-dark;
           }
@@ -291,7 +291,7 @@
         &.button--disabled {
           background-color: white;
           color: $danger;
-          border-color: $danger-20;
+          border-color: var(--mtui-clr-danger-20);
           svg path {
             fill: $danger;
           }
@@ -302,10 +302,10 @@
     &_link {
       // --- Variant: link | Color: default ---
       &.button_color_default {
-        color: $black-80;
+        color: var(--mtui-clr-black-80);
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
@@ -315,10 +315,10 @@
         &:active,
         &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $black-04;
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-4);
         }
         &.button--disabled {
-          background: $black-02;
+          background: var(--mtui-clr-black-2);
         }
       }
       // --- Variant: link | Color: primary ---
@@ -330,7 +330,7 @@
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
@@ -340,10 +340,10 @@
         &:active,
         &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $brand-4;
+          box-shadow: 0 0 0 4px var(--mtui-clr-brand-4);
         }
         &.button--disabled {
-          background: $brand-2;
+          background: var(--mtui-clr-brand-2);
         }
       }
       // --- Variant: link | Color: success ---
@@ -353,7 +353,7 @@
           fill: $success;
         }
         &:hover {
-          background-color: $success-04;
+          background-color: var(--mtui-clr-success-4);
           color: $success;
           svg path {
             fill: $success;
@@ -362,7 +362,7 @@
         &:focus,
         &:active,
         &.button--clicked {
-          box-shadow: 0 0 0 4px $success-12;
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-12);
           background-color: white;
           color: $success;
           svg path {
@@ -378,7 +378,7 @@
         }
 
         &:hover {
-          background-color: $danger-04;
+          background-color: var(--mtui-clr-danger-4);
           color: $danger-dark;
           svg path {
             fill: $danger-dark;
@@ -387,7 +387,7 @@
         &:focus,
         &:active,
         &.button--clicked {
-          box-shadow: 0 0 0 4px $danger-light-12;
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
           background-color: white;
           color: $danger-dark;
           svg path {

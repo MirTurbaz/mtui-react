@@ -1,5 +1,3 @@
-@import 'extranet/_var';
-
 .radio {
   &__wrapper {
     padding: 12px;
@@ -52,7 +50,7 @@
           height: 44px;
         }
         &-checked {
-          border: 2px solid $brand-80;
+          border: 2px solid var(--mtui-clr-brand-80);
         }
       }
     }
@@ -83,10 +81,10 @@
       position: absolute;
       border-radius: 10px;
       transition: 0.1s;
-      background: $brand-80;
+      background: var(--mtui-clr-brand-80);
     }
     &-checked {
-      border: 2px solid $brand-80;
+      border: 2px solid var(--mtui-clr-brand-80);
       &:after {
         width: 10px;
         height: 10px;

@@ -1,0 +1,35 @@
+// Main colors
+$brand: #417ee1;
+$success: #02bb57;
+$green: #03a14c;
+$green-light: #00c853;
+$black: #000000;
+$danger-dark: #c11800;
+$danger: #e01b00;
+$danger-light: #e4493f;
+$warning: #cc7a00;
+$warning-light: #f59b15;
+// Other colors
+$blue: #1e5bbe;
+$super-light-gray: rgba(255, 255, 255, 0.8);
+// -- Alert colors --
+$color-alert-default-bg: rgba(0, 0, 0, 0.02);
+$color-alert-default-border: rgba(0, 0, 0, 0.08);
+$color-alert-default-text: rgba(0, 0, 0, 0.8);
+$color-alert-info-bg: rgba(65, 126, 225, 0.04);
+$color-alert-info-border: rgba(65, 126, 225, 0.2);
+$color-alert-info-text: rgba(30, 91, 190, 1);
+$color-alert-success-bg: rgba(2, 187, 87, 0.04);
+$color-alert-success-border: rgba(2, 187, 87, 0.2);
+$color-alert-success-text: rgba(3, 161, 76, 1);
+$color-alert-error-bg: rgba(228, 73, 63, 0.04);
+$color-alert-error-border: rgba(224, 27, 0, 0.2);
+$color-alert-error-text: rgba(193, 24, 0, 1);
+// Screen sizes
+$screen-sm: 576px !default;
+$screen-md: 768px !default;
+$screen-lg: 992px !default;
+$screen-xl: 1200px !default;
+$screen-xxl: 1600px !default;
+// Other
+$border-style: 1px solid rgba(0, 0, 0, 0.08);

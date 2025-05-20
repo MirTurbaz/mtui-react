@@ -21,8 +21,8 @@
       color: $color-alert-success-text;
     }
     &_warning {
-      background: $warning-light-04;
-      border-color: $warning-light-32;
+      background: var(--mtui-clr-warning-light-04);
+      border-color: var(--mtui-clr-warning-light-32);
       color: $warning;
     }
     &_danger {

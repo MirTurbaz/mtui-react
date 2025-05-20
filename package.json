@@ -1,6 +1,6 @@
 {
   "name": "mtui-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -8,6 +8,15 @@
     "type": "git",
     "url": "git+https://github.com/MirTurbaz/mtui-react.git"
   },
+  "contributors": [
+    {
+      "name": "Leha Sniper"
+    },
+    {
+      "name": "Nikita  Dazzle",
+      "email": "n.centurion.d@gmail.com"
+    }
+  ],
   "files": [
     "dist"
   ],
@@ -43,7 +52,9 @@
     ".": "./index.js",
     "./icons": "./icons.js",
     "./hooks": "./hooks.js",
-    "./contextx": "./contexts.js"
+    "./contextx": "./contexts.js",
+    "./styles/extranet": "./src/css/themes/extranet.scss",
+    "./styles/kruizi": "./src/css/themes/kruizi.scss"
   },
   "author": "",
   "license": "ISC",
