@@ -1,1 +1,2 @@
-export default function Error({}: {}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function Error({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

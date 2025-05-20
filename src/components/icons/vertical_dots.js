@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-export default function VerticalDots({ color = 'rgba(0, 0, 0, 0.8)' }) {
-    return (_jsx("svg", { width: '20', height: '20', viewBox: '0 0 20 20', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', children: _jsx("path", { d: 'M10.0002 13.3335C10.4422 13.3335 10.8661 13.5091 11.1787 13.8217C11.4912 14.1342 ' +
+export function VerticalDots({ className = null, color = 'rgba(0, 0, 0, 0.8)', size = 20 }) {
+    return (_jsx("svg", { width: size, height: size, viewBox: '0 0 20 20', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', className: className, children: _jsx("path", { d: 'M10.0002 13.3335C10.4422 13.3335 10.8661 13.5091 11.1787 13.8217C11.4912 14.1342 ' +
                 '11.6668 14.5581 11.6668 15.0002C11.6668 15.4422 11.4912 15.8661 11.1787 16.1787C10.8661 16.4912 ' +
                 '10.4422 16.6668 10.0002 16.6668C9.55814 16.6668 9.13421 16.4912 8.82165 16.1787C8.50909 15.8661 ' +
                 '8.3335 15.4422 8.3335 15.0002C8.3335 14.5581 8.50909 14.1342 8.82165 13.8217C9.13421 13.5091 9.55814 ' +

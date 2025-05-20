@@ -1,4 +1,2 @@
-export declare function ListAltCheck({ color, size }: {
-    color?: string;
-    size?: number;
-}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function ListAltCheck({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

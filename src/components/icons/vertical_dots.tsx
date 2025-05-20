@@ -1,6 +1,15 @@
-export default function VerticalDots({ color = 'rgba(0, 0, 0, 0.8)' }) {
+import { ISquareIconProps } from './common';
+
+export function VerticalDots({ className = null, color = 'rgba(0, 0, 0, 0.8)', size = 20 }: ISquareIconProps) {
   return (
-    <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg
+      width={size}
+      height={size}
+      viewBox='0 0 20 20'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={className}
+    >
       <path
         d={
           'M10.0002 13.3335C10.4422 13.3335 10.8661 13.5091 11.1787 13.8217C11.4912 14.1342 ' +

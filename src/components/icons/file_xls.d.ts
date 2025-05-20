@@ -1,3 +1,2 @@
-export default function FileXls({ color }: {
-    color?: string;
-}): import("react/jsx-runtime").JSX.Element;
+import { ISquareIconProps } from './common';
+export declare function FileXls({ className, color, size }: ISquareIconProps): import("react/jsx-runtime").JSX.Element;

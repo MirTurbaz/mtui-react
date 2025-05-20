@@ -1,6 +1,6 @@
-export default function Expand({ color, className, rotated, size }: {
-    color?: string;
-    className?: any;
+import { ISquareIconProps } from './common';
+interface IExpandProps extends ISquareIconProps {
     rotated?: boolean;
-    size?: number;
-}): import("react/jsx-runtime").JSX.Element;
+}
+export declare function Expand({ className, color, size, rotated }: IExpandProps): import("react/jsx-runtime").JSX.Element;
+export {};

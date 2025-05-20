@@ -1,94 +1,77 @@
 .button {
-  padding: 8px 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 8px;
   transition: 0.1s;
   cursor: pointer;
   text-align: center;
-  justify-content: center;
   border-radius: 8px;
   user-select: none;
+
+  font-size: 16px;
+  font-weight: 400;
   line-height: 20px;
+  letter-spacing: 0.4px;
+
   svg {
     flex-shrink: 0;
     path {
       transition: 0.1s;
     }
   }
-  &.clicked {
+  &--clicked {
     box-shadow: 0 0 0 4px #0000000a;
   }
-  &.button_variant_outline {
-    padding-top: 7px;
-    padding-bottom: 7px;
-  }
-  &.outline-primary {
-    color: $brand;
-    border: 1px solid $brand-20;
-    background: $brand-4;
-    &:hover {
-      background: $brand-10;
-    }
-  }
-  &.align-left {
-    text-align: left;
-    justify-content: left;
-  }
-  &.disabled {
+  &--disabled {
     pointer-events: none;
     opacity: 0.5;
   }
-
-  &_p {
-    &_small {
-      padding: 8px !important;
+  &--full-width {
+    width: 100%;
+  }
+  // Type {
+  &_type {
+    &_label-only {
+      padding-right: 16px;
+      padding-left: 16px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+      }
     }
-    &_normal {
-      padding: 16px !important;
+    &_label-with-icon {
+      padding-right: 16px;
+      padding-left: 14px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+      }
     }
-    &_big {
-      padding: 24px !important;
+    &_icon-only {
+      padding-right: 8px;
+      padding-left: 8px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+        padding-left: 14px;
+      }
     }
   }
   // Size
   &_size {
-    &_full_width {
-      width: 100%;
-      flex-grow: 1;
-      justify-content: center !important;
+    &_large {
+      min-height: 44px;
+      font-weight: 500;
+      &.button__type_icon-only {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
-    &_inline {
-      margin-left: -12px;
-      padding-left: 12px;
-      width: auto;
-      column-gap: 4px;
-      display: inline-flex;
+    &_middle {
+      min-height: 36px;
     }
-    &_square {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    &_auto {
-      width: auto;
-      display: inline-flex;
-    }
-  }
-  // Height
-  &_height {
     &_small {
-      padding: 5px 16px;
-      &.button_variant_outline {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-    }
-    &_big {
-      padding: 16px;
-      &.button_variant_outline {
-        padding-top: 15px;
-        padding-bottom: 15px;
-      }
+      min-height: 30px;
+      font-size: 14px;
+      letter-spacing: 0.25px;
     }
   }
   // Variants
@@ -109,11 +92,11 @@
         }
         &:active,
         &:focus,
-        &.clicked {
+        &.button--clicked {
           background-color: rgba(51, 51, 51, 1);
           box-shadow: 0 0 0 4px $black-20;
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $black-12;
           border-color: rgba(0, 0, 0, 0.08);
         }
@@ -128,12 +111,12 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $brand;
           border-color: $brand-20;
           box-shadow: 0 0 0 4px $brand-20;
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $brand;
         }
       }
@@ -146,12 +129,12 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $success;
           border-color: $success-20;
           box-shadow: 0 0 0 4px $success-20;
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $green-light;
         }
       }
@@ -164,12 +147,12 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $danger-80;
           border-color: $danger-light-20;
           box-shadow: 0 0 0 4px $danger-light-12;
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $danger;
         }
       }
@@ -197,18 +180,18 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $black-04;
           box-shadow: 0 0 0 4px $black-04;
         }
-        &.disabled {
+        &.button--disabled {
           background: white;
           color: $black-80;
           svg path {
             fill: $black-80;
           }
         }
-        &.button_pressed {
+        &.button--pressed {
           background-color: $brand-4;
           color: $brand;
           border-color: $brand-20;
@@ -235,11 +218,11 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           box-shadow: 0 0 0 4px $brand-20;
         }
-        &.button_pressed {
+        &.button--pressed {
           background-color: $brand-4;
           color: $brand;
           border-color: $brand-20;
@@ -267,7 +250,7 @@
 
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           color: $success;
           border-color: $success-20;
@@ -296,7 +279,7 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           color: $danger-dark;
           border-color: $danger-20;
@@ -305,7 +288,7 @@
             fill: $danger-dark;
           }
         }
-        &.disabled {
+        &.button--disabled {
           background-color: white;
           color: $danger;
           border-color: $danger-20;
@@ -330,11 +313,11 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           box-shadow: 0 0 0 4px $black-04;
         }
-        &.disabled {
+        &.button--disabled {
           background: $black-02;
         }
       }
@@ -355,11 +338,11 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           box-shadow: 0 0 0 4px $brand-4;
         }
-        &.disabled {
+        &.button--disabled {
           background: $brand-2;
         }
       }
@@ -378,7 +361,7 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           box-shadow: 0 0 0 4px $success-12;
           background-color: white;
           color: $success;
@@ -403,7 +386,7 @@
         }
         &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           box-shadow: 0 0 0 4px $danger-light-12;
           background-color: white;
           color: $danger-dark;
@@ -411,7 +394,7 @@
             fill: $danger-dark;
           }
         }
-        &.disabled {
+        &.button--disabled {
           background-color: white;
           color: $danger;
           svg path {

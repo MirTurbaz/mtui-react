@@ -1,4 +1,6 @@
-export default function LoadingSpinner({ color, progress }: {
-    color?: string;
+import { ISquareIconProps } from './common';
+interface ILoadingSpinnerProps extends ISquareIconProps {
     progress?: number;
-}): import("react/jsx-runtime").JSX.Element;
+}
+export declare function LoadingSpinner({ className, color, size, progress, }: ILoadingSpinnerProps): import("react/jsx-runtime").JSX.Element;
+export {};
