@@ -1,13 +1,18 @@
 import { Dayjs } from 'dayjs';
 import * as React from 'react';
 import { ReactElement, useEffect, useState } from 'react';
-import { Button, Popup, TextField } from '../';
+import { Button, Popup, PopupProps, TextField, TextFieldProps } from '../';
 import { Today } from '../icons';
 import { IRangePickerProps, TypePickerVariant } from '../../shared/types/date_picker';
 import { RANGE_PICKER_CONFIG } from './inner/config';
 import { IRangePickerConfig } from './inner/types';
 
-export const RangePicker: React.FC<IRangePickerProps> = ({ picker = 'date' as TypePickerVariant, ...props }) => {
+export const RangePicker: React.FC<IRangePickerProps> = ({
+  picker = 'date' as TypePickerVariant,
+  textFieldProps = {} as Partial<TextFieldProps>,
+  popupProps = {} as Partial<PopupProps>,
+  ...props
+}) => {
   const minDate = props.minDate?.isValid() ? props.minDate : null;
   const maxDate = props.maxDate?.isValid() ? props.maxDate : null;
 
@@ -67,7 +72,7 @@ export const RangePicker: React.FC<IRangePickerProps> = ({ picker = 'date' as Ty
         formatDate(endDate),
         setShowCalendar,
         focusedInput,
-        props.textFieldProps
+        textFieldProps
       );
     } else if (props.variant == 'button') {
       return (
@@ -75,7 +80,7 @@ export const RangePicker: React.FC<IRangePickerProps> = ({ picker = 'date' as Ty
           variant={'outline'}
           btnRef={setAnchor}
           onClick={() => setShowCalendar(true)}
-          icon={(props.textFieldProps?.icon as ReactElement) ?? <Today />}
+          icon={(textFieldProps?.icon as ReactElement) ?? <Today />}
         />
       );
     } else {
@@ -90,7 +95,7 @@ export const RangePicker: React.FC<IRangePickerProps> = ({ picker = 'date' as Ty
           onClick={(_) => {
             setShowCalendar(true);
           }}
-          {...props.textFieldProps}
+          {...textFieldProps}
         />
       );
     }
@@ -130,8 +135,6 @@ export const RangePicker: React.FC<IRangePickerProps> = ({ picker = 'date' as Ty
       setEndDate(props.endMonth);
     }
   }, [props.startMonth, props.endMonth]);
-
-  const { popupProps } = props;
 
   return (
     <>

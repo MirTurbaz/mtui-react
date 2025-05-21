@@ -6,6 +6,7 @@ module.exports = {
     icons: { import: './dist/icons.js', filename: './icons.js' },
     hooks: { import: './dist/hooks.js', filename: './hooks.js' },
     contexts: { import: './dist/contexts.js', filename: './contexts.js' },
+    wysiwyg: { import: './dist/wysiwyg.js', filename: './wysiwyg.js' },
   },
   module: {
     rules: [

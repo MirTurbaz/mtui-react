@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Popup, TextField } from '../';
+import { Popup, PopupProps, TextField, TextFieldProps } from '../';
 import { DEFAULT_DATE_FORMAT } from '../../shared/constants/date';
 import { dayjs, Dayjs } from '../../shared/lib/date';
 import { TypePickerVariant } from '../../shared/types/date_picker';
@@ -10,7 +10,12 @@ import { RangePicker } from '../range_picker';
 import { DATE_PICKER_CONFIG } from './inner/config';
 import { IDatePickerConfig, TypeDatePicker } from './inner/types';
 
-const DatePicker: TypeDatePicker = ({ picker = 'date' as TypePickerVariant, popupProps, ...props }) => {
+const DatePicker: TypeDatePicker = ({
+  picker = 'date' as TypePickerVariant,
+  textFieldProps = {} as Partial<TextFieldProps>,
+  popupProps = {} as Partial<PopupProps>,
+  ...props
+}) => {
   const minDate = props.minDate?.isValid() ? props.minDate : null;
   const maxDate = props.maxDate?.isValid() ? props.maxDate : null;
 
@@ -88,7 +93,7 @@ const DatePicker: TypeDatePicker = ({ picker = 'date' as TypePickerVariant, popu
         onClick={() => setShowCalendar(true)}
         onChange={props.allowManualInput ? handleInputChange : undefined}
         onKeyDown={props.allowManualInput ? handleKeyDown : undefined}
-        {...props.textFieldProps}
+        {...textFieldProps}
       />
       <Popup
         id={popupProps.id ?? `date-picker-${props.id}`}
