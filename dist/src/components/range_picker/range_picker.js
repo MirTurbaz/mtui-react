@@ -16,7 +16,7 @@ import { Today } from '../icons';
 import { RANGE_PICKER_CONFIG } from './inner/config';
 export const RangePicker = (_a) => {
     var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
-    var { picker = 'date' } = _a, props = __rest(_a, ["picker"]);
+    var { picker = 'date', textFieldProps = {}, popupProps = {} } = _a, props = __rest(_a, ["picker", "textFieldProps", "popupProps"]);
     const minDate = ((_b = props.minDate) === null || _b === void 0 ? void 0 : _b.isValid()) ? props.minDate : null;
     const maxDate = ((_c = props.maxDate) === null || _c === void 0 ? void 0 : _c.isValid()) ? props.maxDate : null;
     const [showCalendar, setShowCalendar] = useState(false);
@@ -65,17 +65,17 @@ export const RangePicker = (_a) => {
         }
     };
     const renderInputs = () => {
-        var _a, _b;
+        var _a;
         if (props.variant == 'twoInputs') {
-            return renderTwoInputs === null || renderTwoInputs === void 0 ? void 0 : renderTwoInputs(setAnchor, formatDate(startDate), formatDate(endDate), setShowCalendar, focusedInput, props.textFieldProps);
+            return renderTwoInputs === null || renderTwoInputs === void 0 ? void 0 : renderTwoInputs(setAnchor, formatDate(startDate), formatDate(endDate), setShowCalendar, focusedInput, textFieldProps);
         }
         else if (props.variant == 'button') {
-            return (_jsx(Button, { variant: 'outline', btnRef: setAnchor, onClick: () => setShowCalendar(true), icon: (_b = (_a = props.textFieldProps) === null || _a === void 0 ? void 0 : _a.icon) !== null && _b !== void 0 ? _b : _jsx(Today, {}) }));
+            return (_jsx(Button, { variant: 'outline', btnRef: setAnchor, onClick: () => setShowCalendar(true), icon: (_a = textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.icon) !== null && _a !== void 0 ? _a : _jsx(Today, {}) }));
         }
         else {
             return (_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: true, size: 'mini', style: { minWidth: 200 }, wrapperRef: setAnchor, value: getValue(), onClick: (_) => {
                     setShowCalendar(true);
-                } }, props.textFieldProps)));
+                } }, textFieldProps)));
         }
     };
     useEffect(() => {
@@ -114,7 +114,6 @@ export const RangePicker = (_a) => {
             setEndDate(props.endMonth);
         }
     }, [props.startMonth, props.endMonth]);
-    const { popupProps } = props;
     return (_jsxs(_Fragment, { children: [renderInputs(), _jsx(Popup, { id: (_h = popupProps.id) !== null && _h !== void 0 ? _h : `range-picker-${props.id}`, className: (_j = popupProps.className) !== null && _j !== void 0 ? _j : 'date-picker__popup', open: (_k = popupProps.open) !== null && _k !== void 0 ? _k : showCalendar, onClose: (_l = popupProps.onClose) !== null && _l !== void 0 ? _l : (() => setShowCalendar(false)), anchor: (_m = popupProps.anchor) !== null && _m !== void 0 ? _m : anchor, initContentHeight: (_o = popupProps.initContentHeight) !== null && _o !== void 0 ? _o : 320, onMouseUp: popupProps.onMouseUp, onMouseDown: popupProps.onMouseDown, onCloseBtn: popupProps.onCloseBtn, title: popupProps.title, offset: popupProps.offset, level: popupProps.level, placement: popupProps.placement, preventMobileStyle: popupProps.preventMobileStyle, container: popupProps.container, disablePortal: popupProps.disablePortal, style: popupProps.style, children: renderSelector === null || renderSelector === void 0 ? void 0 : renderSelector({ startDate, endDate }, { minDate, maxDate }, hoverDate, handleDateClick, setHoverDate, (_p = props.twoPanels) !== null && _p !== void 0 ? _p : true) })] }));
 };
 //# sourceMappingURL=range_picker.js.map
