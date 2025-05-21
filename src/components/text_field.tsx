@@ -22,6 +22,7 @@ export interface TextFieldProps {
   max?: number;
   onBlur?: () => void;
   onFocus?: () => void;
+  focus?: boolean;
   key?: any;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onEnter?: () => void;
@@ -111,6 +112,12 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
 
   const controlProps = props.uncontrolled ? {} : { value: value, onChange: handleChange };
 
+  useEffect(() => {
+    if (props.focus == null) return;
+
+    if (props.focus != focus) setFocus(props.focus);
+  }, [props.focus]);
+
   return (
     <div className={`text_field ${props.wrapperClassName}`} style={props.wrapperStyle} ref={props.wrapperRef}>
       <div className={classNames}>
@@ -120,14 +127,19 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
             ref={props.inputRef ?? inputRef}
             className={`text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`}
             onFocus={() => {
+              if (props.focus != null) return;
+
               setFocus(true);
               props.onFocus?.();
             }}
             onClick={props.onClick}
             disabled={props.disabled}
             onBlur={handleBlur}
-            onWheel={(e) => {
-              if (props.type == 'number') e.target.blur();
+            onWheel={(event) => {
+              if (props.type == 'number') {
+                const target = event.target as HTMLElement;
+                target.blur();
+              }
             }}
             type={props.type}
             required={props.required}

@@ -153,9 +153,8 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
                   setClicked(false);
                   setIsOpen(false);
                 }}
-              >
-                <Close />
-              </Button>
+                icon={<Close />}
+              />
             </div>
             <div className={'tooltip__body'}>{props.content}</div>
           </>

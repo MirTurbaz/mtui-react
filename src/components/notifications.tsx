@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { Notification } from '../contexts/notification_context';
+import { Notification } from '../contexts';
 import { CheckCircle, Close, Error, Info, Warning } from './icons';
 import { Button } from './button';
 import { Flex } from './flex';

@@ -20,7 +20,7 @@ export type TypePopupPlacement =
 
 export interface PopupProps {
   className?: string;
-  children?: ReactElement | ReactElement[];
+  children?: ReactElement | ReactElement[] | React.ReactNode;
   anchor?: HTMLElement;
   open: boolean;
   onClose: Function;
@@ -169,9 +169,8 @@ export const Popup: React.FC<PopupProps> = ({
             props.onClose();
             props.onCloseBtn?.();
           }}
-        >
-          <Close />
-        </Button>
+          icon={<Close />}
+        />
       </div>
       <div className={'popup__body'}>{props.children}</div>
     </div>

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import 'tiny-slider/dist/tiny-slider.css';
-const { tns } = require('tiny-slider/src/tiny-slider');
+import { tns } from 'tiny-slider/src/tiny-slider';
 
 interface PhotoSliderPopupProps {
   pictures: Picture[];
@@ -35,7 +34,6 @@ export const PhotoSliderPopup: React.FC<PhotoSliderPopupProps> = (props) => {
         slideBy: 'page',
         controls: true,
         nav: true,
-        navPosition: 'bottom',
         swipeAngle: false,
         speed: 400,
         mouseDrag: true,

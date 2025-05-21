@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MouseEventHandler } from 'react';
 
 export type TypeBtnColor = 'default' | 'primary' | 'success' | 'danger';
 export type TypeBtnSize = 'small' | 'middle' | 'big';
@@ -42,7 +43,7 @@ export interface IButtonProps extends IBtnWithLinkProps, IBtnWithoutLinkProps, I
   style?: any;
   btnRef?: any;
   onClick?: Function;
-  onMouseEnter?: Function;
-  onMouseLeave?: Function;
+  onMouseEnter?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  onMouseLeave?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   children?: string | number;
 }
