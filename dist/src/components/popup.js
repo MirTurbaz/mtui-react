@@ -54,7 +54,7 @@ export const Popup = (_a) => {
         return;
     let left;
     let top;
-    if (props.anchor && !props.disablePortal) {
+    if (props.anchor && !props.disablePortal && !props.fullScreen) {
         const bbox = props.anchor.getBoundingClientRect();
         const containerBbox = (_b = props.container) === null || _b === void 0 ? void 0 : _b.getBoundingClientRect();
         const popupWidth = (_c = ref === null || ref === void 0 ? void 0 : ref.getBoundingClientRect().width) !== null && _c !== void 0 ? _c : 0;
@@ -114,9 +114,21 @@ export const Popup = (_a) => {
             top = bbox.top - popupHeight - offset + scrollY - ((_m = containerBbox === null || containerBbox === void 0 ? void 0 : containerBbox.top) !== null && _m !== void 0 ? _m : 0);
         }
     }
+    const getWrapperClassName = () => {
+        const classes = ['popup__wrapper'];
+        if (props.fullScreen) {
+            classes.push('popup__wrapper--full-screen');
+        }
+        else if (preventMobileStyle) {
+            classes.push('popup__wrapper--prevent-mobile');
+        }
+        if (props.className)
+            classes.push(props.className);
+        return classes.join(' ');
+    };
     const renderPopup = () => {
-        var _a, _b;
-        return (_jsxs("div", { id: props.id, ref: (newRef) => setRef(newRef), onClick: (e) => e.stopPropagation(), onMouseDown: props.onMouseDown, onMouseUp: props.onMouseUp, className: `popup__wrapper ${preventMobileStyle ? 'popup_prevent-mobile' : ''} ${(_a = props.className) !== null && _a !== void 0 ? _a : ''}`, style: Object.assign({ left: left, top: top, zIndex: 1000000 + ((_b = props.level) !== null && _b !== void 0 ? _b : 0) * 100, opacity: props.anchor && ref ? '1' : '0' }, props.style), children: [_jsxs("div", { className: 'popup__header', children: [_jsx("div", { className: 'popup__title', children: props.title }), _jsx(Button, { onClick: () => {
+        var _a;
+        return (_jsxs("div", { id: props.id, ref: (newRef) => setRef(newRef), onClick: (e) => e.stopPropagation(), onMouseDown: props.onMouseDown, onMouseUp: props.onMouseUp, className: getWrapperClassName(), style: Object.assign({ left: left, top: top, zIndex: 1000000 + ((_a = props.level) !== null && _a !== void 0 ? _a : 0) * 100, opacity: props.anchor && ref ? '1' : '0' }, props.style), children: [_jsxs("div", { className: 'popup__header', children: [_jsx("div", { className: 'popup__title', children: props.title }), _jsx(Button, { onClick: () => {
                                 var _a;
                                 props.onClose();
                                 (_a = props.onCloseBtn) === null || _a === void 0 ? void 0 : _a.call(props);

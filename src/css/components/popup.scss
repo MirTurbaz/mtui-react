@@ -12,6 +12,19 @@
     z-index: 1000000;
     transition: opacity 0.2s;
     overflow: hidden;
+
+    &--full-screen {
+      top: 0 !important;
+      bottom: 0 !important;
+      height: 100vh !important;
+      width: 100vw !important;
+      border-radius: 0 !important;
+
+      .popup__header,
+      .popup__body {
+        width: 100%;
+      }
+    }
   }
   &__header {
     display: none;
@@ -22,7 +35,7 @@
   html:has(.popup__wrapper) {
     overflow-y: hidden;
   }
-  .popup__wrapper:not(.popup_prevent-mobile) {
+  .popup__wrapper:not(.popup__wrapper--full-screen):not(.popup__wrapper--prevent-mobile) {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;

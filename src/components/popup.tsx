@@ -32,7 +32,11 @@ export interface PopupProps {
   offset?: number;
   level?: number;
   placement?: TypePopupPlacement;
-  /** Если задано true, в мобильной версии будет выглядеть и позиционироваться так же, как и на Desktop */
+  fullScreen?: boolean;
+  /**
+   * Если задано true, в мобильной версии будет выглядеть и позиционироваться так же, как и на Desktop.
+   * Игнорируется, если задано `Popup[fullScreen=true]`
+   */
   preventMobileStyle?: boolean;
   container?: HTMLElement;
   disablePortal?: boolean;
@@ -91,7 +95,7 @@ export const Popup: React.FC<PopupProps> = ({
   let left;
   let top;
 
-  if (props.anchor && !props.disablePortal) {
+  if (props.anchor && !props.disablePortal && !props.fullScreen) {
     const bbox = props.anchor.getBoundingClientRect();
     const containerBbox = props.container?.getBoundingClientRect();
     const popupWidth = ref?.getBoundingClientRect().width ?? 0;
@@ -146,6 +150,18 @@ export const Popup: React.FC<PopupProps> = ({
     }
   }
 
+  const getWrapperClassName = (): string => {
+    const classes = ['popup__wrapper'];
+    if (props.fullScreen) {
+      classes.push('popup__wrapper--full-screen');
+    } else if (preventMobileStyle) {
+      classes.push('popup__wrapper--prevent-mobile');
+    }
+    if (props.className) classes.push(props.className);
+
+    return classes.join(' ');
+  };
+
   const renderPopup = () => (
     <div
       id={props.id}
@@ -153,7 +169,7 @@ export const Popup: React.FC<PopupProps> = ({
       onClick={(e) => e.stopPropagation()}
       onMouseDown={props.onMouseDown as MouseEventHandler<HTMLDivElement>}
       onMouseUp={props.onMouseUp as MouseEventHandler<HTMLDivElement>}
-      className={`popup__wrapper ${preventMobileStyle ? 'popup_prevent-mobile' : ''} ${props.className ?? ''}`}
+      className={getWrapperClassName()}
       style={{
         left: left,
         top: top,

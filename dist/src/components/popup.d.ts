@@ -15,7 +15,11 @@ export interface PopupProps {
     offset?: number;
     level?: number;
     placement?: TypePopupPlacement;
-    /** Если задано true, в мобильной версии будет выглядеть и позиционироваться так же, как и на Desktop */
+    fullScreen?: boolean;
+    /**
+     * Если задано true, в мобильной версии будет выглядеть и позиционироваться так же, как и на Desktop.
+     * Игнорируется, если задано `Popup[fullScreen=true]`
+     */
     preventMobileStyle?: boolean;
     container?: HTMLElement;
     disablePortal?: boolean;
