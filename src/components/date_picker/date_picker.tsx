@@ -96,23 +96,14 @@ const DatePicker: TypeDatePicker = ({
         {...textFieldProps}
       />
       <Popup
-        id={popupProps.id ?? `date-picker-${props.id}`}
-        className={popupProps.className ?? 'date-picker__popup'}
-        open={popupProps.open ?? showCalendar}
-        onClose={popupProps.onClose ?? (() => setShowCalendar(false))}
-        anchor={popupProps.anchor ?? anchor}
-        initContentHeight={popupProps.initContentHeight ?? 320}
-        onMouseUp={popupProps.onMouseUp}
-        onMouseDown={popupProps.onMouseDown}
-        onCloseBtn={popupProps.onCloseBtn}
-        title={popupProps.title}
-        offset={popupProps.offset}
-        level={popupProps.level}
-        placement={popupProps.placement}
-        preventMobileStyle={popupProps.preventMobileStyle}
-        container={popupProps.container}
-        disablePortal={popupProps.disablePortal}
-        style={popupProps.style}
+        id={`date-picker-${props.id}`}
+        className={'date-picker__popup'}
+        open={showCalendar}
+        onClose={() => setShowCalendar(false)}
+        anchor={anchor}
+        initContentHeight={320}
+        // @ts-ignore
+        {...popupProps}
       >
         {picker == 'month' ? (
           <MonthSelector

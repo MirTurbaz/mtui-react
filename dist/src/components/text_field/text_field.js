@@ -103,6 +103,7 @@ export const TextField = (_a) => {
         }).mask((_c = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) !== null && _c !== void 0 ? _c : (_d = props.inputRef) === null || _d === void 0 ? void 0 : _d.current);
     }, [props.mask]);
     const controlProps = props.uncontrolled ? {} : { value: value, onChange: handleChange };
+    const showClearButton = Boolean(!props.uncontrolled && props.onClear && value.length);
     useEffect(() => {
         if (props.focus == null)
             return;
@@ -125,6 +126,6 @@ export const TextField = (_a) => {
                                     if (e.key === 'Enter')
                                         (_a = props.onEnter) === null || _a === void 0 ? void 0 : _a.call(props);
                                     (_b = props.onKeyDown) === null || _b === void 0 ? void 0 : _b.call(props, e);
-                                }, autoFocus: props.autofocus })), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] }), props.onClear && (_jsxs("label", { className: 'text_field__clear', children: [_jsx("button", { type: 'button', hidden: true, onClick: handleClear }), (_f = props.clearIcon) !== null && _f !== void 0 ? _f : _jsx(Clear, {})] }))] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
+                                }, autoFocus: props.autofocus })), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] }), showClearButton ? (_jsxs("label", { className: 'text_field__clear', children: [_jsx("button", { type: 'button', hidden: true, onClick: handleClear }), (_f = props.clearIcon) !== null && _f !== void 0 ? _f : _jsx(Clear, {})] })) : ('')] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
 };
 //# sourceMappingURL=text_field.js.map

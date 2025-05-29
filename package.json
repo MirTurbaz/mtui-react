@@ -11,6 +11,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "echo Рекомендуется предварительно удалить директории dist/ и bundle/. Остановите выполнение скрипта, если Вы этого ещё не сделали, чтобы избежать возможных ошибок.& yarn run tsc --declaration & yarn run webpack"
+  },
   "dependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

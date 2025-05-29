@@ -8,16 +8,22 @@ interface ITextFieldFocusProps {
   onBlur?: () => void;
 }
 
-export interface TextFieldProps extends ITextFieldFocusProps {
+interface ITextFieldValueProps {
+  value?: string;
+  onChange?: (value: string) => void;
+  onClear?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /** Игнорируется, если не задано `TextField[onClear]` */
+  clearIcon?: ReactElement;
+}
+
+export interface TextFieldProps extends ITextFieldFocusProps, ITextFieldValueProps {
   className?: string;
   style?: React.CSSProperties;
   wrapperStyle?: React.CSSProperties;
   icon?: ReactElement | string;
-  value?: string;
   disabled?: boolean;
   placeholder?: string;
   size?: 'default' | 'mini';
-  onChange?: (value: string) => void;
   onClick?: (e) => void;
   readonly?: boolean;
   wrapperRef?: any;
@@ -36,6 +42,4 @@ export interface TextFieldProps extends ITextFieldFocusProps {
   required?: boolean;
   uncontrolled?: boolean;
   borderless?: boolean;
-  onClear?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  clearIcon?: ReactElement;
 }

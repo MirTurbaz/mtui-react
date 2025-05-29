@@ -34,23 +34,30 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
   const formatDate = props.formatDate ?? RANGE_PICKER_CONFIG[picker]?.formatDate ?? (() => '');
 
   const handleDateClick = (date: Dayjs) => {
-    if ((minDate && date.isBefore(minDate, picker)) || (maxDate && date.isAfter(maxDate, picker))) {
-      return;
-    }
+    if ((minDate && date.isBefore(minDate, picker)) || (maxDate && date.isAfter(maxDate, picker))) return;
 
     if (!startDate || (startDate && endDate)) {
       setStartDate(date);
       setEndDate(null);
+      onChangeDates(date, null);
       setFocusedInput('last');
-    } else {
-      if (date.isBefore(startDate, picker)) {
-        setStartDate(date);
-        setEndDate(startDate);
-        setShowCalendar(false);
-      } else if (props.allowSingleDate || !date.isSame(startDate, picker)) {
-        setEndDate(date);
-        setShowCalendar(false);
-      }
+    } else if (date.isBefore(startDate, picker)) {
+      setStartDate(date);
+      setEndDate(startDate);
+      onChangeDates(date, startDate);
+      setShowCalendar(false);
+    } else if (props.allowSingleDate || !date.isSame(startDate, picker)) {
+      setEndDate(date);
+      onChangeDates(startDate, date);
+      setShowCalendar(false);
+    }
+  };
+
+  const onChangeDates = (startDate: Dayjs | null, endDate: Dayjs | null) => {
+    if (picker == 'date') {
+      props.onChangeDates?.(startDate, endDate);
+    } else if (picker == 'month') {
+      props.onChangeMonths?.(startDate, endDate);
     }
   };
 
@@ -92,9 +99,7 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
           style={{ minWidth: 200 }}
           wrapperRef={setAnchor}
           value={getValue()}
-          onClick={(_) => {
-            setShowCalendar(true);
-          }}
+          onClick={() => setShowCalendar(true)}
           {...textFieldProps}
         />
       );
@@ -107,20 +112,18 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
   }, [showCalendar]);
 
   useEffect(() => {
-    if (picker == 'date') {
-      props.onChangeDates?.(startDate, endDate);
-    } else if (picker == 'month') {
-      props.onChangeMonths?.(startDate, endDate);
-    }
-  }, [startDate, endDate]);
-
-  useEffect(() => {
     if (picker != 'date') return;
 
-    if (props.startDate?.isValid() && !props.startDate?.isSame(startDate, picker)) {
+    if (
+      (props.startDate == null && startDate != null) ||
+      (props.startDate?.isValid() && !props.startDate?.isSame(startDate, picker))
+    ) {
       setStartDate(props.startDate);
     }
-    if (props.endDate?.isValid() && !props.endDate?.isSame(endDate, picker)) {
+    if (
+      (props.endDate == null && endDate != null) ||
+      (props.endDate?.isValid() && !props.endDate?.isSame(endDate, picker))
+    ) {
       setEndDate(props.endDate);
     }
   }, [props.startDate, props.endDate]);
@@ -128,10 +131,16 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
   useEffect(() => {
     if (picker != 'month') return;
 
-    if (props.startMonth?.isValid() && !props.startMonth?.isSame(startDate, picker)) {
+    if (
+      (props.startMonth == null && startDate != null) ||
+      (props.startMonth?.isValid() && !props.startMonth?.isSame(startDate, picker))
+    ) {
       setStartDate(props.startMonth);
     }
-    if (props.endMonth?.isValid() && !props.endMonth?.isSame(endDate, picker)) {
+    if (
+      (props.endMonth == null && endDate != null) ||
+      (props.endMonth?.isValid() && !props.endMonth?.isSame(endDate, picker))
+    ) {
       setEndDate(props.endMonth);
     }
   }, [props.startMonth, props.endMonth]);
@@ -140,23 +149,14 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
     <>
       {renderInputs()}
       <Popup
-        id={popupProps.id ?? `range-picker-${props.id}`}
-        className={popupProps.className ?? 'date-picker__popup'}
-        open={popupProps.open ?? showCalendar}
-        onClose={popupProps.onClose ?? (() => setShowCalendar(false))}
-        anchor={popupProps.anchor ?? anchor}
-        initContentHeight={popupProps.initContentHeight ?? 320}
-        onMouseUp={popupProps.onMouseUp}
-        onMouseDown={popupProps.onMouseDown}
-        onCloseBtn={popupProps.onCloseBtn}
-        title={popupProps.title}
-        offset={popupProps.offset}
-        level={popupProps.level}
-        placement={popupProps.placement}
-        preventMobileStyle={popupProps.preventMobileStyle}
-        container={popupProps.container}
-        disablePortal={popupProps.disablePortal}
-        style={popupProps.style}
+        id={`range-picker-${props.id}`}
+        className={'date-picker__popup'}
+        open={showCalendar}
+        onClose={() => setShowCalendar(false)}
+        anchor={anchor}
+        initContentHeight={320}
+        // @ts-ignore
+        {...popupProps}
       >
         {renderSelector?.(
           { startDate, endDate },

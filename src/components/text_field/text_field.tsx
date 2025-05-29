@@ -88,6 +88,8 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
 
   const controlProps = props.uncontrolled ? {} : { value: value, onChange: handleChange };
 
+  const showClearButton: boolean = Boolean(!props.uncontrolled && props.onClear && value.length);
+
   useEffect(() => {
     if (props.focus == null) return;
 
@@ -108,7 +110,7 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
               setFocus(true);
               props.onFocus?.();
             }}
-            onClick={props.onClick}
+            onMouseDown={props.onClick}
             disabled={props.disabled}
             onBlur={handleBlur}
             onWheel={(event) => {
@@ -132,11 +134,13 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
           />
           <div className={'text_field__placeholder'}>{props.placeholder}</div>
         </div>
-        {props.onClear && (
+        {showClearButton ? (
           <label className={'text_field__clear'}>
             <button type={'button'} hidden onClick={handleClear}></button>
             {props.clearIcon ?? <Clear />}
           </label>
+        ) : (
+          ''
         )}
       </div>
       {props.bottomLabel && <div className={'text_field__bottom_label'}>{props.bottomLabel}</div>}

@@ -1,17 +1,23 @@
 import * as React from 'react';
 
-interface ButtonProps {
+export interface IInputGroupProps {
   className?: string;
   children?: any;
   wrap?: boolean;
 }
 
-export const InputGroup: React.FC<ButtonProps> = (props) => {
+export const InputGroup: React.FC<IInputGroupProps> = (props) => {
   const className = `${props.className} ${props.wrap ? 'input_group-wrapped' : 'input_group'}`;
 
   const render = () => {
     if (props.children instanceof Array) {
-      return props.children.map((el) => (el ? <div className={'input_group__item'}>{el}</div> : null));
+      return props.children.map((el, i) =>
+        el ? (
+          <div key={i} className={'input_group__item'}>
+            {el}
+          </div>
+        ) : null
+      );
     } else {
       return <div className={'input_group__item'}>{props.children}</div>;
     }

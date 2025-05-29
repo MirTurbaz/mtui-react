@@ -19,7 +19,7 @@ import { MonthSelector } from '../month_selector';
 import { RangePicker } from '../range_picker';
 import { DATE_PICKER_CONFIG } from './inner/config';
 const DatePicker = (_a) => {
-    var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+    var _b, _c, _d, _e, _f;
     var { picker = 'date', textFieldProps = {}, popupProps = {} } = _a, props = __rest(_a, ["picker", "textFieldProps", "popupProps"]);
     const minDate = ((_b = props.minDate) === null || _b === void 0 ? void 0 : _b.isValid()) ? props.minDate : null;
     const maxDate = ((_c = props.maxDate) === null || _c === void 0 ? void 0 : _c.isValid()) ? props.maxDate : null;
@@ -81,7 +81,7 @@ const DatePicker = (_a) => {
             return;
         setDate(props[picker]);
     }, [props[picker]]);
-    return (_jsxs(_Fragment, { children: [_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: !props.allowManualInput, inputRef: setAnchor, value: getValue(date), onClick: () => setShowCalendar(true), onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined }, textFieldProps)), _jsx(Popup, { id: (_f = popupProps.id) !== null && _f !== void 0 ? _f : `date-picker-${props.id}`, className: (_g = popupProps.className) !== null && _g !== void 0 ? _g : 'date-picker__popup', open: (_h = popupProps.open) !== null && _h !== void 0 ? _h : showCalendar, onClose: (_j = popupProps.onClose) !== null && _j !== void 0 ? _j : (() => setShowCalendar(false)), anchor: (_k = popupProps.anchor) !== null && _k !== void 0 ? _k : anchor, initContentHeight: (_l = popupProps.initContentHeight) !== null && _l !== void 0 ? _l : 320, onMouseUp: popupProps.onMouseUp, onMouseDown: popupProps.onMouseDown, onCloseBtn: popupProps.onCloseBtn, title: popupProps.title, offset: popupProps.offset, level: popupProps.level, placement: popupProps.placement, preventMobileStyle: popupProps.preventMobileStyle, container: popupProps.container, disablePortal: popupProps.disablePortal, style: popupProps.style, children: picker == 'month' ? (_jsx(MonthSelector, { startMonth: date, endMonth: null, hoverMonth: hoverDate, onHoverMonth: setHoverDate, onMonthClick: handleChange })) : (_jsx(DateSelector, { startDate: date, endDate: null, hoverDate: hoverDate, onHoverDate: setHoverDate, onDateClick: handleChange, minDate: minDate, maxDate: maxDate, twoPanels: (_m = props.twoPanels) !== null && _m !== void 0 ? _m : false, withInputs: props.withInputs })) })] }));
+    return (_jsxs(_Fragment, { children: [_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: !props.allowManualInput, inputRef: setAnchor, value: getValue(date), onClick: () => setShowCalendar(true), onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined }, textFieldProps)), _jsx(Popup, Object.assign({ id: `date-picker-${props.id}`, className: 'date-picker__popup', open: showCalendar, onClose: () => setShowCalendar(false), anchor: anchor, initContentHeight: 320 }, popupProps, { children: picker == 'month' ? (_jsx(MonthSelector, { startMonth: date, endMonth: null, hoverMonth: hoverDate, onHoverMonth: setHoverDate, onMonthClick: handleChange })) : (_jsx(DateSelector, { startDate: date, endDate: null, hoverDate: hoverDate, onHoverDate: setHoverDate, onDateClick: handleChange, minDate: minDate, maxDate: maxDate, twoPanels: (_f = props.twoPanels) !== null && _f !== void 0 ? _f : false, withInputs: props.withInputs })) }))] }));
 };
 DatePicker.RangePicker = RangePicker;
 export { DatePicker };

@@ -1,8 +1,7 @@
 import * as React from 'react';
-interface ButtonProps {
+export interface IInputGroupProps {
     className?: string;
     children?: any;
     wrap?: boolean;
 }
-export declare const InputGroup: React.FC<ButtonProps>;
-export {};
+export declare const InputGroup: React.FC<IInputGroupProps>;
