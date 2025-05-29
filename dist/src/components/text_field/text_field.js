@@ -1,10 +1,23 @@
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Inputmask from 'inputmask';
 import { useEffect, useRef, useState } from 'react';
-export const TextField = (props) => {
-    var _a, _b, _c;
+import { Clear } from '../icons/clear';
+export const TextField = (_a) => {
+    var _b, _c, _d, _e, _f;
+    var props = __rest(_a, []);
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState((_a = props.value) !== null && _a !== void 0 ? _a : '');
+    const [value, setValue] = useState((_b = props.value) !== null && _b !== void 0 ? _b : '');
     const inputRef = useRef(null);
     function handleChange({ target: { value: newValue } }) {
         var _a, _b;
@@ -15,6 +28,11 @@ export const TextField = (props) => {
         else {
             (_b = props.onChange) === null || _b === void 0 ? void 0 : _b.call(props, newValue);
         }
+    }
+    function handleClear(event) {
+        var _a;
+        setValue('');
+        (_a = props.onClear) === null || _a === void 0 ? void 0 : _a.call(props, event);
     }
     function handleBlur(e) {
         var _a;
@@ -38,7 +56,7 @@ export const TextField = (props) => {
             }
         }
     }, [props.value]);
-    let classNames = `text_field__wrapper ${props.className} text_field-size_${(_b = props.size) !== null && _b !== void 0 ? _b : 'default'}`;
+    let classNames = `text_field__wrapper ${props.className} text_field-size_${(_c = props.size) !== null && _c !== void 0 ? _c : 'default'}`;
     if (focus)
         classNames += ' text_field-focus';
     if ((value === null || value === void 0 ? void 0 : value.length) > 0)
@@ -47,6 +65,8 @@ export const TextField = (props) => {
         classNames += ' text_field-disabled';
     if (props.error)
         classNames += ' text_field-error';
+    if (props.borderless)
+        classNames += ' text_field__wrapper--borderless';
     useEffect(() => {
         var _a, _b, _c, _d;
         if (!props.mask)
@@ -89,7 +109,7 @@ export const TextField = (props) => {
         if (props.focus != focus)
             setFocus(props.focus);
     }, [props.focus]);
-    return (_jsxs("div", { className: `text_field ${props.wrapperClassName}`, style: props.wrapperStyle, ref: props.wrapperRef, children: [_jsxs("div", { className: classNames, children: [props.icon && _jsx("div", { className: 'text_field__icon', children: props.icon }), _jsxs("div", { className: 'text_field__input_wrapper', children: [_jsx("input", Object.assign({ ref: (_c = props.inputRef) !== null && _c !== void 0 ? _c : inputRef, className: `text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`, onFocus: () => {
+    return (_jsxs("div", { className: `text_field ${(_d = props.wrapperClassName) !== null && _d !== void 0 ? _d : ''}`, style: props.wrapperStyle, ref: props.wrapperRef, children: [_jsxs("div", { className: classNames, children: [props.icon && _jsx("div", { className: 'text_field__icon', children: props.icon }), _jsxs("div", { className: 'text_field__input_wrapper', children: [_jsx("input", Object.assign({ ref: (_e = props.inputRef) !== null && _e !== void 0 ? _e : inputRef, className: `text_field__input ${props.hideSpinButtons && 'text_field__input-hide_spin'}`, onFocus: () => {
                                     var _a;
                                     if (props.focus != null)
                                         return;
@@ -105,6 +125,6 @@ export const TextField = (props) => {
                                     if (e.key === 'Enter')
                                         (_a = props.onEnter) === null || _a === void 0 ? void 0 : _a.call(props);
                                     (_b = props.onKeyDown) === null || _b === void 0 ? void 0 : _b.call(props, e);
-                                } })), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] })] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
+                                }, autoFocus: props.autofocus })), _jsx("div", { className: 'text_field__placeholder', children: props.placeholder })] }), props.onClear && (_jsxs("label", { className: 'text_field__clear', children: [_jsx("button", { type: 'button', hidden: true, onClick: handleClear }), (_f = props.clearIcon) !== null && _f !== void 0 ? _f : _jsx(Clear, {})] }))] }), props.bottomLabel && _jsx("div", { className: 'text_field__bottom_label', children: props.bottomLabel }), typeof props.error !== 'boolean' && props.error && (_jsx("div", { className: 'text_field__bottom_error', children: props.error }))] }));
 };
 //# sourceMappingURL=text_field.js.map

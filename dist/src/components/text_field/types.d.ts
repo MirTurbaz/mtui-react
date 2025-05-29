@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { HTMLInputTypeAttribute, ReactElement } from 'react';
-export interface TextFieldProps {
+interface ITextFieldFocusProps {
+    focus?: boolean;
+    autofocus?: boolean;
+    onFocus?: () => void;
+    onBlur?: () => void;
+}
+export interface TextFieldProps extends ITextFieldFocusProps {
     className?: string;
     style?: React.CSSProperties;
     wrapperStyle?: React.CSSProperties;
@@ -18,9 +24,6 @@ export interface TextFieldProps {
     bottomLabel?: string;
     min?: number;
     max?: number;
-    onBlur?: () => void;
-    onFocus?: () => void;
-    focus?: boolean;
     key?: any;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     onEnter?: () => void;
@@ -30,5 +33,8 @@ export interface TextFieldProps {
     hideSpinButtons?: boolean;
     required?: boolean;
     uncontrolled?: boolean;
+    borderless?: boolean;
+    onClear?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    clearIcon?: ReactElement;
 }
-export declare const TextField: React.FC<TextFieldProps>;
+export {};

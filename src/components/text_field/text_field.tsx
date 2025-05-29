@@ -1,40 +1,10 @@
 import Inputmask from 'inputmask';
 import * as React from 'react';
-import { HTMLInputTypeAttribute, ReactElement, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { TextFieldProps } from './types';
+import { Clear } from '../icons/clear';
 
-export interface TextFieldProps {
-  className?: string;
-  style?: React.CSSProperties;
-  wrapperStyle?: React.CSSProperties;
-  icon?: ReactElement | string;
-  value?: string;
-  disabled?: boolean;
-  placeholder?: string;
-  size?: 'default' | 'mini';
-  onChange?: (value: string) => void;
-  onClick?: (e) => void;
-  readonly?: boolean;
-  wrapperRef?: any;
-  inputRef?: any;
-  type?: HTMLInputTypeAttribute;
-  bottomLabel?: string;
-  min?: number;
-  max?: number;
-  onBlur?: () => void;
-  onFocus?: () => void;
-  focus?: boolean;
-  key?: any;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onEnter?: () => void;
-  mask?: string | string[];
-  error?: string | boolean;
-  wrapperClassName?: string;
-  hideSpinButtons?: boolean;
-  required?: boolean;
-  uncontrolled?: boolean;
-}
-
-export const TextField: React.FC<TextFieldProps> = (props) => {
+export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
   const [focus, setFocus] = useState(false);
   const [value, setValue] = useState(props.value ?? '');
   const inputRef = useRef(null);
@@ -46,6 +16,11 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     } else {
       props.onChange?.(newValue);
     }
+  }
+
+  function handleClear(event: React.MouseEvent<HTMLButtonElement>) {
+    setValue('');
+    props.onClear?.(event);
   }
 
   function handleBlur(e) {
@@ -74,6 +49,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
   if (value?.length > 0) classNames += ' text_field-filled';
   if (props.disabled) classNames += ' text_field-disabled';
   if (props.error) classNames += ' text_field-error';
+  if (props.borderless) classNames += ' text_field__wrapper--borderless';
 
   useEffect(() => {
     if (!props.mask) return;
@@ -119,7 +95,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
   }, [props.focus]);
 
   return (
-    <div className={`text_field ${props.wrapperClassName}`} style={props.wrapperStyle} ref={props.wrapperRef}>
+    <div className={`text_field ${props.wrapperClassName ?? ''}`} style={props.wrapperStyle} ref={props.wrapperRef}>
       <div className={classNames}>
         {props.icon && <div className={'text_field__icon'}>{props.icon}</div>}
         <div className={'text_field__input_wrapper'}>
@@ -152,9 +128,16 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
               if (e.key === 'Enter') props.onEnter?.();
               props.onKeyDown?.(e);
             }}
+            autoFocus={props.autofocus}
           />
           <div className={'text_field__placeholder'}>{props.placeholder}</div>
         </div>
+        {props.onClear && (
+          <label className={'text_field__clear'}>
+            <button type={'button'} hidden onClick={handleClear}></button>
+            {props.clearIcon ?? <Clear />}
+          </label>
+        )}
       </div>
       {props.bottomLabel && <div className={'text_field__bottom_label'}>{props.bottomLabel}</div>}
       {typeof props.error !== 'boolean' && props.error && (

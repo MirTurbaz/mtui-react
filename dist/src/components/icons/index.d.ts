@@ -16,6 +16,7 @@ export * from './celebration';
 export * from './check_circle';
 export * from './chevron_left';
 export * from './chevron_right';
+export * from './clear';
 export * from './clipboard_account';
 export * from './close';
 export * from './contact_support';

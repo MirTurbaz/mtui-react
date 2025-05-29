@@ -9,6 +9,11 @@
     column-gap: 8px;
     align-items: center;
     transition: 0.2s;
+
+    &--borderless {
+      border: none !important;
+      box-shadow: none !important;
+    }
   }
   &__bottom_label {
     font-size: 12px;
@@ -78,6 +83,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  &__clear {
+    cursor: pointer;
   }
 
   &-focus {
