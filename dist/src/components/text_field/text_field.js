@@ -19,14 +19,26 @@ export const TextField = (_a) => {
     const [focus, setFocus] = useState(false);
     const [value, setValue] = useState((_b = props.value) !== null && _b !== void 0 ? _b : '');
     const inputRef = useRef(null);
+    const validBoundaries = props.min == null || props.max == null || props.min <= props.max;
     function handleChange({ target: { value: newValue } }) {
         var _a, _b;
-        setValue(newValue);
+        let validValue = newValue !== null && newValue !== void 0 ? newValue : '';
+        if (validValue != '' && props.type == 'number' && validBoundaries) {
+            if (props.isInteger) {
+                validValue = validValue.replace(/\.\d*/, '');
+            }
+            const numberValue = Number(newValue);
+            if (props.min != null && props.min > numberValue)
+                validValue = String(props.min);
+            if (props.max != null && props.max < numberValue)
+                validValue = String(props.max);
+        }
+        setValue(validValue);
         if (props.mask) {
-            (_a = props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, newValue === null || newValue === void 0 ? void 0 : newValue.replaceAll('_', ''));
+            (_a = props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, validValue.replaceAll('_', ''));
         }
         else {
-            (_b = props.onChange) === null || _b === void 0 ? void 0 : _b.call(props, newValue);
+            (_b = props.onChange) === null || _b === void 0 ? void 0 : _b.call(props, validValue);
         }
     }
     function handleClear(event) {
@@ -116,12 +128,12 @@ export const TextField = (_a) => {
                                         return;
                                     setFocus(true);
                                     (_a = props.onFocus) === null || _a === void 0 ? void 0 : _a.call(props);
-                                }, onClick: props.onClick, disabled: props.disabled, onBlur: handleBlur, onWheel: (event) => {
+                                }, onClick: props.onClick, onMouseDown: props.onMouseDown, disabled: props.disabled, onBlur: handleBlur, onWheel: (event) => {
                                     if (props.type == 'number') {
                                         const target = event.target;
                                         target.blur();
                                     }
-                                }, type: props.type, required: props.required, style: props.style, readOnly: props.readonly, min: props.min, max: props.max }, controlProps, { onKeyDown: (e) => {
+                                }, type: props.type, required: props.required, style: props.style, readOnly: props.readonly, min: validBoundaries ? props.min : undefined, max: validBoundaries ? props.max : undefined }, controlProps, { onKeyDown: (e) => {
                                     var _a, _b;
                                     if (e.key === 'Enter')
                                         (_a = props.onEnter) === null || _a === void 0 ? void 0 : _a.call(props);

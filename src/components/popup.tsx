@@ -69,7 +69,6 @@ export const Popup: React.FC<PopupProps> = ({
   }, [props.container]);
 
   const handleBodyClick = (e) => {
-    e.stopPropagation();
     const target = e.target as HTMLElement;
     if (
       !target.closest(`#${props.id}`) &&
@@ -78,6 +77,9 @@ export const Popup: React.FC<PopupProps> = ({
       target != props.anchor &&
       !getAncestors(target).includes(props.anchor)
     ) {
+      // Останавливаем всплытие только для элементов вне popup.
+      // Иначе на Next (или 19-й версии React) при Popup[disablePortal=true] будут игнорироваться click события для элементов внутри popup
+      e.stopPropagation();
       props.onClose();
     }
   };

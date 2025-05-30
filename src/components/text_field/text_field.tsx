@@ -9,12 +9,28 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
   const [value, setValue] = useState(props.value ?? '');
   const inputRef = useRef(null);
 
+  const validBoundaries = props.min == null || props.max == null || props.min <= props.max;
+
   function handleChange({ target: { value: newValue } }) {
-    setValue(newValue);
+    let validValue = newValue ?? '';
+
+    if (validValue != '' && props.type == 'number' && validBoundaries) {
+      if (props.isInteger) {
+        validValue = validValue.replace(/\.\d*/, '');
+      }
+
+      const numberValue = Number(newValue);
+
+      if (props.min != null && props.min > numberValue) validValue = String(props.min);
+      if (props.max != null && props.max < numberValue) validValue = String(props.max);
+    }
+
+    setValue(validValue);
+
     if (props.mask) {
-      props.onChange?.(newValue?.replaceAll('_', ''));
+      props.onChange?.(validValue.replaceAll('_', ''));
     } else {
-      props.onChange?.(newValue);
+      props.onChange?.(validValue);
     }
   }
 
@@ -110,7 +126,8 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
               setFocus(true);
               props.onFocus?.();
             }}
-            onMouseDown={props.onClick}
+            onClick={props.onClick}
+            onMouseDown={props.onMouseDown}
             disabled={props.disabled}
             onBlur={handleBlur}
             onWheel={(event) => {
@@ -123,8 +140,8 @@ export const TextField: React.FC<TextFieldProps> = ({ ...props }) => {
             required={props.required}
             style={props.style}
             readOnly={props.readonly}
-            min={props.min}
-            max={props.max}
+            min={validBoundaries ? props.min : undefined}
+            max={validBoundaries ? props.max : undefined}
             {...controlProps}
             onKeyDown={(e) => {
               if (e.key === 'Enter') props.onEnter?.();

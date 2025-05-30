@@ -83,12 +83,7 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
       );
     } else if (props.variant == 'button') {
       return (
-        <Button
-          variant={'outline'}
-          btnRef={setAnchor}
-          onClick={() => setShowCalendar(true)}
-          icon={(textFieldProps?.icon as ReactElement) ?? <Today />}
-        />
+        <Button variant={'outline'} btnRef={setAnchor} icon={(textFieldProps?.icon as ReactElement) ?? <Today />} />
       );
     } else {
       return (
@@ -99,7 +94,6 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
           style={{ minWidth: 200 }}
           wrapperRef={setAnchor}
           value={getValue()}
-          onClick={() => setShowCalendar(true)}
           {...textFieldProps}
         />
       );
@@ -144,6 +138,14 @@ export const RangePicker: React.FC<IRangePickerProps> = ({
       setEndDate(props.endMonth);
     }
   }, [props.startMonth, props.endMonth]);
+
+  useEffect(() => {
+    if (!anchor) return;
+    anchor.removeEventListener('click', () => setShowCalendar(true));
+    anchor.addEventListener('click', () => setShowCalendar(true));
+
+    return () => anchor?.removeEventListener('click', () => setShowCalendar(true));
+  }, [anchor]);
 
   return (
     <>

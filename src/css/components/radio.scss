@@ -50,7 +50,7 @@
           height: 44px;
         }
         &-checked {
-          border: 2px solid var(--mtui-clr-brand-80);
+          border: 2px solid var(--mtui-clr-primary-8);
         }
       }
     }
@@ -81,10 +81,10 @@
       position: absolute;
       border-radius: 10px;
       transition: 0.1s;
-      background: var(--mtui-clr-brand-80);
+      background: var(--mtui-clr-primary-8);
     }
     &-checked {
-      border: 2px solid var(--mtui-clr-brand-80);
+      border: 2px solid var(--mtui-clr-primary-8);
       &:after {
         width: 10px;
         height: 10px;
