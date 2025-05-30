@@ -32,13 +32,15 @@ export const Popup = (_a) => {
         props.container.style.position = 'relative';
     }, [props.container]);
     const handleBodyClick = (e) => {
-        e.stopPropagation();
         const target = e.target;
         if (!target.closest(`#${props.id}`) &&
             !target.closest('.modal_mobile-height_auto') &&
             target.id != props.id &&
             target != props.anchor &&
             !getAncestors(target).includes(props.anchor)) {
+            // Останавливаем всплытие только для элементов вне popup.
+            // Иначе на Next (или 19-й версии React) при Popup[disablePortal=true] будут игнорироваться click события для элементов внутри popup
+            e.stopPropagation();
             props.onClose();
         }
     };

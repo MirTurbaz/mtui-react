@@ -81,7 +81,14 @@ const DatePicker = (_a) => {
             return;
         setDate(props[picker]);
     }, [props[picker]]);
-    return (_jsxs(_Fragment, { children: [_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: !props.allowManualInput, inputRef: setAnchor, value: getValue(date), onClick: () => setShowCalendar(true), onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined }, textFieldProps)), _jsx(Popup, Object.assign({ id: `date-picker-${props.id}`, className: 'date-picker__popup', open: showCalendar, onClose: () => setShowCalendar(false), anchor: anchor, initContentHeight: 320 }, popupProps, { children: picker == 'month' ? (_jsx(MonthSelector, { startMonth: date, endMonth: null, hoverMonth: hoverDate, onHoverMonth: setHoverDate, onMonthClick: handleChange })) : (_jsx(DateSelector, { startDate: date, endDate: null, hoverDate: hoverDate, onHoverDate: setHoverDate, onDateClick: handleChange, minDate: minDate, maxDate: maxDate, twoPanels: (_f = props.twoPanels) !== null && _f !== void 0 ? _f : false, withInputs: props.withInputs })) }))] }));
+    useEffect(() => {
+        if (!anchor)
+            return;
+        anchor.removeEventListener('click', () => setShowCalendar(true));
+        anchor.addEventListener('click', () => setShowCalendar(true));
+        return () => anchor === null || anchor === void 0 ? void 0 : anchor.removeEventListener('click', () => setShowCalendar(true));
+    }, [anchor]);
+    return (_jsxs(_Fragment, { children: [_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: !props.allowManualInput, inputRef: setAnchor, value: getValue(date), onChange: props.allowManualInput ? handleInputChange : undefined, onKeyDown: props.allowManualInput ? handleKeyDown : undefined }, textFieldProps)), _jsx(Popup, Object.assign({ id: `date-picker-${props.id}`, className: 'date-picker__popup', open: showCalendar, onClose: () => setShowCalendar(false), anchor: anchor, initContentHeight: 320 }, popupProps, { children: picker == 'month' ? (_jsx(MonthSelector, { startMonth: date, endMonth: null, hoverMonth: hoverDate, onHoverMonth: setHoverDate, onMonthClick: handleChange })) : (_jsx(DateSelector, { startDate: date, endDate: null, hoverDate: hoverDate, onHoverDate: setHoverDate, onDateClick: handleChange, minDate: minDate, maxDate: maxDate, twoPanels: (_f = props.twoPanels) !== null && _f !== void 0 ? _f : false, withInputs: props.withInputs })) }))] }));
 };
 DatePicker.RangePicker = RangePicker;
 export { DatePicker };

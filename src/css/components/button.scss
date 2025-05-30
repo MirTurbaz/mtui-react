@@ -91,7 +91,6 @@
           background-color: $black;
         }
         &:active,
-        &:focus,
         &.button--clicked {
           background-color: rgba(51, 51, 51, 1);
           box-shadow: 0 0 0 4px var(--mtui-clr-black-20);
@@ -109,7 +108,6 @@
         &:hover {
           background-color: var(--mtui-clr-brand-80);
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: $brand;
@@ -127,7 +125,6 @@
         &:hover {
           background-color: $green;
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: $success;
@@ -145,7 +142,6 @@
         &:hover {
           background-color: $danger;
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: var(--mtui-clr-danger-80);
@@ -178,7 +174,6 @@
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: var(--mtui-clr-black-4);
@@ -216,7 +211,6 @@
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: white;
@@ -248,7 +242,6 @@
           }
         }
 
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: white;
@@ -277,7 +270,6 @@
             fill: $danger-dark;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: white;
@@ -311,7 +303,6 @@
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: white;
@@ -336,7 +327,6 @@
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           background-color: white;
@@ -359,7 +349,6 @@
             fill: $success;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           box-shadow: 0 0 0 4px var(--mtui-clr-success-12);
@@ -384,7 +373,6 @@
             fill: $danger-dark;
           }
         }
-        &:focus,
         &:active,
         &.button--clicked {
           box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);

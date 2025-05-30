@@ -83,6 +83,14 @@ const DatePicker: TypeDatePicker = ({
     setDate(props[picker]);
   }, [props[picker]]);
 
+  useEffect(() => {
+    if (!anchor) return;
+    anchor.removeEventListener('click', () => setShowCalendar(true));
+    anchor.addEventListener('click', () => setShowCalendar(true));
+
+    return () => anchor?.removeEventListener('click', () => setShowCalendar(true));
+  }, [anchor]);
+
   return (
     <>
       <TextField
@@ -90,7 +98,6 @@ const DatePicker: TypeDatePicker = ({
         readonly={!props.allowManualInput}
         inputRef={setAnchor}
         value={getValue(date)}
-        onClick={() => setShowCalendar(true)}
         onChange={props.allowManualInput ? handleInputChange : undefined}
         onKeyDown={props.allowManualInput ? handleKeyDown : undefined}
         {...textFieldProps}

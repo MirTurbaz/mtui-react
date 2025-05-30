@@ -79,10 +79,10 @@ export const RangePicker = (_a) => {
             return renderTwoInputs === null || renderTwoInputs === void 0 ? void 0 : renderTwoInputs(setAnchor, formatDate(startDate), formatDate(endDate), setShowCalendar, focusedInput, textFieldProps);
         }
         else if (props.variant == 'button') {
-            return (_jsx(Button, { variant: 'outline', btnRef: setAnchor, onClick: () => setShowCalendar(true), icon: (_a = textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.icon) !== null && _a !== void 0 ? _a : _jsx(Today, {}) }));
+            return (_jsx(Button, { variant: 'outline', btnRef: setAnchor, icon: (_a = textFieldProps === null || textFieldProps === void 0 ? void 0 : textFieldProps.icon) !== null && _a !== void 0 ? _a : _jsx(Today, {}) }));
         }
         else {
-            return (_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: true, size: 'mini', style: { minWidth: 200 }, wrapperRef: setAnchor, value: getValue(), onClick: () => setShowCalendar(true) }, textFieldProps)));
+            return (_jsx(TextField, Object.assign({ icon: defaultIcon, readonly: true, size: 'mini', style: { minWidth: 200 }, wrapperRef: setAnchor, value: getValue() }, textFieldProps)));
         }
     };
     useEffect(() => {
@@ -116,6 +116,13 @@ export const RangePicker = (_a) => {
             setEndDate(props.endMonth);
         }
     }, [props.startMonth, props.endMonth]);
+    useEffect(() => {
+        if (!anchor)
+            return;
+        anchor.removeEventListener('click', () => setShowCalendar(true));
+        anchor.addEventListener('click', () => setShowCalendar(true));
+        return () => anchor === null || anchor === void 0 ? void 0 : anchor.removeEventListener('click', () => setShowCalendar(true));
+    }, [anchor]);
     return (_jsxs(_Fragment, { children: [renderInputs(), _jsx(Popup, Object.assign({ id: `range-picker-${props.id}`, className: 'date-picker__popup', open: showCalendar, onClose: () => setShowCalendar(false), anchor: anchor, initContentHeight: 320 }, popupProps, { children: renderSelector === null || renderSelector === void 0 ? void 0 : renderSelector({ startDate, endDate }, { minDate, maxDate }, hoverDate, handleDateClick, setHoverDate, (_h = props.twoPanels) !== null && _h !== void 0 ? _h : true) }))] }));
 };
 //# sourceMappingURL=range_picker.js.map

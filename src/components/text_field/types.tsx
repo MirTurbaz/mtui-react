@@ -4,8 +4,6 @@ import { HTMLInputTypeAttribute, ReactElement } from 'react';
 interface ITextFieldFocusProps {
   focus?: boolean;
   autofocus?: boolean;
-  onFocus?: () => void;
-  onBlur?: () => void;
 }
 
 interface ITextFieldValueProps {
@@ -16,7 +14,16 @@ interface ITextFieldValueProps {
   clearIcon?: ReactElement;
 }
 
-export interface TextFieldProps extends ITextFieldFocusProps, ITextFieldValueProps {
+interface ITextFieldHandlersProps {
+  onFocus?: () => void;
+  onBlur?: () => void;
+  onMouseDown?: (event: React.MouseEvent<HTMLInputElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onEnter?: () => void;
+}
+
+export interface TextFieldProps extends ITextFieldFocusProps, ITextFieldValueProps, ITextFieldHandlersProps {
   className?: string;
   style?: React.CSSProperties;
   wrapperStyle?: React.CSSProperties;
@@ -24,17 +31,15 @@ export interface TextFieldProps extends ITextFieldFocusProps, ITextFieldValuePro
   disabled?: boolean;
   placeholder?: string;
   size?: 'default' | 'mini';
-  onClick?: (e) => void;
   readonly?: boolean;
   wrapperRef?: any;
   inputRef?: any;
   type?: HTMLInputTypeAttribute;
+  isInteger?: boolean;
   bottomLabel?: string;
   min?: number;
   max?: number;
   key?: any;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onEnter?: () => void;
   mask?: string | string[];
   error?: string | boolean;
   wrapperClassName?: string;
