@@ -13,9 +13,9 @@ import { jsx as _jsx } from "react/jsx-runtime";
 export const Divider = (_a) => {
     var { vertical, outerPadding = 16, marginVertical = 28 } = _a, props = __rest(_a, ["vertical", "outerPadding", "marginVertical"]);
     const classes = ['divider'];
-    classes.push(vertical ? 'divider_vertical' : 'divider_horizontal');
+    classes.push(vertical ? 'divider--vertical' : 'divider--horizontal');
     if (props.className)
         classes.push(props.className);
-    return vertical ? (_jsx("div", Object.assign({}, props, { className: classes.join(' '), style: Object.assign(Object.assign({}, props.style), { marginTop: marginVertical, marginBottom: marginVertical, marginLeft: outerPadding, marginRight: outerPadding }) }))) : (_jsx("div", Object.assign({}, props, { className: classes.join(' '), style: Object.assign(Object.assign({}, props.style), { marginTop: marginVertical, marginBottom: marginVertical, marginLeft: -outerPadding, marginRight: -outerPadding, width: `calc(100% + ${outerPadding * 2}px)` }) })));
+    return vertical ? (_jsx("div", Object.assign({}, props, { className: classes.join(' '), style: Object.assign({ marginTop: marginVertical, marginBottom: marginVertical, marginLeft: outerPadding, marginRight: outerPadding }, props.style) }))) : (_jsx("div", Object.assign({}, props, { className: classes.join(' '), style: Object.assign({ marginTop: marginVertical, marginBottom: marginVertical, marginLeft: -outerPadding, marginRight: -outerPadding, width: `calc(100% + ${outerPadding * 2}px)` }, props.style) })));
 };
 //# sourceMappingURL=divider.js.map

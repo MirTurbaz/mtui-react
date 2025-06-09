@@ -1,0 +1,13 @@
+.divider {
+  &--horizontal {
+    width: 100%;
+    border-bottom: $border-style;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  &--vertical {
+    border-right: $border-style;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}

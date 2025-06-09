@@ -9,7 +9,7 @@ interface DividerProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Divider: React.FC<DividerProps> = ({ vertical, outerPadding = 16, marginVertical = 28, ...props }) => {
   const classes = ['divider'];
-  classes.push(vertical ? 'divider_vertical' : 'divider_horizontal');
+  classes.push(vertical ? 'divider--vertical' : 'divider--horizontal');
   if (props.className) classes.push(props.className);
 
   return vertical ? (
@@ -17,11 +17,11 @@ export const Divider: React.FC<DividerProps> = ({ vertical, outerPadding = 16, m
       {...props}
       className={classes.join(' ')}
       style={{
-        ...props.style,
         marginTop: marginVertical,
         marginBottom: marginVertical,
         marginLeft: outerPadding,
         marginRight: outerPadding,
+        ...props.style,
       }}
     />
   ) : (
@@ -29,12 +29,12 @@ export const Divider: React.FC<DividerProps> = ({ vertical, outerPadding = 16, m
       {...props}
       className={classes.join(' ')}
       style={{
-        ...props.style,
         marginTop: marginVertical,
         marginBottom: marginVertical,
         marginLeft: -outerPadding,
         marginRight: -outerPadding,
         width: `calc(100% + ${outerPadding * 2}px)`,
+        ...props.style,
       }}
     />
   );
