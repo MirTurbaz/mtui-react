@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { Expand } from './icons';
 
 export interface SelectProps {
@@ -29,21 +29,23 @@ export const Select: React.FC<SelectProps> = (props) => {
   const [value, setValue] = useState(props.value);
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
-  const [ref, setRef] = useState(null);
+  const [ref, setRef] = useState<HTMLDivElement>(null);
 
   useEffect(() => {
     setValue(props.value);
   }, [props.value]);
 
+  const handleOutsideCLick = (event: MouseEvent | TouchEvent) => {
+    if (ref.contains(event.target as Node)) {
+      setOpen(false);
+    }
+  };
+
   useEffect(() => {
-    document.body.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const target = e.target as HTMLElement;
-      if (!target.closest('.select__wrapper') && !target.classList.contains('select__wrapper')) {
-        setOpen(false);
-      }
-    });
-  }, []);
+    if (open) document.body.addEventListener('click', handleOutsideCLick);
+
+    return () => document.body.removeEventListener('click', handleOutsideCLick);
+  }, [open]);
 
   const isSelectFilled = value && value.value != null && value.value !== '';
   let classNames = `select__wrapper ${props.className} select-size_${props.size ?? 'default'}`;

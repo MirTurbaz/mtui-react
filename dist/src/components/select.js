@@ -10,15 +10,16 @@ export const Select = (props) => {
     useEffect(() => {
         setValue(props.value);
     }, [props.value]);
+    const handleOutsideCLick = (event) => {
+        if (ref.contains(event.target)) {
+            setOpen(false);
+        }
+    };
     useEffect(() => {
-        document.body.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const target = e.target;
-            if (!target.closest('.select__wrapper') && !target.classList.contains('select__wrapper')) {
-                setOpen(false);
-            }
-        });
-    }, []);
+        if (open)
+            document.body.addEventListener('click', handleOutsideCLick);
+        return () => document.body.removeEventListener('click', handleOutsideCLick);
+    }, [open]);
     const isSelectFilled = value && value.value != null && value.value !== '';
     let classNames = `select__wrapper ${props.className} select-size_${(_a = props.size) !== null && _a !== void 0 ? _a : 'default'}`;
     if (open)
