@@ -30,19 +30,34 @@ export const Select: React.FC<SelectProps> = (props) => {
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
   const [ref, setRef] = useState<HTMLDivElement>(null);
+  const [optionsRef, setOptionsRef] = useState<HTMLDivElement>(null);
 
   useEffect(() => {
     setValue(props.value);
   }, [props.value]);
 
-  const handleOutsideCLick = (event: MouseEvent | TouchEvent) => {
-    if (ref.contains(event.target as Node)) {
+  const handleToggleOpen = () => {
+    if (!open) return setOpen(true);
+    handleCloseOptions();
+  };
+
+  const handleCloseOptions = () => {
+    optionsRef.classList.add('select__options-wrapper--hidden');
+
+    setTimeout(() => {
       setOpen(false);
-    }
+      optionsRef.classList.remove('select__options-wrapper--hidden');
+    }, 200);
   };
 
   useEffect(() => {
-    if (open) document.body.addEventListener('click', handleOutsideCLick);
+    if (!open) return;
+
+    const handleOutsideCLick = (event: MouseEvent | TouchEvent) => {
+      if (ref && !ref.contains(event.target as Node)) handleCloseOptions();
+    };
+
+    document.body.addEventListener('click', handleOutsideCLick);
 
     return () => document.body.removeEventListener('click', handleOutsideCLick);
   }, [open]);
@@ -69,7 +84,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   return (
     <div style={props.wrapperStyle} className={props.wrapperClassName}>
-      <div onClick={() => setOpen(!open)} className={classNames} ref={setRef} style={props.style}>
+      <div onClick={handleToggleOpen} className={classNames} ref={setRef} style={props.style}>
         <div className={'select__left'}>
           {props.icon && <div className={'text_field__icon'}>{props.icon}</div>}
           <div className={'select__input'}>
@@ -78,26 +93,28 @@ export const Select: React.FC<SelectProps> = (props) => {
           </div>
         </div>
         <Expand rotated={open} />
-        <div className={'select__options'}>
-          {props.options
-            ?.filter((option) => option.label.toString().toLowerCase().includes(search.toLowerCase()))
-            ?.map((option, index) => (
-              <div
-                className={'select__option'}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (props.onChange) {
-                    props.onChange(option);
-                  } else {
-                    setValue(option);
-                  }
-                  setOpen(false);
-                }}
-                key={index}
-              >
-                {option.label}
-              </div>
-            ))}
+        <div className={'select__options-wrapper'} ref={setOptionsRef}>
+          <div className={'select__options-container'}>
+            {props.options
+              ?.filter((option) => option.label.toString().toLowerCase().includes(search.toLowerCase()))
+              ?.map((option) => (
+                <div
+                  className={'select__option'}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (props.onChange) {
+                      props.onChange(option);
+                    } else {
+                      setValue(option);
+                    }
+                    handleCloseOptions();
+                  }}
+                  key={option.value}
+                >
+                  {option.label}
+                </div>
+              ))}
+          </div>
         </div>
       </div>
       {typeof props.error !== 'boolean' && props.error && (
