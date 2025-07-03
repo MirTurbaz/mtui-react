@@ -5,9 +5,10 @@ import { ChevronLeft, ChevronRight } from './icons';
 export interface ScrollSliderProps {
   className?: string;
   children?: ReactElement;
+  scrollWidth?: number;
 }
 
-export const ScrollSlider: React.FC<ScrollSliderProps> = (props) => {
+export const ScrollSlider: React.FC<ScrollSliderProps> = ({ scrollWidth = 500, ...props }) => {
   const [ref, setRef] = useState<HTMLDivElement>(null);
   const [isLeft, setIsLeft] = useState<boolean>(false);
   const [isRight, setIsRight] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export const ScrollSlider: React.FC<ScrollSliderProps> = (props) => {
   const handlePrev = () => {
     ref.scrollTo({
       top: 0,
-      left: Math.max(ref.scrollLeft - 500, 0),
+      left: Math.max(ref.scrollLeft - scrollWidth, 0),
       behavior: 'smooth',
     });
   };
@@ -23,7 +24,7 @@ export const ScrollSlider: React.FC<ScrollSliderProps> = (props) => {
   const handleNext = () => {
     ref.scrollTo({
       top: 0,
-      left: ref.scrollLeft + 500,
+      left: ref.scrollLeft + scrollWidth,
       behavior: 'smooth',
     });
   };
