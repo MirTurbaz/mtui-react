@@ -28,6 +28,6 @@ export const ScrollSlider = (props) => {
         if (ref)
             handleScroll();
     }, [ref]);
-    return (_jsxs("div", { className: `scroll_slider__wrapper ${(_a = props.className) !== null && _a !== void 0 ? _a : ''}`, children: [_jsx("div", { className: `scroll_slider`, ref: setRef, onScroll: handleScroll, children: props.children }), _jsxs("div", { className: 'scroll_slider__arrows', children: [_jsx("div", { className: `scroll_slider__arrow ${isLeft ? 'scroll_slider__arrow_hidden' : ''}`, onClick: handlePrev, children: _jsx(ChevronLeft, { size: 24 }) }), _jsx("div", { className: `scroll_slider__arrow ${isRight ? 'scroll_slider__arrow_hidden' : ''}`, onClick: handleNext, children: _jsx(ChevronRight, { size: 24 }) })] })] }));
+    return (_jsxs("div", { className: `scroll-slider__wrapper ${(_a = props.className) !== null && _a !== void 0 ? _a : ''}`, children: [_jsx("div", { className: `scroll-slider`, ref: setRef, onScroll: handleScroll, children: props.children }), _jsxs("div", { className: 'scroll-slider__arrows', children: [_jsx("div", { className: `scroll-slider__arrow ${isLeft ? 'scroll-slider__arrow_hidden' : ''}`, onClick: handlePrev, children: _jsx(ChevronLeft, { size: 24 }) }), _jsx("div", { className: `scroll-slider__arrow ${isRight ? 'scroll-slider__arrow_hidden' : ''}`, onClick: handleNext, children: _jsx(ChevronRight, { size: 24 }) })] })] }));
 };
 //# sourceMappingURL=scroll_slider.js.map

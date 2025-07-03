@@ -38,15 +38,15 @@ export const ScrollSlider: React.FC<ScrollSliderProps> = (props) => {
   }, [ref]);
 
   return (
-    <div className={`scroll_slider__wrapper ${props.className ?? ''}`}>
-      <div className={`scroll_slider`} ref={setRef} onScroll={handleScroll}>
+    <div className={`scroll-slider__wrapper ${props.className ?? ''}`}>
+      <div className={`scroll-slider`} ref={setRef} onScroll={handleScroll}>
         {props.children}
       </div>
-      <div className={'scroll_slider__arrows'}>
-        <div className={`scroll_slider__arrow ${isLeft ? 'scroll_slider__arrow_hidden' : ''}`} onClick={handlePrev}>
+      <div className={'scroll-slider__arrows'}>
+        <div className={`scroll-slider__arrow ${isLeft ? 'scroll-slider__arrow_hidden' : ''}`} onClick={handlePrev}>
           <ChevronLeft size={24} />
         </div>
-        <div className={`scroll_slider__arrow ${isRight ? 'scroll_slider__arrow_hidden' : ''}`} onClick={handleNext}>
+        <div className={`scroll-slider__arrow ${isRight ? 'scroll-slider__arrow_hidden' : ''}`} onClick={handleNext}>
           <ChevronRight size={24} />
         </div>
       </div>
