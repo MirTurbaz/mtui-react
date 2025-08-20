@@ -29,8 +29,8 @@ const DatePicker: TypeDatePicker = ({
     getValue: () => null,
   };
 
-  const handleChange = (newValue: Dayjs) => {
-    if ((minDate && newValue.isBefore(minDate, picker)) || (maxDate && newValue.isAfter(maxDate, picker))) {
+  const handleChange = (newValue: Dayjs | null) => {
+    if ((minDate && newValue?.isBefore(minDate, picker)) || (maxDate && newValue?.isAfter(maxDate, picker))) {
       return;
     }
 

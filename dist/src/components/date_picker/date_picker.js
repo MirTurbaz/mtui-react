@@ -33,7 +33,7 @@ const DatePicker = (_a) => {
     };
     const handleChange = (newValue) => {
         var _a, _b;
-        if ((minDate && newValue.isBefore(minDate, picker)) || (maxDate && newValue.isAfter(maxDate, picker))) {
+        if ((minDate && (newValue === null || newValue === void 0 ? void 0 : newValue.isBefore(minDate, picker))) || (maxDate && (newValue === null || newValue === void 0 ? void 0 : newValue.isAfter(maxDate, picker)))) {
             return;
         }
         setDate(newValue);
