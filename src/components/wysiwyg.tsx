@@ -29,9 +29,18 @@ export const Wysiwyg: React.FC<WysiwygProps> = (props) => {
     }
   }, [props.value]);
 
-  const updateState = (newState) => {
+  const updateState = (newState: EditorState) => {
     setEditorState(newState);
   };
+
+  const handleChange = () => {
+    const currentContent: Draft.ContentState = editorState.getCurrentContent();
+    if (currentContent.hasText()) {
+      props.onChange(draftToHtml(convertToRaw(currentContent)));
+    } else {
+      props.onChange('');
+    }
+  }
 
   const blockRenderMap = Map({
     unstyled: {
@@ -53,8 +62,8 @@ export const Wysiwyg: React.FC<WysiwygProps> = (props) => {
       stripPastedStyles={true}
       //@ts-ignore
       blockRenderMap={Draft.DefaultDraftBlockRenderMap.merge(blockRenderMap)}
-      onBlur={(e) => {
-        props.onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+      onBlur={() => {
+        handleChange();
         props.onBlur?.();
         setFocused(false);
       }}

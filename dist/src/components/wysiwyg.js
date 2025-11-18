@@ -21,6 +21,15 @@ export const Wysiwyg = (props) => {
     const updateState = (newState) => {
         setEditorState(newState);
     };
+    const handleChange = () => {
+        const currentContent = editorState.getCurrentContent();
+        if (currentContent.hasText()) {
+            props.onChange(draftToHtml(convertToRaw(currentContent)));
+        }
+        else {
+            props.onChange('');
+        }
+    };
     const blockRenderMap = Map({
         unstyled: {
             element: 'p',
@@ -33,9 +42,9 @@ export const Wysiwyg = (props) => {
     // @ts-ignore
     _jsx(Editor, { editorState: editorState, wrapperClassName: `wysiwyg_editor__wrapper margin-top-8 ${focused && 'wysiwyg_editor__wrapper-focused'} ${props.className}`, editorClassName: 'wysiwyg_editor', onEditorStateChange: updateState, onFocus: () => setFocused(true), stripPastedStyles: true, 
         //@ts-ignore
-        blockRenderMap: Draft.DefaultDraftBlockRenderMap.merge(blockRenderMap), onBlur: (e) => {
+        blockRenderMap: Draft.DefaultDraftBlockRenderMap.merge(blockRenderMap), onBlur: () => {
             var _a;
-            props.onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+            handleChange();
             (_a = props.onBlur) === null || _a === void 0 ? void 0 : _a.call(props);
             setFocused(false);
         }, localization: {
