@@ -77,8 +77,8 @@ export const Select: React.FC<SelectProps> = (props) => {
         </div>
         <Expand rotated={open} />
         <div className={'select__options'}>
-          {props.withSearch && (
-            <TextField value={search} onChange={setSearch} onClick={(event) => event.stopPropagation()} />
+          {props.withSearch && open && (
+            <TextField value={search} onChange={setSearch} onClick={(event) => event.stopPropagation()} autofocus />
           )}
           {selectOptions.map((option, index) => (
             <div
