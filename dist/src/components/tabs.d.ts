@@ -1,3 +1,4 @@
+import * as React from 'react';
 interface TabsProps<T> {
     className?: string;
     items: ItemType<T>[];
@@ -9,5 +10,5 @@ export type ItemType<T> = {
     label: string;
     onClick?: (key: T) => void;
 };
-export declare const Tabs: <T>(props: TabsProps<T>) => import("react/jsx-runtime").JSX.Element;
+export declare const Tabs: <T>(props: TabsProps<T>) => React.JSX.Element;
 export {};

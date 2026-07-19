@@ -15,4 +15,4 @@ export interface ModalProps {
     bodyProps?: any;
     footer?: ReactElement | ReactElement[];
 }
-export declare const Modal: React.FC<ModalProps>;
+export declare function Modal(props: ModalProps): React.ReactPortal;
