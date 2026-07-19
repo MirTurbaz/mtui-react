@@ -2,7 +2,7 @@
   &__overlay {
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     left: 0;
     top: 0;
     background: #0000007a;
@@ -18,11 +18,11 @@
     border-radius: 8px;
     border: 1px solid #0000001f;
     box-shadow:
-      0px 4px 32px 0px #00000026,
-      0px 0px 0px 1px #0000001a;
+      0 4px 32px 0 #00000026,
+      0 0 0 1px #0000001a;
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
     &-size {
       &_xs {
         width: 344px;
@@ -75,17 +75,32 @@
     width: calc(100% + 48px);
     margin: 32px -24px -24px;
   }
+  &__list {
+    max-height: calc(100dvh - 320px);
+    overflow: scroll;
+  }
+  &__footer {
+    border-top: 1px solid #0000001f;
+    padding: 24px 16px 24px 16px;
+  }
+}
+.no-border {
+  border: none;
 }
 
 @media all and (max-width: $screen-sm) {
   .modal__overlay {
     flex-direction: column;
   }
-  .modal__wrapper:not(.modal_mobile-height_auto) {
-    width: 100vw;
-    flex-grow: 1;
-    max-height: 100vh;
-    border-radius: 0;
+  .modal__wrapper {
+    max-height: calc(100dvh - 16px);
+
+    &:not(.modal_mobile-height_auto) {
+      width: 100vw;
+      flex-grow: 1;
+      max-height: 100dvh;
+      border-radius: 0;
+    }
   }
   .flex_horizontal-16 {
     flex-wrap: wrap;

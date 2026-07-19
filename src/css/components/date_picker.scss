@@ -1,252 +1,240 @@
-.DayPicker__withBorder,
-.CalendarMonthGrid {
-  box-shadow: none;
-  background: none;
-}
-.CalendarMonth_caption strong {
-  text-transform: capitalize;
-  font-weight: 400;
-  letter-spacing: 0.4px;
-  font-size: 16px;
-}
-.CalendarMonth {
-  background: transparent;
-}
-.CalendarDay {
-  height: 44px !important;
-  border-radius: 100px;
-  &__selected_span,
-  &__selected_span:hover {
-    border-radius: 0 !important;
-    background: #417ee11f !important;
-    color: #313131;
-    border: none;
-    position: relative;
-  }
-  &__today {
-    .DayContent {
-      border-radius: 100px;
-      border: 1px solid #0000007a;
-    }
-  }
-  &__selected,
-  &__selected:active,
-  &__selected:hover {
-    background: none !important;
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      background: #417ee11f;
-      height: 100%;
-      top: 0;
-      width: 50%;
-    }
+$date-selector__slide-animation-duration: .5s;
 
-    .DayContent {
-      background: $brand;
-      border: 0;
-      border-radius: 100%;
-      color: white !important;
-      position: relative;
-    }
-    &.CalendarDay__selected_end:before {
-      left: 0;
-    }
-  }
-  &__hovered_span:hover,
-  &__hovered_span {
-    background: #417ee11f !important;
-    color: #000000cc;
-    border: none;
-    border-radius: 0 !important;
-  }
-  &__default {
-    transition:
-      background 0.2s,
-      color 0.2s;
-    border: none !important;
-    vertical-align: middle;
-  }
-  &__blocked_calendar,
-  &__blocked_calendar:hover {
-    background: white;
-    text-decoration: line-through;
-    color: #d9d9d9;
-    border: none;
-  }
-}
-.CalendarDay__default:hover {
-  background: #417ee11f;
-}
-.DayContent l {
-  display: block;
-  font-size: 8px;
-  text-align: center;
-  width: 100%;
-  opacity: 0.8;
-  bottom: -5px;
-  position: absolute;
-  font-weight: 300;
-}
-.DayContent div {
-  position: absolute;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.16));
+.date-selector {
   background: white;
-  border-radius: 4px;
-  color: #333333;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 0.25px;
-  padding: 0 6px;
-  display: inline-block;
-  white-space: nowrap;
-  top: -27px;
-  width: 200px;
-  left: -75px;
-  &::before {
-    content: '';
+  font-family: Roboto, 'sans-serif';
+
+  &__wrapper {
+    position: relative;
+    padding: 16px;
+    max-width: calc(44px * 7 + 32px);
+    overflow: hidden;
+
+    &--two-panels {
+      max-width: calc(44px * 7 * 2 + 32px + 32px);
+    }
+    &--range-selector {
+      .date-selector__cell {
+        &--in-range,
+        &--selected-start,
+        &--selected-end {
+          background-color: var(--mtui-clr-primary-12);
+        }
+      }
+    }
+    &--month-selector {
+      max-width: calc(77px * 4 + 32px);
+
+      .date-selector__grid {
+        grid-template-columns: repeat(4, 77px);
+      }
+      .date-selector__cell {
+        &--today {
+          .date-selector__cell-inner {
+            border: 1px solid var(--mtui-clr-black-48);
+          }
+
+          &:not(.date-selector__cell--hover):not(.date-selector__cell--selected) .date-selector__cell-inner {
+            width: 73px;
+            height: 36px;
+            top: 0;
+            left: 2px;
+          }
+        }
+
+        .date-selector__cell-inner {
+          border-radius: 40px;
+        }
+      }
+    }
+  }
+
+  &__panel {}
+  &__scrolled-panels {
     position: absolute;
     background: white;
-    left: 90px;
-    bottom: -6px;
-    width: 12px;
-    height: 12px;
-    z-index: -1; /* Прячем за основным блоком */
-    transform: rotate(45deg); /* Поворачиваем на 45º */
-    -webkit-transform: rotate(45deg);
-  }
-}
-.CalendarDay:nth-child(1) .DayContent div {
-  left: -5px;
-  &::before {
-    left: 20px;
-  }
-}
-.CalendarDay:nth-child(2) .DayContent div {
-  left: -45px;
-  &::before {
-    left: 60px;
-  }
-}
-.CalendarDay:nth-child(6) .DayContent div {
-  left: -105px;
-  &::before {
-    left: 120px;
-  }
-}
-.CalendarDay:nth-child(7) .DayContent div {
-  left: -145px;
-  &::before {
-    left: 160px;
-  }
-}
-.DayContent {
-  position: relative;
-  height: 100%;
-  letter-spacing: 0.2px;
-  line-height: 40px;
-  font-weight: 400;
-  font-size: 14px !important;
-  &-Weekday {
-    color: #e4493f;
-  }
-  &.with_label {
-    line-height: 33px;
-  }
-  &.custom_disabled {
-    l {
-      display: none;
+
+    transition: transform $date-selector__slide-animation-duration ease-in-out;
+    will-change: transform;
+
+    &--slide-left {
+      animation: slide-left $date-selector__slide-animation-duration ease-in-out;
     }
-    line-height: 40px !important;
-    color: #d9d9d9;
+    &--slide-right {
+      left: calc(-44px * 7 - 16px);
+      animation: slide-right $date-selector__slide-animation-duration ease-in-out;
+    }
   }
-  &.card-loader {
-    border: none;
-    width: 24px;
-    height: 16px;
-    margin: auto;
-  }
-}
-.DayPickerNavigation {
-  &_svg__vertical {
-    margin: auto;
-  }
-}
-.DayPicker__hidden {
-  visibility: visible;
-}
 
-.DayPickerNavigation_button__default {
-  box-shadow: none !important;
-}
-.DayPicker_weekHeader {
-  padding: 0 !important;
-}
-.date_picker_range__wrapper {
-  display: flex;
-  column-gap: 16px;
-  .text_field__wrapper {
-    width: 100%;
+  &__header {
+    position: absolute;
+    z-index: 1000000;
+    width: calc(100% - 32px);
+    margin-bottom: 8px;
   }
-}
-.date_picker__popup {
-  .popup__body {
-    display: flex;
-    justify-content: center;
-  }
-}
 
-.date_picker__popup-single {
-  .CalendarDay {
-    &__selected,
-    &__selected:active,
-    &__selected:hover {
-      &:before {
-        display: none;
+  &__nav-button {
+    background: none;
+  }
+
+  &__month-label {
+    height: 40px;
+    white-space: nowrap;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.64);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 44px);
+  }
+
+  &__cell {
+    position: relative;
+    height: 36px;
+    margin: 4px 0;
+    transition: all .1s linear;
+    color: var(--mtui-clr-black-8);
+
+    &:not(.date-selector__cell--weekday) {
+      cursor: pointer;
+    }
+    &--weekday {
+      height: 12px !important;
+      margin: 8px 0 4px !important;
+      user-select: none;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 1px;
+      text-align: center;
+
+      color: rgba(0, 0, 0, 0.48) !important;
+
+      &.date-selector__cell--weekend {
+        color: rgba(228, 73, 63, 0.8) !important;
       }
     }
-  }
-}
+    &--empty {
+      background: none;
+      pointer-events: none;
+    }
+    &--weekend {
+      color: var(--mtui-clr-danger-light);
+    }
+    &--disabled {
+      color: var(--mtui-clr-black-12);
+      cursor: default !important;
 
-.select_date_picker {
-  &__popup {
-    overflow: visible !important;
-    .popup__body {
-      flex-direction: column;
-    }
-    .DayPicker_weekHeader {
-      top: 4px;
-      left: 14px !important;
-    }
-    .CalendarMonth_caption {
-      padding-top: 0;
-      strong {
-        display: none;
+      .date-selector__cell--weekend {
+        color: var(--mtui-clr-danger-48);
       }
     }
+    &--selected {
+      &-start {
+        border-radius: 50% 0 0 50%;
+      }
+      &-end {
+        border-radius: 0 50% 50% 0;
+      }
+
+      .date-selector__cell-inner {
+        background-color: var(--mtui-clr-primary);
+        color: white;
+        font-weight: bold;
+      }
+    }
+    &--hover {
+      .date-selector__cell-inner {
+        background-color: var(--mtui-clr-primary-12);
+        font-weight: bold;
+      }
+    }
+    &--today {
+      .date-selector__cell-inner {
+        border: 1px solid rgba(0, 0, 0, 0.48);
+      }
+
+      &:not(.date-selector__cell--hover):not(.date-selector__cell--selected) .date-selector__cell-inner {
+        width: 36px;
+        height: 36px;
+        top: 0;
+        left: 4px;
+      }
+    }
+
+    &-inner {
+      position: absolute;
+      top: -4px;
+      left: 0;
+      width: 100%;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      transition: all .1s linear;
+    }
   }
-  &__top {
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-  }
-  &__month_select {
-    width: 100%;
-  }
-  &__year_select {
-    width: 84px;
-  }
-  &__select {
+  &__input {
     height: 36px;
     padding: 6px 8px 6px 12px;
+
+    &-wrapper {
+      &:first-child {
+        flex: 1;
+      }
+      &:last-child {
+        width: 84px
+      }
+    }
+
     .select__options {
       top: 34px;
+      max-height: 231px;
     }
   }
 }
 
-.select_date_picker__select.select-open_top.select-opened .select__options {
-  bottom: 34px;
+@keyframes slide-left {
+  from {
+    transform: translateX(calc(-44px * 7 - 32px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(calc(44px * 7 + 32px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.date-picker {
+  &__wrapper {
+    .text_field__wrapper {
+      width: 100%;
+    }
+  }
+  &__popup {
+    position: absolute;
+
+    .popup__body {
+      display: flex;
+      justify-content: center;
+    }
+    .popup__header {
+      display: none;
+    }
+  }
 }

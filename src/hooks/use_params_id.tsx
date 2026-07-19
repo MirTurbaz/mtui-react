@@ -1,7 +1,7 @@
 import { useMatch } from 'react-router-dom';
 
 /**
- * @param {string} entitiesPath e.g. "tariffs/apartments" => "/tariffs/apartments/:id", "/tariffs/apartments/new"
+ * @param {string} entitiesPath e.g. "cats" => "/cats/:id", "/cats/new"
  */
 export function useParamsId(entitiesPath: string): [entityId: number, isNew: boolean, wrongId: boolean] {
   const {

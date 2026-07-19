@@ -23,6 +23,9 @@
     letter-spacing: 0.4px;
     color: rgba(0, 0, 0, 0.8);
   }
+  .button span {
+    @extend .typography-regular;
+  }
 }
 
 @media screen and (max-width: $screen-md) {

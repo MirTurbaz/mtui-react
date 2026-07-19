@@ -46,7 +46,7 @@
     line-height: 20px;
     letter-spacing: 0.25px;
     pointer-events: none;
-    padding: 16px 0;
+    padding: 16px;
     top: 0;
     transition: 0.2s;
     overflow: hidden;
@@ -58,14 +58,14 @@
     box-shadow: 0 0 0 3px #0000000a;
     .text_area__placeholder {
       font-size: 12px;
-      padding: 8px 0;
+      padding: 8px;
       line-height: 14px;
     }
   }
   &-filled {
     .text_area__placeholder {
       font-size: 12px;
-      padding: 8px 0;
+      padding: 8px;
       line-height: 14px;
     }
   }

@@ -1,94 +1,77 @@
 .button {
-  padding: 8px 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 8px;
   transition: 0.1s;
   cursor: pointer;
   text-align: center;
-  justify-content: center;
   border-radius: 8px;
   user-select: none;
+
+  font-size: 16px;
+  font-weight: 400;
   line-height: 20px;
+  letter-spacing: 0.4px;
+
   svg {
     flex-shrink: 0;
     path {
       transition: 0.1s;
     }
   }
-  &.clicked {
+  &--clicked {
     box-shadow: 0 0 0 4px #0000000a;
   }
-  &.button_variant_outline {
-    padding-top: 7px;
-    padding-bottom: 7px;
-  }
-  &.outline-primary {
-    color: $brand;
-    border: 1px solid $brand-20;
-    background: $brand-4;
-    &:hover {
-      background: $brand-10;
-    }
-  }
-  &.align-left {
-    text-align: left;
-    justify-content: left;
-  }
-  &.disabled {
+  &--disabled {
     pointer-events: none;
     opacity: 0.5;
   }
-
-  &_p {
-    &_small {
-      padding: 8px !important;
+  &--full-width {
+    width: 100%;
+  }
+  // Type {
+  &_type {
+    &_label-only {
+      padding-right: 16px;
+      padding-left: 16px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+      }
     }
-    &_normal {
-      padding: 16px !important;
+    &_label-with-icon {
+      padding-right: 16px;
+      padding-left: 14px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+      }
     }
-    &_big {
-      padding: 24px !important;
+    &_icon-only {
+      padding-right: 8px;
+      padding-left: 8px;
+      &.button--with-dropdown {
+        padding-right: 12px;
+        padding-left: 14px;
+      }
     }
   }
   // Size
   &_size {
-    &_full_width {
-      width: 100%;
-      flex-grow: 1;
-      justify-content: center !important;
+    &_large {
+      min-height: 44px;
+      font-weight: 500;
+      &.button__type_icon-only {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
-    &_inline {
-      margin-left: -12px;
-      padding-left: 12px;
-      width: auto;
-      column-gap: 4px;
-      display: inline-flex;
+    &_middle {
+      min-height: 36px;
     }
-    &_square {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    &_auto {
-      width: auto;
-      display: inline-flex;
-    }
-  }
-  // Height
-  &_height {
     &_small {
-      padding: 5px 16px;
-      &.button_variant_outline {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-    }
-    &_big {
-      padding: 16px;
-      &.button_variant_outline {
-        padding-top: 15px;
-        padding-bottom: 15px;
-      }
+      min-height: 30px;
+      font-size: 14px;
+      letter-spacing: 0.25px;
     }
   }
   // Variants
@@ -108,13 +91,12 @@
           background-color: $black;
         }
         &:active,
-        &:focus,
-        &.clicked {
+        &.button--clicked {
           background-color: rgba(51, 51, 51, 1);
-          box-shadow: 0 0 0 4px $black-20;
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-2);
         }
-        &.disabled {
-          background-color: $black-12;
+        &.button--disabled {
+          background-color: var(--mtui-clr-black-12);
           border-color: rgba(0, 0, 0, 0.08);
         }
       }
@@ -124,16 +106,15 @@
         background-color: $brand;
 
         &:hover {
-          background-color: $brand-80;
+          background-color: var(--mtui-clr-primary-8);
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $brand;
-          border-color: $brand-20;
-          box-shadow: 0 0 0 4px $brand-20;
+          border-color: var(--mtui-clr-primary-1);
+          box-shadow: 0 0 0 4px var(--mtui-clr-primary-1);
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $brand;
         }
       }
@@ -144,32 +125,30 @@
         &:hover {
           background-color: $green;
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: $success;
-          border-color: $success-20;
-          box-shadow: 0 0 0 4px $success-20;
+          border-color: var(--mtui-clr-success-2);
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-2);
         }
-        &.disabled {
-          background-color: $green-light;
+        &.button--disabled {
+          background-color: var(--mtui-clr-green-light);
         }
       }
       // --- Variant: filled | Color: danger ---
       &.button_color_danger {
         border: none;
-        background-color: $danger-80;
+        background-color: var(--mtui-clr-danger-8);
         &:hover {
           background-color: $danger;
         }
-        &:focus,
         &:active,
-        &.clicked {
-          background-color: $danger-80;
-          border-color: $danger-light-20;
-          box-shadow: 0 0 0 4px $danger-light-12;
+        &.button--clicked {
+          background-color: var(--mtui-clr-danger-8);
+          border-color: var(--mtui-clr-danger-light-2);
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
         }
-        &.disabled {
+        &.button--disabled {
           background-color: $danger;
         }
       }
@@ -182,38 +161,37 @@
 
       // --- Variant: outline | Color: default ---
       &.button_color_default {
-        color: $black-80;
-        border-color: $black-12;
+        color: var(--mtui-clr-black-8);
+        border-color: var(--mtui-clr-black-12);
         svg path {
-          fill: $black-80;
+          fill: var(--mtui-clr-black-8);
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
-          background-color: $black-04;
-          box-shadow: 0 0 0 4px $black-04;
+        &.button--clicked {
+          background-color: var(--mtui-clr-black-4);
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-4);
         }
-        &.disabled {
+        &.button--disabled {
           background: white;
-          color: $black-80;
+          color: var(--mtui-clr-black-8);
           svg path {
-            fill: $black-80;
+            fill: var(--mtui-clr-black-8);
           }
         }
-        &.button_pressed {
-          background-color: $brand-4;
+        &.button--pressed {
+          background-color: var(--mtui-clr-primary-4);
           color: $brand;
-          border-color: $brand-20;
+          border-color: var(--mtui-clr-primary-1);
           &:hover {
-            background-color: $brand-10;
+            background-color: var(--mtui-clr-primary-1);
           }
         }
       }
@@ -227,24 +205,23 @@
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $brand-20;
+          box-shadow: 0 0 0 4px var(--mtui-clr-primary-1);
         }
-        &.button_pressed {
-          background-color: $brand-4;
+        &.button--pressed {
+          background-color: var(--mtui-clr-primary-4);
           color: $brand;
-          border-color: $brand-20;
+          border-color: var(--mtui-clr-primary-1);
           &:hover {
-            background-color: $brand-10;
+            background-color: var(--mtui-clr-primary-1);
           }
         }
       }
@@ -252,26 +229,25 @@
       &.button_color_success {
         background: none;
         color: $success;
-        border-color: $success-20;
+        border-color: var(--mtui-clr-success-2);
         svg path {
           fill: $success;
         }
         &:hover {
-          background-color: $success-04;
+          background-color: var(--mtui-clr-success-4);
           color: $success;
-          border-color: $success-20;
+          border-color: var(--mtui-clr-success-2);
           svg path {
             fill: $success;
           }
         }
 
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           color: $success;
-          border-color: $success-20;
-          box-shadow: 0 0 0 4px $success-12;
+          border-color: var(--mtui-clr-success-2);
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-12);
           svg path {
             fill: $success;
           }
@@ -281,34 +257,33 @@
       &.button_color_danger {
         background: none;
         color: $danger;
-        border-color: $danger-light-20;
+        border-color: var(--mtui-clr-danger-light-2);
         svg path {
           fill: $danger;
         }
 
         &:hover {
-          background-color: $danger-04;
+          background-color: var(--mtui-clr-danger-4);
           color: $danger-dark;
-          border-color: $danger-light-20;
+          border-color: var(--mtui-clr-danger-light-2);
           svg path {
             fill: $danger-dark;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
           color: $danger-dark;
-          border-color: $danger-20;
-          box-shadow: 0 0 0 4px $danger-light-12;
+          border-color: var(--mtui-clr-danger-2);
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
           svg path {
             fill: $danger-dark;
           }
         }
-        &.disabled {
+        &.button--disabled {
           background-color: white;
           color: $danger;
-          border-color: $danger-20;
+          border-color: var(--mtui-clr-danger-2);
           svg path {
             fill: $danger;
           }
@@ -319,23 +294,22 @@
     &_link {
       // --- Variant: link | Color: default ---
       &.button_color_default {
-        color: $black-80;
+        color: var(--mtui-clr-black-8);
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $black-04;
+          box-shadow: 0 0 0 4px var(--mtui-clr-black-4);
         }
-        &.disabled {
-          background: $black-02;
+        &.button--disabled {
+          background: var(--mtui-clr-black-2);
         }
       }
       // --- Variant: link | Color: primary ---
@@ -347,20 +321,19 @@
         }
 
         &:hover {
-          background-color: $black-02;
+          background-color: var(--mtui-clr-black-2);
           color: $brand;
           svg path {
             fill: $brand;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
+        &.button--clicked {
           background-color: white;
-          box-shadow: 0 0 0 4px $brand-4;
+          box-shadow: 0 0 0 4px var(--mtui-clr-primary-4);
         }
-        &.disabled {
-          background: $brand-2;
+        &.button--disabled {
+          background: var(--mtui-clr-primary-2);
         }
       }
       // --- Variant: link | Color: success ---
@@ -370,16 +343,15 @@
           fill: $success;
         }
         &:hover {
-          background-color: $success-04;
+          background-color: var(--mtui-clr-success-4);
           color: $success;
           svg path {
             fill: $success;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
-          box-shadow: 0 0 0 4px $success-12;
+        &.button--clicked {
+          box-shadow: 0 0 0 4px var(--mtui-clr-success-12);
           background-color: white;
           color: $success;
           svg path {
@@ -395,23 +367,22 @@
         }
 
         &:hover {
-          background-color: $danger-04;
+          background-color: var(--mtui-clr-danger-4);
           color: $danger-dark;
           svg path {
             fill: $danger-dark;
           }
         }
-        &:focus,
         &:active,
-        &.clicked {
-          box-shadow: 0 0 0 4px $danger-light-12;
+        &.button--clicked {
+          box-shadow: 0 0 0 4px var(--mtui-clr-danger-light-12);
           background-color: white;
           color: $danger-dark;
           svg path {
             fill: $danger-dark;
           }
         }
-        &.disabled {
+        &.button--disabled {
           background-color: white;
           color: $danger;
           svg path {

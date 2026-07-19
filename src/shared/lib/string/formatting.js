@@ -1,0 +1,2 @@
+export const capitalize = (str) => { var _a; return (_a = str === null || str === void 0 ? void 0 : str.toLowerCase().replace(/^./, (c) => c.toUpperCase())) !== null && _a !== void 0 ? _a : null; };
+//# sourceMappingURL=formatting.js.map

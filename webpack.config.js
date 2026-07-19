@@ -1,6 +1,13 @@
 const path = require('path');
+
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    components: './dist/index.js',
+    icons: { import: './dist/icons.js', filename: './icons.js' },
+    hooks: { import: './dist/hooks.js', filename: './hooks.js' },
+    contexts: { import: './dist/contexts.js', filename: './contexts.js' },
+    wysiwyg: { import: './dist/wysiwyg.js', filename: './wysiwyg.js' },
+  },
   module: {
     rules: [
       {
@@ -14,7 +21,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'bundle'),
   },
 };
